@@ -1,0 +1,7 @@
+<section data-ng-controller="LinklistController">
+	This is the Link list
+	<div ng-repeat="module in modules">
+		{{module.name}}<br/>
+		<a ng-repeat="link in module.links" href="{{link.linkHref}}" target="_blank">{{link.linkName}}<br/></a>
+	</div>
+</section>

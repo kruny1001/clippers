@@ -1,0 +1,101 @@
+<section data-ng-controller="HomeController" style="background-color:#EBECED">
+	<div style="margin-left:25px; margin-right:25px;" layout="vertical">
+		<md-toolbar
+				style="margin-top:10px; border-radius:15px 15px 0px 0px;"
+				md-theme="indigo" scroll-shrink
+				>
+			<div class="md-toolbar-tools">
+				<span><i class="fa fa-bookmark-o"></i> Development Articles</span>
+				<!-- fill up the space between left and right area -->
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-content data-ng-controller="PlanController" class="md-padding" style="border-radius:0px 0px 15px 15px">
+			<div class="core-subtitle">Plan</div>
+			<ul>
+				<li ng-repeat="plan in plans"><a  data-ng-href="#!/articles/{{plan._id}}"><h4><span class="glyphicon glyphicon-asterisk"></span> {{plan.title}} <small> by {{plan.user.displayName}}
+					(<span data-ng-bind="plan.created | date:'mediumDate'"></span>)
+				</small></h4></a></li>
+			</ul>
+		</md-content>
+
+		<md-toolbar
+				style="margin-top:10px; border-radius:15px 15px 0px 0px;"
+				md-theme="indigo" scroll-shrink
+				>
+			<div class="md-toolbar-tools">
+				<span><i class="fa fa-bookmark-o"></i> History of Development</span>
+				<!-- fill up the space between left and right area -->
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-content class="md-padding" style="border-radius:0px 0px 15px 15px">
+			<div class="core-subtitle">UI</div>
+			<ul>
+				<li><a  href="/#!/listing-product"><h4><span class="glyphicon glyphicon-asterisk"></span> Product Listing Page (Google Wallet Integration)</h4></a></li>
+				<li><a  href="/#!/gDrive2/dashboard"><h4><span class="glyphicon glyphicon-asterisk"></span> Product Contents Manager(Dashboard)</h4></a></li>
+				<li><a  href="/#!/gDrive2/addNewProduct"><h4><span class="glyphicon glyphicon-asterisk"></span> Product Contents Manager(New Product Page)</h4></a></li>
+				<li><a  href="/#!/products-list"><h4><span class="glyphicon glyphicon-asterisk"></span> Product Contents Mananger</h4></a></li>
+				<li><a  href="/#!/a-main"><h4><span class="glyphicon glyphicon-asterisk"></span> Banner List</h4></a></li>
+				<li><a  href="/#!/gwas-data/gwas-data-start"><h4><span class="glyphicon glyphicon-asterisk"></span> Users Management Dashboard</h4></a></li>
+				<!--
+                <li><a  href="/#!/draggable"><h4><span class="glyphicon glyphicon-asterisk"></span> Draggable Interface </h4></a></li>
+                <li><a  href="/#!/galleries/create"><h4><span class="glyphicon glyphicon-asterisk"></span> Editor Module</h4></a></li>
+
+                <li><a  href="/#!/galleries/gview"><h4><span class="glyphicon glyphicon-asterisk"></span> User Interface (animation)</h4></a></li>
+                <li><a  href="/#!/menulist"><h4><span class="glyphicon glyphicon-asterisk"></span> Contents Listing</h4></a></li>
+                <li><a  href="/#!/setrowcol"><h4><span class="glyphicon glyphicon-asterisk"></span> Mobile Friendly page with admin functionality</h4></a></li>
+                <li><a  href="/#!/menulist/menuform"><h4><span class="glyphicon glyphicon-asterisk"></span> Quiz(Wizard) Based Registration</h4></a></li>
+                -->
+			</ul>
+			<hr/>
+			<div class="core-subtitle">API</div>
+			<ul>
+				<li><a target="_blank" href="/galleries"><h4><span class="glyphicon glyphicon-asterisk"></span> API Call 1</h4></a></li>
+				<li><a target="_blank" href="/users/all"><h4><span class="glyphicon glyphicon-asterisk"></span> API Call 2</h4></a></li>
+			</ul>
+		</md-content>
+
+		<md-toolbar
+				style="margin-top:10px; border-radius:15px 15px 0px 0px;"
+				md-theme="indigo" scroll-shrink
+				>
+			<div class="md-toolbar-tools">
+				<span><i class="fa fa-bookmark-o"></i> Research</span>
+				<!-- fill up the space between left and right area -->
+				<span flex></span>
+			</div>
+		</md-toolbar>
+		<md-content class="md-padding" style="border-radius:0px 0px 15px 15px">
+			<div class="core-subtitle">R</div>
+			<ul>
+				<li><a href="/#!/gwas-t1"><h4><span class="glyphicon glyphicon-asterisk"></span> rChart Examples</h4></a></li>
+			</ul>
+		</md-content>
+		<br><br>
+	</div>
+	<!--
+        <div class="well" style="margin:20px;">
+        <h2>YouTube Directive</h2>
+        <br />
+        <youtube width="{{yt.width}}" height="{{yt.height}}" videoid="{{yt.videoid}}"></youtube>
+        <br />
+        Width:<input type="text" ng-model="yt.width">
+        Height:<input type="text" ng-model="yt.height">
+        Videoid:<input type="text" ng-model="yt.videoid">
+
+        <br />
+        <button ng-click="sendControlEvent(YT_event.PLAY)">Send Play</button>
+        <button ng-click="sendControlEvent(YT_event.PAUSE)">Send Pause</button>
+        <button ng-click="sendControlEvent(YT_event.STOP)">Send Stop</button>
+
+        <p>Player status is: {{yt.playerStatus}}</p>
+
+        </div>
+    -->
+	<footer>
+		<div style="margin-left:20px">
+			<b>kevAngularJS --</b> Web Master : pbshop1001@gmail.com
+		</div>
+	</footer>
+</section>

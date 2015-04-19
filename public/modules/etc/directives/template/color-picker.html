@@ -1,0 +1,18 @@
+
+<div layout="row" layout-align="center center" class="">
+    <md-grid-list flex style="margin:8px;"
+            md-cols-sm="4" md-cols-md="8" md-cols-gt-md="16"
+            md-row-height-gt-md="3:5" md-row-height="3:5"
+            md-gutter="2px" md-gutter-gt-sm="2px" >
+        <md-grid-tile ng-repeat="item in vm.items" ng-click="vm.coverSelected($event)">
+
+            <img ng-src="{{item.imgSrc}}" class="grid-img" alt="Washed Out">
+            <md-grid-tile-header style="height: 28px;">
+                <md-icon md-svg-src="modules/etc/img/checkMark.svg" style="color:chartreuse"
+                         class="ng-isolate-scope md-default-theme" aria-hidden="true">
+                </md-icon>
+            </md-grid-tile-header>
+            <md-grid-tile-footer style="height:20px;"><h5>{{item.title}}</h5></md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+</div>

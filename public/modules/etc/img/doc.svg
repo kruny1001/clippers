@@ -1,0 +1,28 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 576 576" enable-background="new 0 0 576 576" xml:space="preserve">
+<g id="bg_x5F_1">
+	<g opacity="0.7">
+		<g>
+			<path fill="#2A67B2" d="M170.6,126.1c0,0-12.3,0-14.2,11.8v298c0,0,0,10,12.5,14h239.8c0,0,8.8-2,11.5-14V203.6l-78-77.5H170.6z"
+				/>
+		</g>
+	</g>
+</g>
+<g id="w_x5F_box">
+	<rect x="195.5" y="271.3" fill="#FFFFFF" width="180.2" height="24"/>
+	<rect x="195.5" y="312.9" fill="#FFFFFF" width="180.2" height="24"/>
+	<rect x="195.1" y="228.3" fill="#FFFFFF" width="180.2" height="24"/>
+	<rect x="195.5" y="355.3" fill="#FFFFFF" width="101.7" height="24"/>
+</g>
+<g id="bg_x5F_2">
+	<path opacity="0.7" fill="#2A67B2" d="M341.7,131.8H170.2c0,0-12.3,0-14.2,11.8v292.3c0,0,0,10,12.5,14h239.8c0,0,8.8-2,11.5-14
+		V209.3L341.7,131.8z M195.1,228.3h180.2v17.5H195.1V228.3z M297.2,372.8H195.5v-17.5h101.7V372.8z M375.7,330.1H195.5v-17.3h180.2
+		V330.1z M375.7,288.8H195.5v-17.5h180.2V288.8z"/>
+</g>
+<g id="w_x5F_tri">
+	<polygon opacity="0.65" fill="#9DC3E8" points="342.1,204.1 420.1,204.1 342.1,126.1 	"/>
+</g>
+<g id="dk_x5F_tri">
+	<polygon opacity="0.7" fill="#2A67B2" points="342.4,204.1 419.7,204.1 419.7,280.9 	"/>
+</g>
+</svg>

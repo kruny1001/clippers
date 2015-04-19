@@ -1,0 +1,145 @@
+<section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
+
+	<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>
+
+	<div layout="column">
+		<div layout="row" layout-sm="column" layout-align="center start">
+			<md-whiteframe
+					flex="75"
+					flex-sm="90"
+					class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
+					layout="column" layout-align="space-around start">
+				<product-detail style="width:100%;"></product-detail>
+			</md-whiteframe>
+			<div layout="column" flex="20">
+				<md-whiteframe
+						hide-sm
+						class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
+						layout="column" layout-align="space-around start">
+					Relating Products
+				</md-whiteframe>
+				<md-whiteframe
+						hide-sm
+						class="md-whiteframe-z2 meanT-home-card ob-underbar-yellow"
+						layout="column" layout-align="space-around start">
+					Relating Products
+				</md-whiteframe>
+				<md-whiteframe
+						hide-sm
+						class="md-whiteframe-z2 meanT-home-card ob-underbar-dark"
+						layout="column" layout-align="space-around start">
+					Relating Products
+				</md-whiteframe>
+				<md-whiteframe
+						hide-sm
+						class="md-whiteframe-z2 meanT-home-card ob-underbar-green"
+						layout="column" layout-align="space-around start">
+					Relating Products
+				</md-whiteframe>
+			</div>
+		</div>
+
+		<md-whiteframe
+
+				class="md-whiteframe-z2 meanT-home-card ob-underbar-yellow"
+				layout="column" layout-align="space-around start">
+			<p class="md-body-1">
+				How to use
+
+				Products List(Demo)
+				<md-button class="md-primary md-raised">
+					<a style="color:white" ui-sref="createEtcProduct">Create New Product</a>
+				</md-button>
+
+				<md-button class="md-primary md-raised">
+					<a style="color:white" ui-sref="listEtcProducts">List Products</a>
+				</md-button>
+			</p>
+
+
+		</md-whiteframe>
+		<md-whiteframe
+
+				class="md-whiteframe-z2 meanT-home-card ob-underbar-red"
+				layout="column" layout-align="space-around start">
+			Product Review
+
+			<md-subheader class="md-no-sticky">3 line item</md-subheader>
+			<md-list-item class="md-3-line" ng-repeat="item in todos">
+				<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+				<div class="md-list-item-text">
+					<h3>{{ item.who }}</h3>
+					<h4>{{ item.what }}</h4>
+					<p>{{ item.notes }}</p>
+				</div>
+			</md-list-item>
+			<md-divider ></md-divider>
+			<md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
+			<md-list-item class="md-3-line">
+				<img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
+				<div class="md-list-item-text">
+					<h3>{{ todos[0].who }}</h3>
+					<p>Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.</p>
+				</div>
+			</md-list-item>
+			<md-divider ></md-divider>
+
+		</md-whiteframe>
+		<md-whiteframe
+
+				class="md-whiteframe-z2 meanT-home-card ob-underbar-green"
+				layout="column" layout-align="space-around start">
+			Video review
+		</md-whiteframe>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+	<h4 data-ng-bind="etcProduct.name"></h4>
+	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
+				   layout="column" layout-align="space-around start">
+		<!--<h3>Product Info</h3>-->
+		<product-detail title="etcProduct.name" style="width:100%;"></product-detail>
+	</md-whiteframe>
+
+	<!--<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"-->
+	<!--layout="column" layout-align="space-around start">-->
+	<!--<h3>Color Picker(Directive)</h3>-->
+	<!--<color-picker style="height:100%; width:100%"></color-picker>-->
+	<!--</md-whiteframe>-->
+
+
+	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
+				   layout="column" layout-align="space-around start">
+		<h3>Image List</h3>
+		<gallery style="width:100%"></gallery>
+	</md-whiteframe>
+
+	<!--<div class="page-header">-->
+		<!--<h1 data-ng-bind="etcProduct.name"></h1>-->
+	<!--</div>-->
+	<!--<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == etcProduct.user._id))">-->
+		<!--<a class="btn btn-primary" href="/#!/etc-products/{{etcProduct._id}}/edit">-->
+			<!--<i class="glyphicon glyphicon-edit"></i>-->
+		<!--</a>-->
+		<!--<a class="btn btn-primary" data-ng-click="remove();">-->
+			<!--<i class="glyphicon glyphicon-trash"></i>-->
+		<!--</a>-->
+	<!--</div>-->
+	<!--<small>-->
+		<!--<em class="text-muted">-->
+			<!--Posted on-->
+			<!--<span data-ng-bind="etcProduct.created | date:'mediumDate'"></span>-->
+			<!--by-->
+			<!--<span data-ng-bind="etcProduct.user.displayName"></span>-->
+		<!--</em>-->
+	<!--</small>-->
+</section>
