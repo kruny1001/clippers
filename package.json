@@ -12,11 +12,10 @@
 		"node": ">=0.10.28",
 		"npm": ">=1.4.28"
 	},
-	"scripts": {
-		"start": "grunt",
-		"test": "grunt test",
-		"postinstall": "bower install --config.interactive=false"
-	},
+  "scripts": {
+    "start": "grunt",
+    "postinstall": "bower install --config.interactive=false"
+  },
 	"dependencies": {
 		"express": "~4.10.1",
 		"express-session": "~1.9.1",
