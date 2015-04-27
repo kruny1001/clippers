@@ -2,8 +2,8 @@
 
 // Etc products controller
 angular.module('etc-products').controller('EtcProductsController',
-	['$scope', '$stateParams', '$location', 'Authentication', 'EtcProducts','$timeout', '$q',
-	function($scope, $stateParams, $location, Authentication, EtcProducts, $timeout, $q) {
+	['$scope', '$stateParams', '$location', 'Authentication', 'EtcProducts','$timeout', '$q','$state',
+	function($scope, $stateParams, $location, Authentication, EtcProducts, $timeout, $q, $state) {
 		$scope.authentication = Authentication;
 
 		// Create new Etc product
@@ -65,7 +65,9 @@ angular.module('etc-products').controller('EtcProductsController',
 		}
 
 
-
+		$scope.goToParent = function(){
+			$state.go('wigs');
+		}
 
 		//////
 		//var self = this;

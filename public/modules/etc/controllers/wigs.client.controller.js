@@ -2,13 +2,16 @@
 
 angular.module('etc').controller('WigsController',wigsCtrl);
 
-	function wigsCtrl($scope, EtcProducts) {
+	function wigsCtrl($scope, $state, EtcProducts) {
     $scope.degree = 0;
-    $scope.flipCard = function(targetId){
-      var target = $('#'+targetId);
-      $scope.degree += 180;
-      TweenMax.to(target, 0.4 , {rotationY: $scope.degree});
-      console.log($scope.degree);
+
+    $scope.flipCard = function(content){
+      console.log(content);
+      $state.go("viewEtcProduct", { etcProductId: content._id })
+      //var target = $('#'+targetId);
+      //$scope.degree += 180;
+      //TweenMax.to(target, 0.4 , {rotationY: $scope.degree});
+      //console.log($scope.degree);
     };
 
     $scope.etcProducts = EtcProducts.query();

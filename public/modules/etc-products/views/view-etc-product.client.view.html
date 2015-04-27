@@ -1,7 +1,7 @@
 <section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
 
-	<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>
-
+	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
+	<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
 	<div layout="column">
 		<div layout="row" layout-sm="column" layout-align="center start">
 			<md-whiteframe

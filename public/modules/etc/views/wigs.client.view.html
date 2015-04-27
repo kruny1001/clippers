@@ -1,10 +1,10 @@
 <section data-ng-controller="WigsController">
     <md-grid-list class="gridListdemoBasicUsage"
-            md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6"
+            md-cols-sm="1" md-cols-md="4" md-cols-gt-md="8"
             md-row-height-gt-md="1:1" md-row-height="2:2"
             md-gutter="2px" md-gutter-gt-sm="2px" >
         <div ng-repeat="content in etcProducts">
-        <md-grid-tile id="card1" ng-click="flipCard('card1')"
+        <md-grid-tile id="card1" ng-click="flipCard(content)"
                       md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">
             <img class="tileImg" src="http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg">
             <md-grid-tile-footer>
