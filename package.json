@@ -1,19 +1,15 @@
 {
-	"name": "meanjs",
-	"description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
-	"version": "0.3.3",
-	"private": false,
-	"author": "https://github.com/meanjs/mean/graphs/contributors",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/meanjs/mean.git"
-	},
+	"name": "pbshop",
+	"description": "e-commerce",
+	"version": "0.0.1",
+	"private": true,
 	"engines": {
 		"node": ">=0.10.28",
 		"npm": ">=1.4.28"
 	},
   "scripts": {
-    "start": "grunt"
+    "start": "grunt",
+	"postinstall": "bower install --config.interactive=false"
   },
 	"dependencies": {
 		"express": "~4.10.1",
