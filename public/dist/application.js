@@ -71,6 +71,11 @@ ApplicationConfiguration.registerModule('etc');
 
 'use strict';
 
+// Use application configuration module to register a new module
+ApplicationConfiguration.registerModule('payment');
+
+'use strict';
+
 // Use Application configuration module to register a new module
 ApplicationConfiguration.registerModule('users');
 'use strict';
@@ -1159,6 +1164,93 @@ angular.module('etc').directive('productDetail', [
 
 		function ProductDetailCtrl($scope) {
 
+		};
+	}
+]);
+'use strict';
+
+//Setting up route
+angular.module('payment').config(['$stateProvider',
+	function($stateProvider) {
+		// Payment state routing
+		$stateProvider.
+		state('bt-payment-test', {
+			url: '/bt-payment-test',
+			templateUrl: 'modules/payment/views/bt-payment-test.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+angular.module('payment').controller('BtPaymentTestController', ['$scope',
+	function($scope) {
+		// Bt payment test controller logic
+		// ...
+	}
+]);
+'use strict';
+
+angular.module('payment')
+    .constant('clientTokenPath', '/client-token')
+    .controller('BtPaymentController', BtPaymentController);
+
+// directive controller
+function BtPaymentController($scope, $http, $braintree) {
+    $scope.title = "등록하기";
+    var client;
+    $scope.creditCard = {
+        number: '',
+        expirationDate: ''
+    };
+
+    var startup = function() {
+        $braintree.getClientToken().success(function(token) {
+            client = new $braintree.api.Client({
+                clientToken: token
+            });
+        });
+    }
+
+    $scope.creditCard.number = "4111111111111111";
+    $scope.creditCard.expirationDate ="10/18";
+
+    $scope.payButtonClicked = function() {
+        console.log("clicked");
+        // - Validate $scope.creditCard
+        // - Make sure client is ready to use
+        client.tokenizeCard({
+            number: $scope.creditCard.number,
+            expirationDate: $scope.creditCard.expirationDate
+        }, function (err, nonce) {
+            console.log("err: " + err);
+            console.log("nonce: "+nonce);
+
+            $http.post('/buy-something', {nonce:nonce}).success(function(){
+                alert('1');
+            })
+            .error(function(){
+                alert('2');
+                })
+
+
+            // - Send nonce to your server (e.g. to make a transaction)
+        });
+    };
+    startup();
+
+}
+BtPaymentController.$inject = ["$scope", "$http", "$braintree"];
+'use strict';
+
+angular.module('payment').directive('btPayment', [
+	function() {
+		return {
+			templateUrl: 'modules/payment/directives/template/bt-payment.html',
+			restrict: 'E',
+            controller: 'BtPaymentController',
+			link: function postLink(scope, element, attrs) {
+
+			}
 		};
 	}
 ]);
