@@ -6,7 +6,7 @@
         <div ng-repeat="content in etcProducts">
         <md-grid-tile id="card1" ng-click="flipCard(content)"
                       md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">
-            <img class="tileImg" src="http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg">
+            <img class="tileImg" ng-src="modules/etc/img/c1.jpg">
             <md-grid-tile-footer>
                 <h3>{{content.name}}  {{content.price| currency:"$"}}</h3>
             </md-grid-tile-footer>
