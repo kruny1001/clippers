@@ -8,7 +8,7 @@
   <!--width: 40px;-->
                         <!--margin-right:3px;"-->
                      <!--aria-hidden="true">-->
-            </md-icon>
+            <!--</md-icon>-->
             <h4 >Your Account</h4>
         </div>
     </md-toolbar>
@@ -36,7 +36,6 @@
                     md-colspan="2"
                     class="green"
                     ng-click="sliderNavEvent('Sign In', 'signIn')">
-                <!--<md-icon md-svg-icon="avatar:svg-2"></md-icon>-->
                 <md-grid-tile-footer><h3>Sign In</h3></md-grid-tile-footer>
             </md-grid-tile>
 
@@ -47,9 +46,9 @@
                     md-colspan="2"
                     class="darkBlue"
                     ng-click="sliderNavEvent('Sign Out', 'signOut')">
-                <!--<md-icon md-svg-icon="avatar:svg-3"></md-icon>-->
                 <md-grid-tile-footer><h3>Sign Out</h3></md-grid-tile-footer>
             </md-grid-tile>
+
             <md-grid-tile
                     ng-if="authentication.user"
                     id="tutorial"
@@ -57,9 +56,8 @@
                     md-colspan="1"
                     class="blue"
                     ng-click="sliderNavEvent('Tutorial', 'tutorial')">
-                <!--<md-icon md-svg-src="modules/d2l/img/flat-svg/graduation_cap.svg"></md-icon>-->
                 <md-grid-tile-footer><h3>Your Cart</h3></md-grid-tile-footer>
-            </md-grid-tile>day's Deal
+            </md-grid-tile>
             <!--<md-grid-tile-->
                     <!--ng-if="authentication.user"-->
                     <!--id="urClass"-->
