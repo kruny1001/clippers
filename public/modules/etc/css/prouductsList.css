@@ -16,5 +16,5 @@
 .gridListdemoBasicUsage md-grid-tile {
     transition: all 400ms ease-out 50ms; }
 .gridListdemoBasicUsage .tileImg{
-    width:100%;
+    height: 100%;
 }

@@ -87,8 +87,15 @@ exports.list = function(req, res) {
 /**
  * Etc product middleware
  */
-exports.etcProductByID = function(req, res, next, id) { 
-	EtcProduct.findById(id).populate('user', 'displayName').exec(function(err, etcProduct) {
+exports.etcProductByID = function(req, res, next, id) {
+
+    var populationQuery = [
+        //{path:'class', select:'name prefix'},
+        {path:'user', select:'displayName'},
+        {path:'brand', select:'name'},
+    ];
+
+	EtcProduct.findById(id).populate(populationQuery).exec(function(err, etcProduct) {
 		if (err) return next(err);
 		if (! etcProduct) return next(new Error('Failed to load Etc product ' + id));
 		req.etcProduct = etcProduct ;

@@ -32,6 +32,10 @@ var EtcProductSchema = new Schema({
         required: 'Please fill Image Link',
         trim: true
     },
+    brand:{
+        type: Schema.ObjectId,
+        ref: 'ProductBrand'
+    },
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

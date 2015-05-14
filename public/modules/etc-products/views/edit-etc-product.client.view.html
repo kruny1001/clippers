@@ -23,6 +23,14 @@
                         <input type="text" data-ng-model="etcProduct.image" id="image" class="form-control" placeholder="Image" required>
                     </div>
                 </div>
+                <div class="form-group" layout="column" layout-align="center center" style="height: 100px;">
+                    <label class="control-label" for="brand">Brand</label>
+                    <md-select ng-model="etcProduct.brand" md-on-open="loadUsers()" style="min-width: 200px;">
+                        <md-select-label>{{ etcProduct.brand ? etcProduct.brand.name : 'Assign to user' }}</md-select-label>
+                        <md-option ng-value="brand" ng-repeat="brand in brands">{{brand.name}}</md-option>
+                    </md-select>
+                    <p class="md-caption">You have assigned the task to: {{ brand ? brand.name : 'No one yet' }}</p>
+                </div>
                 <div class="form-group">
                     <input type="submit" value="Update" class="btn btn-default">
                 </div>

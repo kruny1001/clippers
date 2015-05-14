@@ -87,8 +87,11 @@ exports.list = function(req, res) {
 /**
  * Product brand middleware
  */
-exports.productBrandByID = function(req, res, next, id) { 
-	ProductBrand.findById(id).populate('user', 'displayName').exec(function(err, productBrand) {
+exports.productBrandByID = function(req, res, next, id) {
+    var populationQuery = [
+        //{path:'class', select:'name prefix'},
+        {path:'user', select:'displayName'}];
+	ProductBrand.findById(id).populate(populationQuery).exec(function(err, productBrand) {
 		if (err) return next(err);
 		if (! productBrand) return next(new Error('Failed to load Product brand ' + id));
 		req.productBrand = productBrand ;

@@ -2,8 +2,17 @@
 
 // Etc products controller
 angular.module('etc-products').controller('EtcProductsController',
-	['$scope', '$stateParams', '$location', 'Authentication', 'EtcProducts','$timeout', '$q','$state',
-	function($scope, $stateParams, $location, Authentication, EtcProducts, $timeout, $q, $state) {
+	['$scope', '$stateParams', '$location', 'Authentication', 'EtcProducts','$timeout', '$q','$state','ProductBrands',
+	function($scope, $stateParams, $location, Authentication, EtcProducts, $timeout, $q, $state, ProductBrands) {
+
+        $scope.loadUsers = function() {
+            // Use timeout to simulate a 650ms request.
+            $scope.brands = [];
+            return $timeout(function() {
+                $scope.brands = ProductBrands.query();
+                }, 650);
+        };
+
 		$scope.authentication = Authentication;
 
 		// Create new Etc product
@@ -12,7 +21,8 @@ angular.module('etc-products').controller('EtcProductsController',
 			var etcProduct = new EtcProducts ({
 				name: this.name,
                 price: this.price,
-                image: this.image
+                image: this.image,
+                brand: this.brand._id
 			});
 
 			// Redirect after save
@@ -46,7 +56,7 @@ angular.module('etc-products').controller('EtcProductsController',
 		// Update existing Etc product
 		$scope.update = function() {
 			var etcProduct = $scope.etcProduct;
-
+            etcProduct.brand = $scope.etcProduct.brand._id;
 			etcProduct.$update(function() {
 				$location.path('etc-products/' + etcProduct._id);
 			}, function(errorResponse) {
