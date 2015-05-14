@@ -1,0 +1,17 @@
+<section data-ng-controller="ProductBrandsController" data-ng-init="find()">
+    <h1 class="md-title">Product brands</h1>
+    <div class="list-group">
+        <a data-ng-repeat="productBrand in productBrands" data-ng-href="#!/product-brands/{{productBrand._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="productBrand.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="productBrand.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="productBrand.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!productBrands.$resolved || productBrands.length">
+    	No Product brands yet, why don't you <a href="/#!/product-brands/create">create one</a>?
+    </div>
+</section>

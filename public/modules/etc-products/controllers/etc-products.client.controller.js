@@ -10,7 +10,9 @@ angular.module('etc-products').controller('EtcProductsController',
 		$scope.create = function() {
 			// Create new Etc product object
 			var etcProduct = new EtcProducts ({
-				name: this.name
+				name: this.name,
+                price: this.price,
+                image: this.image
 			});
 
 			// Redirect after save

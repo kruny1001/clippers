@@ -34,12 +34,13 @@
             background: rgba(255, 0, 0, 0.8); }
     </style>
 
-    <div class="page-header">
-        <h1>New Wig Product</h1>
-    </div>
+
+    <h1 class="md-title">New Wig Product</h1>
+
 
     <md-whiteframe
             class="md-whiteframe-z2 meanT-home-card ob-underbar-green"
+            style="padding:10px;"
             layout="column" layout-align="space-around start">
 
         <div class="col-md-12">
@@ -50,55 +51,62 @@
                         <div class="controls">
                             <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
                         </div>
-                        <br>
-                        <label class="control-label" for="name">Price</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="price">Price</label>
                         <div class="controls">
-                            <input type="number" data-ng-model="price" id="price" class="form-control" placeholder="Price" required>
+                            <input type="text" data-ng-model="price" id="price" class="form-control" placeholder="Price" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="image">Image</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="image" id="image" class="form-control" placeholder="Image" required>
                         </div>
                     </div>
 
-                    <p class="md-body-1">
-                        Set Color Picker
-                    </p>
-                    <md-whiteframe
+                    <!--<p class="md-body-1">-->
+                        <!--Set Color Picker-->
+                    <!--</p>-->
+                    <!--<md-whiteframe-->
 
-                            class="md-whiteframe-z2 meanT-home-card ob-underbar-red"
-                            layout="column" layout-align="space-around start">
+                            <!--class="md-whiteframe-z2 meanT-home-card ob-underbar-red"-->
+                            <!--layout="column" layout-align="space-around start">-->
 
-                        <div class="chipsdemoBasicUsage">
-                            <p class="md-body-1">
-                                Use Placeholders and override color chips.
-                            </p>
-                            <md-chips
-                                    ng-model="newFruitNames"
-                                    readonly="readonly"
-                                    placeholder="Enter a Color"
-                                    delete-button-label="Remove Color"
-                                    delete-hint="Press delete to remove Color"
-                                    secondary-placeholder="+Add New Color"></md-chips>
-                            <br/>
-                            <p class="md-body-1">
-                                Display an ordered set of colors as chips (with custom template).
-                            </p>
-                            <md-chips
-                                    class="custom-chips"
-                                    ng-model="vegObjs"
-                                    readonly="readonly"
-                                    md-on-append="newVeg($chip)">
-                                <md-chip-template>
-                                  <span>
-                                    <strong>{{$chip.name}}</strong>
-                                    <em>({{$chip.type}})</em>
-                                  </span>
-                                </md-chip-template>
-                                <button md-chip-remove class="md-primary vegetablechip">
-                                    <md-icon md-svg-icon="close"></md-icon>
-                                </button>
-                            </md-chips>
-                        </div>
+                        <!--<div class="chipsdemoBasicUsage">-->
+                            <!--<p class="md-body-1">-->
+                                <!--Use Placeholders and override color chips.-->
+                            <!--</p>-->
+                            <!--<md-chips-->
+                                    <!--ng-model="newFruitNames"-->
+                                    <!--readonly="readonly"-->
+                                    <!--placeholder="Enter a Color"-->
+                                    <!--delete-button-label="Remove Color"-->
+                                    <!--delete-hint="Press delete to remove Color"-->
+                                    <!--secondary-placeholder="+Add New Color"></md-chips>-->
+                            <!--<br/>-->
+                            <!--<p class="md-body-1">-->
+                                <!--Display an ordered set of colors as chips (with custom template).-->
+                            <!--</p>-->
+                            <!--<md-chips-->
+                                    <!--class="custom-chips"-->
+                                    <!--ng-model="vegObjs"-->
+                                    <!--readonly="readonly"-->
+                                    <!--md-on-append="newVeg($chip)">-->
+                                <!--<md-chip-template>-->
+                                  <!--<span>-->
+                                    <!--<strong>{{$chip.name}}</strong>-->
+                                    <!--<em>({{$chip.type}})</em>-->
+                                  <!--</span>-->
+                                <!--</md-chip-template>-->
+                                <!--<button md-chip-remove class="md-primary vegetablechip">-->
+                                    <!--<md-icon md-svg-icon="close"></md-icon>-->
+                                <!--</button>-->
+                            <!--</md-chips>-->
+                        <!--</div>-->
 
 
-                    </md-whiteframe>
+                    <!--</md-whiteframe>-->
 
                     <div class="form-group">
                         <input type="submit" class="btn btn-default">

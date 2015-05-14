@@ -76,6 +76,10 @@ ApplicationConfiguration.registerModule('payment');
 
 'use strict';
 
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('product-brands');
+'use strict';
+
 // Use Application configuration module to register a new module
 ApplicationConfiguration.registerModule('users');
 'use strict';
@@ -309,8 +313,8 @@ angular.module('core')
 
   }])
   .controller('CoreHeadController',
-  ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication',
-    function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication) {
+  ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication','stateService',
+    function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication, stateService) {
       $scope.authentication = Authentication;
       $scope.title = "Clippers";
       $scope.subTitle = "";
@@ -318,6 +322,12 @@ angular.module('core')
       $scope.classroom = false;
       $scope.goTo = function(name){
         $state.go(name);
+          $mdSidenav('left').close()
+              .then(function(){
+                  $log.debug("close LEFT is done");
+                  //console.log(target);
+                  //TweenMax.to($window, 1.2, {scrollTo:{y:target}, ease:Power4.easeOut});
+              });
       };
       $scope.currentState = function(){};
       $scope.onchangeRoute = function(){};
@@ -608,7 +618,6 @@ angular.module('core').controller('PlanController', ['$scope', '$element', 'Auth
 
 //Menu service used for managing  menus
 angular.module('core').service('Menus', [
-
 	function() {
 		// Define a set of default roles
 		this.defaultRoles = ['*'];
@@ -772,6 +781,20 @@ angular.module('core').service('Menus', [
 ]);
 'use strict';
 
+angular.module('core').factory('stateService', stateService);
+
+function stateService($state) {
+
+    return {
+        toGo: function(name) {
+            $state.go(name);
+        }
+    };
+}
+stateService.$inject = ["$state"];
+
+'use strict';
+
 //Setting up route
 angular.module('etc-products').config(['$stateProvider',
 	function($stateProvider) {
@@ -807,7 +830,9 @@ angular.module('etc-products').controller('EtcProductsController',
 		$scope.create = function() {
 			// Create new Etc product object
 			var etcProduct = new EtcProducts ({
-				name: this.name
+				name: this.name,
+                price: this.price,
+                image: this.image
 			});
 
 			// Redirect after save
@@ -901,6 +926,30 @@ angular.module('etc-products').controller('EtcProductsController',
 
 'use strict';
 
+angular.module('etc-products').directive('productCreate', [
+	function() {
+		return {
+			templateUrl: 'modules/etc-products/views/create-etc-product.client.view.html',
+			restrict: 'E',
+			link: function postLink(scope, element, attrs) {
+			}
+		};
+	}
+]);
+
+angular.module('etc-products').directive('productList', [
+    function() {
+        return {
+            templateUrl: 'modules/etc-products/views/list-etc-products.client.view.html',
+            restrict: 'E',
+            link: function postLink(scope, element, attrs) {
+
+            }
+        };
+    }
+]);
+'use strict';
+
 //Etc products service used to communicate Etc products REST endpoints
 angular.module('etc-products').factory('EtcProducts', ['$resource',
 	function($resource) {
@@ -919,6 +968,10 @@ angular.module('etc').config(['$stateProvider',
 	function($stateProvider) {
 		// Etc state routing
 		$stateProvider.
+		state('admin', {
+			url: '/admin',
+			templateUrl: 'modules/etc/views/admin.client.view.html'
+		}).
 		state('wigs', {
 			url: '/',
 			templateUrl: 'modules/etc/views/wigs.client.view.html'
@@ -927,6 +980,14 @@ angular.module('etc').config(['$stateProvider',
 			url: '/etc',
 			templateUrl: 'modules/etc/views/etc.client.view.html'
 		});
+	}
+]);
+'use strict';
+
+angular.module('etc').controller('AdminController', ['$scope',
+	function($scope) {
+		// Admin controller logic
+		// ...
 	}
 ]);
 'use strict';
@@ -978,13 +1039,13 @@ angular.module('etc').controller('EtcController', ['$scope',
 ]);
 'use strict';
 
+
+
 angular.module('etc').controller('WigsController',wigsCtrl);
-
-	function wigsCtrl($scope, $state, EtcProducts) {
-    $scope.degree = 0;
-
-    $scope.flipCard = function(content){
-      console.log(content);
+function wigsCtrl($scope, $state, EtcProducts) {
+    //$scope.degree = 0;
+    $scope.toGo = function(content){
+      //console.log(content);
       $state.go("viewEtcProduct", { etcProductId: content._id })
       //var target = $('#'+targetId);
       //$scope.degree += 180;
@@ -993,7 +1054,6 @@ angular.module('etc').controller('WigsController',wigsCtrl);
     };
 
     $scope.etcProducts = EtcProducts.query();
-
     $scope.contents = [
       {title:"Clipper1", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper1", price:150.00},
       {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
@@ -1002,9 +1062,9 @@ angular.module('etc').controller('WigsController',wigsCtrl);
       {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
       {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00}
     ];
+}
+wigsCtrl.$inject = ["$scope", "$state", "EtcProducts"];;
 
-  }
-  wigsCtrl.$inject = ["$scope", "$state", "EtcProducts"];;
 
 'use strict';
 
@@ -1252,6 +1312,135 @@ angular.module('payment').directive('btPayment', [
 
 			}
 		};
+	}
+]);
+'use strict';
+
+//Setting up route
+angular.module('product-brands').config(['$stateProvider',
+	function($stateProvider) {
+		// Product brands state routing
+		$stateProvider.
+		state('listProductBrands', {
+			url: '/product-brands',
+			templateUrl: 'modules/product-brands/views/list-product-brands.client.view.html'
+		}).
+		state('createProductBrand', {
+			url: '/product-brands/create',
+			templateUrl: 'modules/product-brands/views/create-product-brand.client.view.html'
+		}).
+		state('viewProductBrand', {
+			url: '/product-brands/:productBrandId',
+			templateUrl: 'modules/product-brands/views/view-product-brand.client.view.html'
+		}).
+		state('editProductBrand', {
+			url: '/product-brands/:productBrandId/edit',
+			templateUrl: 'modules/product-brands/views/edit-product-brand.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Product brands controller
+angular.module('product-brands').controller('ProductBrandsController', ['$scope', '$stateParams', '$location', 'Authentication', 'ProductBrands',
+	function($scope, $stateParams, $location, Authentication, ProductBrands) {
+		$scope.authentication = Authentication;
+
+		// Create new Product brand
+		$scope.create = function() {
+			// Create new Product brand object
+			var productBrand = new ProductBrands ({
+				name: this.name
+			});
+
+			// Redirect after save
+			productBrand.$save(function(response) {
+				$location.path('product-brands/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Product brand
+		$scope.remove = function(productBrand) {
+			if ( productBrand ) { 
+				productBrand.$remove();
+
+				for (var i in $scope.productBrands) {
+					if ($scope.productBrands [i] === productBrand) {
+						$scope.productBrands.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.productBrand.$remove(function() {
+					$location.path('product-brands');
+				});
+			}
+		};
+
+		// Update existing Product brand
+		$scope.update = function() {
+			var productBrand = $scope.productBrand;
+
+			productBrand.$update(function() {
+				$location.path('product-brands/' + productBrand._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Product brands
+		$scope.find = function() {
+			$scope.productBrands = ProductBrands.query();
+		};
+
+		// Find existing Product brand
+		$scope.findOne = function() {
+			$scope.productBrand = ProductBrands.get({ 
+				productBrandId: $stateParams.productBrandId
+			});
+		};
+	}
+]);
+'use strict';
+
+angular.module('product-brands').directive('brandCreate', [
+	function() {
+		return {
+			templateUrl: 'modules/product-brands/directives/template/brand-create.html',
+			restrict: 'E',
+			link: function postLink(scope, element, attrs) {
+
+			}
+		};
+	}
+]);
+
+angular.module('product-brands').directive('brandList', [
+    function() {
+        return {
+            templateUrl: 'modules/product-brands/views/list-product-brands.client.view.html',
+            restrict: 'E',
+            link: function postLink(scope, element, attrs) {
+
+            }
+        };
+    }
+]);
+'use strict';
+
+//Product brands service used to communicate Product brands REST endpoints
+angular.module('product-brands').factory('ProductBrands', ['$resource',
+	function($resource) {
+		return $resource('product-brands/:productBrandId', { productBrandId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
 	}
 ]);
 'use strict';

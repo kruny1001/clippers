@@ -1,14 +1,13 @@
 <div layout="column" flex ng-controller="CoreHeadController">
-
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <md-icon md-svg-src="modules/openboard/img/account.svg"
-                     class="svg-logotype ng-isolate-scope md-default-theme"
-                     style="
-                        height: 62px;
-  width: 40px;
-                        margin-right:3px;"
-                     aria-hidden="true">
+            <!--<md-icon md-svg-src="modules/openboard/img/account.svg"-->
+                     <!--class="svg-logotype ng-isolate-scope md-default-theme"-->
+                     <!--style="-->
+                        <!--height: 62px;-->
+  <!--width: 40px;-->
+                        <!--margin-right:3px;"-->
+                     <!--aria-hidden="true">-->
             </md-icon>
             <h4 >Your Account</h4>
         </div>
@@ -19,16 +18,16 @@
                 md-row-height-gt-md="1:1" md-row-height="4:3"
                  >
 
-            <md-grid-tile
-                    ng-if="authentication.user"
-                          id="profile"
-                          md-rowspan="1"
-                          md-colspan="2"
-                          class="green"
-                          ng-click="sliderNavEvent('Profile', 'profile')">
-                <md-icon md-svg-src="modules/d2l/img/flat-svg/settings.svg"></md-icon>
-                <md-grid-tile-footer><h3>Profile</h3></md-grid-tile-footer>
-            </md-grid-tile>
+            <!--<md-grid-tile-->
+                    <!--ng-if="authentication.user"-->
+                          <!--id="profile"-->
+                          <!--md-rowspan="1"-->
+                          <!--md-colspan="2"-->
+                          <!--class="green"-->
+                          <!--ng-click="sliderNavEvent('Profile', 'profile')">-->
+                <!--&lt;!&ndash;<md-icon md-svg-src="modules/d2l/img/flat-svg/settings.svg"></md-icon>&ndash;&gt;-->
+                <!--<md-grid-tile-footer><h3>Profile</h3></md-grid-tile-footer>-->
+            <!--</md-grid-tile>-->
 
             <md-grid-tile
                     ng-if="!authentication.user"
@@ -37,7 +36,7 @@
                     md-colspan="2"
                     class="green"
                     ng-click="sliderNavEvent('Sign In', 'signIn')">
-                <md-icon md-svg-icon="avatar:svg-2"></md-icon>
+                <!--<md-icon md-svg-icon="avatar:svg-2"></md-icon>-->
                 <md-grid-tile-footer><h3>Sign In</h3></md-grid-tile-footer>
             </md-grid-tile>
 
@@ -48,43 +47,39 @@
                     md-colspan="2"
                     class="darkBlue"
                     ng-click="sliderNavEvent('Sign Out', 'signOut')">
-                <md-icon md-svg-icon="avatar:svg-3"></md-icon>
+                <!--<md-icon md-svg-icon="avatar:svg-3"></md-icon>-->
                 <md-grid-tile-footer><h3>Sign Out</h3></md-grid-tile-footer>
             </md-grid-tile>
             <md-grid-tile
                     ng-if="authentication.user"
                     id="tutorial"
-                    md-rowspan="2"
-                    md-colspan="2"
-                    class="blue"
-                    ng-click="sliderNavEvent('Tutorial', 'tutorial')">
-                <md-icon md-svg-src="modules/d2l/img/flat-svg/graduation_cap.svg"></md-icon>
-                <md-grid-tile-footer><h3>Your Cart</h3></md-grid-tile-footer>
-            </md-grid-tile>
-            <md-grid-tile
-                    ng-if="authentication.user"
-                    id="urClass"
                     md-rowspan="1"
                     md-colspan="1"
-                    class="yellow"
-                    ng-click="sliderNavEvent('Your Classes', 'urClass')">
-                <md-icon md-svg-src="modules/d2l/img/flat-svg/reading.svg"></md-icon>
-                <md-grid-tile-footer><h3>Your Classes</h3></md-grid-tile-footer>
-            </md-grid-tile>
+                    class="blue"
+                    ng-click="sliderNavEvent('Tutorial', 'tutorial')">
+                <!--<md-icon md-svg-src="modules/d2l/img/flat-svg/graduation_cap.svg"></md-icon>-->
+                <md-grid-tile-footer><h3>Your Cart</h3></md-grid-tile-footer>
+            </md-grid-tile>day's Deal
+            <!--<md-grid-tile-->
+                    <!--ng-if="authentication.user"-->
+                    <!--id="urClass"-->
+                    <!--md-rowspan="1"-->
+                    <!--md-colspan="1"-->
+                    <!--class="yellow"-->
+                    <!--ng-click="sliderNavEvent('Your Classes', 'urClass')">-->
+                <!--&lt;!&ndash;<md-icon md-svg-src="modules/d2l/img/flat-svg/reading.svg"></md-icon>&ndash;&gt;-->
+                <!--<md-grid-tile-footer><h3>Your Classes</h3></md-grid-tile-footer>-->
+            <!--</md-grid-tile>-->
             <md-grid-tile
                     ng-if="authentication.user"
                     id="allClass"
                     md-rowspan="1"
                     md-colspan="1"
                     class="red"
-                    ng-click="sliderNavEvent('All Classes', 'allClass')">
-                <md-icon md-svg-src="modules/d2l/img/flat-svg/podium_with_speaker.svg"></md-icon>
-                <md-grid-tile-footer><h3>All Classes</h3></md-grid-tile-footer>
+                    ng-click="goTo('admin')">
+                <!--<md-icon md-svg-src="modules/d2l/img/flat-svg/podium_with_speaker.svg"></md-icon>-->
+                <md-grid-tile-footer><h3>Admin</h3></md-grid-tile-footer>
             </md-grid-tile>
         </md-grid-list>
-
     </md-content>
-    <div style="  position: inherit;
-  margin-top: 20px;
-  margin-left: 5px;">Icons are licenced by Web App (http://icons8.com)</div>
 </div>

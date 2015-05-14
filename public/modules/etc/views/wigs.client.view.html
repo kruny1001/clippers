@@ -1,134 +1,16 @@
-<section data-ng-controller="WigsController">
+<md-content layout="column" data-ng-controller="WigsController">
+    <h3 class="md-title">Today's Deal</h3>
     <md-grid-list class="gridListdemoBasicUsage"
-            md-cols-sm="1" md-cols-md="4" md-cols-gt-md="8"
-            md-row-height-gt-md="1:1" md-row-height="2:2"
-            md-gutter="2px" md-gutter-gt-sm="2px" >
-        <div ng-repeat="content in etcProducts">
-        <md-grid-tile id="card1" ng-click="flipCard(content)"
-                      md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">
-            <img class="tileImg" ng-src="modules/etc/img/c1.jpg">
+            md-cols-sm="1" md-cols-md="4" md-cols-gt-md="6"
+            md-row-height="4:3"
+            md-gutter="1px" md-gutter-gt-sm="2px" >
+        <md-grid-tile
+            ng-repeat="content in etcProducts" id="card1" ng-click="toGo(content)"
+            md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">
+            <img class="tileImg" ng-src={{content.image}}>
             <md-grid-tile-footer>
                 <h3>{{content.name}}  {{content.price| currency:"$"}}</h3>
             </md-grid-tile-footer>
         </md-grid-tile>
-        </div>
-
-        <!--<md-grid-tile id="card2" ng-click="flipCard('card2')">-->
-            <!--<img class="tileImg" src="http://12hair.com/wp-content/uploads/2013/05/How-To-Look-For-Quality-Hair-Clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#2: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://d15krwr6vk0y3v.cloudfront.net/image.aspx//media/images/products/56824-master-hair-clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#3: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile id="card2" ng-click="flipCard('card2')">-->
-            <!--<img class="tileImg" src="http://12hair.com/wp-content/uploads/2013/05/How-To-Look-For-Quality-Hair-Clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#2: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://d15krwr6vk0y3v.cloudfront.net/image.aspx//media/images/products/56824-master-hair-clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#3: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-
-        <!--<md-grid-tile-->
-                      <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#4: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                      <!--md-rowspan="2" md-colspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#5: (2r x 2c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                      <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#6: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<img class="tileImg" src="http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>$200</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://12hair.com/wp-content/uploads/2013/05/How-To-Look-For-Quality-Hair-Clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#2: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://d15krwr6vk0y3v.cloudfront.net/image.aspx//media/images/products/56824-master-hair-clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#3: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#4: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2" md-colspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#5: (2r x 2c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#6: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<img class="tileImg" src="http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>$200</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://12hair.com/wp-content/uploads/2013/05/How-To-Look-For-Quality-Hair-Clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#2: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile >-->
-            <!--<img class="tileImg" src="http://d15krwr6vk0y3v.cloudfront.net/image.aspx//media/images/products/56824-master-hair-clippers.jpg">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#3: (1r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#4: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2" md-colspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#5: (2r x 2c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
-        <!--<md-grid-tile-->
-                <!--md-rowspan="2"  md-colspan-sm="1" md-rowspan-sm="1">-->
-            <!--<md-grid-tile-footer>-->
-                <!--<h3>#6: (2r x 1c)</h3>-->
-            <!--</md-grid-tile-footer>-->
-        <!--</md-grid-tile>-->
     </md-grid-list>
-</section>
+</md-content>

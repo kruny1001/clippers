@@ -5,8 +5,8 @@ angular.module('core')
 
   })
   .controller('CoreHeadController',
-  ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication',
-    function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication) {
+  ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication','stateService',
+    function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication, stateService) {
       $scope.authentication = Authentication;
       $scope.title = "Clippers";
       $scope.subTitle = "";
@@ -14,6 +14,12 @@ angular.module('core')
       $scope.classroom = false;
       $scope.goTo = function(name){
         $state.go(name);
+          $mdSidenav('left').close()
+              .then(function(){
+                  $log.debug("close LEFT is done");
+                  //console.log(target);
+                  //TweenMax.to($window, 1.2, {scrollTo:{y:target}, ease:Power4.easeOut});
+              });
       };
       $scope.currentState = function(){};
       $scope.onchangeRoute = function(){};

@@ -1,6 +1,16 @@
 <section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
+
+    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == etcProduct.user._id))">
+    <a class="btn btn-primary" href="/#!/etc-products/{{etcProduct._id}}/edit">
+    <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="remove();">
+    <i class="glyphicon glyphicon-trash"></i>
+    </a>
+    </div>
+
 	<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
 	<div layout="column">
 		<div layout="row" layout-sm="column" layout-align="center start">

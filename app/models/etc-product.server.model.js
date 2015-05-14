@@ -20,6 +20,18 @@ var EtcProductSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+    price:{
+        type: String,
+        default: '',
+        required: 'Please fill Price',
+        trim: true
+    },
+    image:{
+        type: String,
+        default: '',
+        required: 'Please fill Image Link',
+        trim: true
+    },
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
