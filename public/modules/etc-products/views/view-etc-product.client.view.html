@@ -1,155 +1,105 @@
 <section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
 
+	<div layout="row" layout-sm="column" layout-align="start start">
+		<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
+		<h3 class="md-title">andis > clipper</h3>
+	</div>
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
-    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == etcProduct.user._id))">
-    <a class="btn btn-primary" href="/#!/etc-products/{{etcProduct._id}}/edit">
-    <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" data-ng-click="remove();">
-    <i class="glyphicon glyphicon-trash"></i>
-    </a>
-    </div>
+	<div layout="row" layout-sm="column" layout-align="center">
+		<md-card class="card-image" flex="65" flex-sm="100">
+			<img ng-src="{{etcProduct.image}}" class="md-card-image" alt="Washed Out">
+			<!--<img   ng-src="http://thefancy-media-ec4.thefancy.com/1280/20141013/736407931687275136_3777be935160.jpg" class="md-card-image" alt="Washed Out">-->
+			<md-card-content>
+				<h2 class="md-title" style="margin-left:10px;">{{etcProduct.name}}</h2>
+				<p class="md-body-2" style="margin-left:10px;">
+					{{etcProduct.brand.name}}
+				</p>
+			</md-card-content>
+		</md-card>
 
-	<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
-	<div layout="column">
-		<div layout="row" layout-sm="column" layout-align="center start">
+		<div layout="column" flex="30" flex-sm="100" style="margin-top:10px;">
 			<md-whiteframe
-					flex="75"
-					flex-sm="90"
-					class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
-					layout="column" layout-align="space-around start">
-				<product-detail style="width:100%;"></product-detail>
+					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
+					layout="column" layout-align="start start">
+
+				<div style="padding:10px; margin:10px;">
+					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
+					<div class="md-body-2">Overview</div>
+					<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
+					<div layout="row">
+						<img class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
+						<img class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
+					</div>
+				</div>
 			</md-whiteframe>
-			<div layout="column" flex="20">
-				<md-whiteframe
-						hide-sm
-						class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
-						layout="column" layout-align="space-around start">
-					Relating Products
-				</md-whiteframe>
-				<md-whiteframe
-						hide-sm
-						class="md-whiteframe-z2 meanT-home-card ob-underbar-yellow"
-						layout="column" layout-align="space-around start">
-					Relating Products
-				</md-whiteframe>
-				<md-whiteframe
-						hide-sm
-						class="md-whiteframe-z2 meanT-home-card ob-underbar-dark"
-						layout="column" layout-align="space-around start">
-					Relating Products
-				</md-whiteframe>
-				<md-whiteframe
-						hide-sm
-						class="md-whiteframe-z2 meanT-home-card ob-underbar-green"
-						layout="column" layout-align="space-around start">
-					Relating Products
-				</md-whiteframe>
-			</div>
+			<md-whiteframe
+					class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base"
+					layout="column" layout-align="start start">
+				<div style="padding:10px;">
+					<h1 class="md-title">Other things you might Fancy </h1>
+					<p class="md-body-1">Description Description Description</p>
+				</div>
+			</md-whiteframe>
 		</div>
-
-		<md-whiteframe
-
-				class="md-whiteframe-z2 meanT-home-card ob-underbar-yellow"
-				layout="column" layout-align="space-around start">
-			<p class="md-body-1">
-				How to use
-
-				Products List(Demo)
-				<md-button class="md-primary md-raised">
-					<a style="color:white" ui-sref="createEtcProduct">Create New Product</a>
-				</md-button>
-
-				<md-button class="md-primary md-raised">
-					<a style="color:white" ui-sref="listEtcProducts">List Products</a>
-				</md-button>
-			</p>
-
-
-		</md-whiteframe>
-		<md-whiteframe
-
-				class="md-whiteframe-z2 meanT-home-card ob-underbar-red"
-				layout="column" layout-align="space-around start">
-			Product Review
-
-			<md-subheader class="md-no-sticky">3 line item</md-subheader>
-			<md-list-item class="md-3-line" ng-repeat="item in todos">
-				<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-				<div class="md-list-item-text">
-					<h3>{{ item.who }}</h3>
-					<h4>{{ item.what }}</h4>
-					<p>{{ item.notes }}</p>
-				</div>
-			</md-list-item>
-			<md-divider ></md-divider>
-			<md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
-			<md-list-item class="md-3-line">
-				<img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}" />
-				<div class="md-list-item-text">
-					<h3>{{ todos[0].who }}</h3>
-					<p>Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.</p>
-				</div>
-			</md-list-item>
-			<md-divider ></md-divider>
-
-		</md-whiteframe>
-		<md-whiteframe
-
-				class="md-whiteframe-z2 meanT-home-card ob-underbar-green"
-				layout="column" layout-align="space-around start">
-			Video review
-		</md-whiteframe>
-
 	</div>
 
+	<h3 class="md-title" style="margin-left:10px;">Review</h3>
+
+	<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">
+		<md-content>
+			<md-list>
+				<md-subheader class="md-no-sticky">3 line item</md-subheader>
+				<md-list-item class="md-3-line" ng-repeat="item in todos">
+					<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}">
+					<div class="md-list-item-text">
+						<h3>{{ item.who }}</h3>
+						<h4>{{ item.what }}</h4>
+						<p>{{ item.notes }}</p>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-subheader class="md-no-sticky">2 line item</md-subheader>
+				<md-list-item class="md-2-line">
+					<img ng-src="{{todos[0].face}}?20" class="md-avatar" alt="{{todos[0].who}}">
+					<div class="md-list-item-text">
+						<h3>{{ todos[0].who }}</h3>
+						<p>Secondary text</p>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>
+				<md-list-item class="md-3-line">
+					<img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}">
+					<div class="md-list-item-text">
+						<h3>{{ todos[0].who }}</h3>
+						<p>Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.</p>
+					</div>
+				</md-list-item>
+				<md-divider></md-divider>
+				<md-subheader class="md-no-sticky">md-offset class</md-subheader>
+				<md-list-item class="md-2-line" ng-repeat="phone in phones">
+					<md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>
+					<div class="md-list-item-text" ng-class="{'md-offset': $index != 0 }">
+						<h3> {{ phone.number }} </h3>
+						<p> {{ phone.type }} </p>
+					</div>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+
+	<!-- Product Detail Directive-->
+	<!--<product-detail title="etcProduct.name" style="width:100%;"></product-detail>-->
 
 
-
-
-
-
-
-
-
-	<h4 data-ng-bind="etcProduct.name"></h4>
-	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
-				   layout="column" layout-align="space-around start">
-		<!--<h3>Product Info</h3>-->
-		<product-detail title="etcProduct.name" style="width:100%;"></product-detail>
-	</md-whiteframe>
-
-	<!--<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"-->
-	<!--layout="column" layout-align="space-around start">-->
-	<!--<h3>Color Picker(Directive)</h3>-->
-	<!--<color-picker style="height:100%; width:100%"></color-picker>-->
-	<!--</md-whiteframe>-->
-
-
-	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
-				   layout="column" layout-align="space-around start">
-		<h3>Image List</h3>
-		<gallery style="width:100%"></gallery>
-	</md-whiteframe>
-
-	<!--<div class="page-header">-->
-		<!--<h1 data-ng-bind="etcProduct.name"></h1>-->
+	<!-- Color Picker-->
+	<!--<div layout="row" layout-sm="column" layout-align="center">-->
+		<!--<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"-->
+					   <!--layout="column" layout-align="space-around start">-->
+			<!--<h3>Image List</h3>-->
+			<!--<gallery style="width:100%"></gallery>-->
+		<!--</md-whiteframe>-->
 	<!--</div>-->
-	<!--<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == etcProduct.user._id))">-->
-		<!--<a class="btn btn-primary" href="/#!/etc-products/{{etcProduct._id}}/edit">-->
-			<!--<i class="glyphicon glyphicon-edit"></i>-->
-		<!--</a>-->
-		<!--<a class="btn btn-primary" data-ng-click="remove();">-->
-			<!--<i class="glyphicon glyphicon-trash"></i>-->
-		<!--</a>-->
-	<!--</div>-->
-	<!--<small>-->
-		<!--<em class="text-muted">-->
-			<!--Posted on-->
-			<!--<span data-ng-bind="etcProduct.created | date:'mediumDate'"></span>-->
-			<!--by-->
-			<!--<span data-ng-bind="etcProduct.user.displayName"></span>-->
-		<!--</em>-->
-	<!--</small>-->
+
 </section>

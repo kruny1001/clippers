@@ -1,0 +1,16 @@
+.card-image{
+    display: block;
+    max-width: 600px !important;
+    max-height: 100%;
+}
+
+.card-image-sm{
+    display: block;
+    max-width: 100px;
+    max-height:100px;
+    margin: auto;
+}
+
+.overview-content{
+    background-color:white;
+}

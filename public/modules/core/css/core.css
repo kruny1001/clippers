@@ -30,3 +30,8 @@ input, button, textarea, select {
 .without-container{
 /*	margin-top:51px;*/
 }
+
+
+md-content.md-default-theme .main-content {
+	background-color: rgb(236, 236, 236);
+}

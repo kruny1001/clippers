@@ -47,7 +47,7 @@ module.exports = {
                 'public/lib/bootstrap/dist/css/bootstrap-theme.css',
                 'public/lib/angular-material/angular-material.min.css',
                 'public/lib/nvd3/nv.d3.min.css',
-                'public/lib/reveal.js/css/reveal.css',
+                //'public/lib/reveal.js/css/reveal.css',
                 //'public/lib/angular-material/default-theme.css',
 
                 //'public/lib/angular-material/themes/amber-theme.css',
