@@ -7,7 +7,7 @@
         <md-grid-tile
             ng-repeat="content in etcProducts" ng-click="toGo(content)"
             md-rowspan="1" md-colspan="1">
-            <img class="tileImg" ng-src={{content.image}}>
+            <img class="tileImg" src={{content.image}}>
             <md-grid-tile-footer>
                 <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
             </md-grid-tile-footer>

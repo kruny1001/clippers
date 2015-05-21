@@ -1,0 +1,88 @@
+<section data-ng-controller="ShopCartController as cart">
+	<style>
+		.fixedRows {
+			height: 250px;
+			overflow: hidden;
+			overflow-y: auto;
+		}
+	</style>
+	<h3 class="md-title">Shopping Cart</h3>
+
+	<div class="cartTotalPrice">
+		<md-content>
+			<div layout="row">
+				<div flex="15" class="md-body-2">Name</div>
+				<div hide-sm show-gt-sm flex="15" class="md-body-2">Quantity</div>
+				<div hide-gt-sm flex="15" class="md-body-2">Qnt</div>
+				<div hide-sm flex="15" class="md-body-2">Description</div>
+				<div flex="" class="md-body-2">Price</div>
+				<div flex="15" class="md-body-2">total</div>
+			</div>
+			<div ng-repeat="item in cart.itemlist" layout="row">
+				<div flex="15" class="md-body-1">{{item.title}}</div>
+				<div flex="15" class="md-body-1">{{item.qnt}}</div>
+				<div hide-sm flex="15" class="md-body-1">{{item.desc}}</div>
+				<div flex="" class="md-body-1">{{item.price | currency}}</div>
+				<div flex="15" class="md-body-1">{{item.price * item.qnt | currency}}</div>
+			</div>
+		</md-content>
+	</div>
+
+	<md-button class="md-primary md-raised">Checkout</md-button>
+
+	<md-whiteframe
+			style="margin-top:10px;"
+			class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base">
+
+		<div layout="row" layout-sm="column" layout-align="center center" style="padding:10px;" flex layout-fill>
+
+
+			<md-list class="fixedRows" flex="45" flex-sm="95">
+				<md-subheader class="md-no-sticky">Contacts</md-subheader>
+				<md-list-item class="md-2-line contact-item"
+							  ng-repeat="(index, contact) in cart.allContacts"
+							  ng-if="cart.contacts.indexOf(contact) < 0">
+					<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+					<div class="md-list-item-text compact">
+						<h3>{{contact.name}}</h3>
+						<p>{{contact.email}}</p>
+					</div>
+				</md-list-item>
+			</md-list>
+
+			<md-list class="fixedRows" flex="45" flex-sm="95">
+				<md-subheader class="md-no-sticky">Contacts</md-subheader>
+				<md-list-item class="md-2-line contact-item"
+							  ng-repeat="(index, contact) in cart.allContacts"
+							  ng-if="cart.contacts.indexOf(contact) < 0">
+					<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+					<div class="md-list-item-text compact">
+						<h3>{{contact.name}}</h3>
+						<p>{{contact.email}}</p>
+					</div>
+				</md-list-item>
+			</md-list>
+		</div>
+	</md-whiteframe>
+
+
+
+	<md-grid-list
+			md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+			md-row-height-gt-md="1:1" md-row-height="2:2"
+			md-gutter="12px" md-gutter-gt-sm="5px" >
+		<md-grid-tile ng-repeat="item in cart.itemlist" class="green"
+					  md-rowspan="1" >
+			<md-card>
+				<img src={{cart.imagePath}} class="md-card-image" alt="Washed Out">
+				<md-card-content>
+					<h2 class="md-title">{{item.title}}</h2>
+					<p>
+						{{item.body}}
+					</p>
+				</md-card-content>
+			</md-card>
+		</md-grid-tile>
+	</md-grid-list>
+
+</section>

@@ -81,6 +81,10 @@ angular.module('etc-products').controller('EtcProductsController',
 			$state.go('wigs');
 		}
 
+		$scope.goToCart = function(){
+			$state.go('cart');
+		}
+
 		//////
 		//var self = this;
 		$scope.readonly = false;

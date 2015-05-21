@@ -5,15 +5,17 @@ var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
 	var applicationModuleVendorDependencies = ['ngResource',
-        'ngCookies',  'ngAnimate',  'ngTouch',
-        'ngMessages',
-        'ngSanitize',  'ui.router',
-        'ui.bootstrap', //'ui.utils',
-        'ngMaterial', /*'ng-context-menu', 'uiGmapgoogle-maps',*/
-        'smart-table',
-        //'oc.lazyLoad',
-        'nvd3',
-        'braintree-angular'];
+		'ngCookies',  'ngAnimate',  'ngTouch',
+		'ngMessages',
+		'ngSanitize',  'ui.router',
+		'ui.bootstrap', //'ui.utils',
+		'ngMaterial', /*'ng-context-menu', 'uiGmapgoogle-maps',*/
+		//'smart-table',
+		//'oc.lazyLoad',
+		//'nvd3',
+		'braintree-angular',
+		'LocalForageModule'
+	];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

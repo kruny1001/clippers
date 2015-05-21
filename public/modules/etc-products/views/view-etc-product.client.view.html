@@ -18,7 +18,7 @@
 			</md-card-content>
 		</md-card>
 
-		<div layout="column" flex="30" flex-sm="100" style="margin-top:10px;">
+		<div layout="column" layout-margin flex="30" flex-sm="100" style="margin-top:10px;">
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
 					layout="column" layout-align="start start">
@@ -32,10 +32,12 @@
 						<img class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
 					</div>
 				</div>
+				<md-button ng-click="goToCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
 			</md-whiteframe>
+
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base"
-					layout="column" layout-align="start start">
+					layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">Other things you might Fancy </h1>
 					<p class="md-body-1">Description Description Description</p>
@@ -43,6 +45,26 @@
 			</md-whiteframe>
 		</div>
 	</div>
+
+	<md-whiteframe
+			layout="row" flex="95" flex-sm="100" style="margin-top:10px;"
+			class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base">
+		<div style="padding:10px;">
+			<h1 class="md-title">Social Media</h1>
+			<md-list-item class="md-2-line contact-item"
+						  ng-repeat="(index, contact) in allContacts"
+						  ng-if="contacts.indexOf(contact) < 0">
+				<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+				<div class="md-list-item-text compact">
+					<h3>{{contact.name}}</h3>
+					<p>{{contact.email}}</p>
+				</div>
+			</md-list-item>
+
+		</div>
+	</md-whiteframe>
+
+
 
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
 

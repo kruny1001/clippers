@@ -5,15 +5,17 @@ var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
 	var applicationModuleVendorDependencies = ['ngResource',
-        'ngCookies',  'ngAnimate',  'ngTouch',
-        'ngMessages',
-        'ngSanitize',  'ui.router',
-        'ui.bootstrap', //'ui.utils',
-        'ngMaterial', /*'ng-context-menu', 'uiGmapgoogle-maps',*/
-        'smart-table',
-        //'oc.lazyLoad',
-        'nvd3',
-        'braintree-angular'];
+		'ngCookies',  'ngAnimate',  'ngTouch',
+		'ngMessages',
+		'ngSanitize',  'ui.router',
+		'ui.bootstrap', //'ui.utils',
+		'ngMaterial', /*'ng-context-menu', 'uiGmapgoogle-maps',*/
+		//'smart-table',
+		//'oc.lazyLoad',
+		//'nvd3',
+		'braintree-angular',
+		'LocalForageModule'
+	];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -78,6 +80,11 @@ ApplicationConfiguration.registerModule('payment');
 
 // Use applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('product-brands');
+'use strict';
+
+// Use application configuration module to register a new module
+ApplicationConfiguration.registerModule('shop-cart');
+
 'use strict';
 
 // Use Application configuration module to register a new module
@@ -901,6 +908,10 @@ angular.module('etc-products').controller('EtcProductsController',
 			$state.go('wigs');
 		}
 
+		$scope.goToCart = function(){
+			$state.go('cart');
+		}
+
 		//////
 		//var self = this;
 		$scope.readonly = false;
@@ -1501,6 +1512,81 @@ angular.module('product-brands').factory('ProductBrands', ['$resource',
 ]);
 'use strict';
 
+//Setting up route
+angular.module('shop-cart').config(['$stateProvider',
+	function($stateProvider) {
+		// Shop cart state routing
+		$stateProvider.
+		state('cart', {
+			url: '/cart',
+			templateUrl: 'modules/shop-cart/views/cart.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+angular.module('shop-cart').controller('ShopCartController', ShopCartController);
+
+function ShopCartController($scope, Cartlist) {
+	//Add Item
+
+	var vm = this;
+	vm.imagePath = 'https://material.angularjs.org/img/washedout.png';
+	vm.itemlist = [
+		{title:'item1', body:'This item is bla bla', price:30, qnt:2},
+		{title:'item2', body:'This item is bla bla', price:39, qnt:1},
+		{title:'item3', body:'This item is bla bla', price:299, qnt:2},
+		{title:'item4', body:'This item is bla bla', price:212, qnt:3},
+		{title:'item5', body:'This item is bla bla', price:99, qnt:1},
+		{title:'item5', body:'This item is bla bla', price:99, qnt:1},
+		{title:'item5', body:'This item is bla bla', price:99, qnt:1},
+		{title:'item5', body:'This item is bla bla', price:99, qnt:1},
+	];
+
+	vm.allContacts = loadContacts();
+	vm.contacts = [vm.allContacts[0]];
+	vm.filterSelected = true;
+
+	function loadContacts() {
+		var contacts = [
+			'Marina Augustine',
+			'Oddr Sarno',
+			'Nick Giannopoulos',
+			'Narayana Garner',
+			'Anita Gros',
+			'Megan Smith',
+			'Tsvetko Metzger',
+			'Hector Simek',
+			'Some-guy withalongalastaname'
+		];
+		return contacts.map(function (c, index) {
+			var cParts = c.split(' ');
+			var contact = {
+				name: c,
+				email: cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() + '@example.com',
+				image: 'http://lorempixel.com/50/50/people?' + index
+			};
+			contact._lowername = contact.name.toLowerCase();
+			return contact;
+		});
+	}
+}
+ShopCartController.$inject = ["$scope", "Cartlist"];
+'use strict';
+
+angular.module('shop-cart').factory('Cartlist', Cartlist);
+
+function Cartlist() {
+	var items = [];
+	return {
+		addItem: function(item) {
+			items.push(item);
+		}
+	};
+}
+
+'use strict';
+
 // Config HTTP Error Handling
 angular.module('users').config(['$httpProvider',
 	function($httpProvider) {
@@ -1578,6 +1664,26 @@ angular.module('users').config(['$stateProvider',
 
 angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
 	function($scope, $http, $location, Authentication) {
+
+		var wistiaEmbed = Wistia.embed("29b0fbf547", {
+			version: "v1",
+			videoWidth: 640,
+			videoHeight: 360,
+			playerColor: "688AAD"
+		});
+		// insert the 'bind on play' function
+		wistiaEmbed.bind('play', function() {
+			// use the .time() method to jump ahead 10 seconds
+			wistiaEmbed.time(10);
+			return this.unbind;
+		});
+
+		$scope.play = function(){
+			wistiaEmbed.time(30).play();
+		};
+
+		//$scope.play();
+
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
