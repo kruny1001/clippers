@@ -7,6 +7,10 @@ function Cartlist() {
 	return {
 		addItem: function(item) {
 			items.push(item);
+		},
+		getItems: function(){
+			return items;
 		}
+
 	};
 }

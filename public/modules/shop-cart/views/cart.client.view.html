@@ -12,16 +12,14 @@
 		<md-content>
 			<div layout="row">
 				<div flex="15" class="md-body-2">Name</div>
-				<div hide-sm show-gt-sm flex="15" class="md-body-2">Quantity</div>
-				<div hide-gt-sm flex="15" class="md-body-2">Qnt</div>
-				<div hide-sm flex="15" class="md-body-2">Description</div>
+				<div hide-sm show-gt-sm flex="15" class="md-body-2">Manufacture</div>
+				<div hide-gt-sm flex="15" class="md-body-2">Manufacture</div>
 				<div flex="" class="md-body-2">Price</div>
 				<div flex="15" class="md-body-2">total</div>
 			</div>
 			<div ng-repeat="item in cart.itemlist" layout="row">
-				<div flex="15" class="md-body-1">{{item.title}}</div>
-				<div flex="15" class="md-body-1">{{item.qnt}}</div>
-				<div hide-sm flex="15" class="md-body-1">{{item.desc}}</div>
+				<div flex="15" class="md-body-1">{{item.name}}</div>
+				<div flex="15" class="md-body-1">{{item.brand.name}}</div>
 				<div flex="" class="md-body-1">{{item.price | currency}}</div>
 				<div flex="15" class="md-body-1">{{item.price * item.qnt | currency}}</div>
 			</div>
