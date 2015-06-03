@@ -843,7 +843,7 @@ function DialogController($scope, $mdDialog) {
 	};
 }
 
-function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authentication,
+function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdDialog, Authentication,
                                EtcProducts, $timeout, $q, $state, ProductBrands, Cartlist) {
 
 	$scope.loadUsers = function() {
@@ -855,8 +855,8 @@ function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authe
 	};
 
 	$scope.addCart = function(){
-		Cartlist.addItem($scope.etcProduct);
-		$state.go('cart');
+		//Cartlist.addItem($scope.etcProduct);
+		$rootScope.$broadcast('cart-updated', {product: $scope.etcProduct});
 	};
 
 	$scope.authentication = Authentication;
@@ -975,7 +975,7 @@ function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authe
 	/////
 
 
-	var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+	var imagePath = 'modules/etc/img/bunny.png';
 
 	$scope.phones = [
 		{ type: 'Home', number: '(555) 251-1234' },
@@ -1021,7 +1021,7 @@ function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authe
 
 
 }
-EtcProductsController.$inject = ["$scope", "$stateParams", "$location", "$mdDialog", "Authentication", "EtcProducts", "$timeout", "$q", "$state", "ProductBrands", "Cartlist"];
+EtcProductsController.$inject = ["$rootScope", "$scope", "$stateParams", "$location", "$mdDialog", "Authentication", "EtcProducts", "$timeout", "$q", "$state", "ProductBrands", "Cartlist"];
 
 
 
@@ -1058,6 +1058,11 @@ angular.module('etc-products').factory('EtcProducts', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			list : {
+				method : 'GET',
+
+				cache : true, isArray:true
 			}
 		});
 	}
@@ -1143,7 +1148,7 @@ angular.module('etc').controller('EtcController', ['$scope',
 
 
 angular.module('etc').controller('WigsController',wigsCtrl);
-function wigsCtrl($scope, $state, EtcProducts) {
+function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
     //$scope.degree = 0;
     $scope.toGo = function(content){
       //console.log(content);
@@ -1154,17 +1159,70 @@ function wigsCtrl($scope, $state, EtcProducts) {
       //console.log($scope.degree);
     };
 
-    $scope.etcProducts = EtcProducts.query();
-    $scope.contents = [
-      {title:"Clipper1", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper1", price:150.00},
-      {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-      {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-      {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-      {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-      {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00}
-    ];
+	$scope.cartGo = function(stateName){
+		$state.go(stateName);
+	};
+
+		$scope.isLoading = true;
+		$scope.isSuccessful = false;
+		$scope.percentLoaded = 0;
+
+	var testData =[1,2,3,4];
+
+	$scope.append = function(){
+		testData.forEach(function(value){
+			$scope.etcProducts.push({name:'232', image:'modules/etc/img/products/1.png'});
+		});
+		$scope.$digest();
+	}
+
+	$scope.loadProduct = EtcProducts.list();
+    $scope.loadProduct.$promise.then(function(data){
+
+	    $scope.etcProducts = data;
+	    console.log(data);
+	    testData = data;
+	    var images = data.map(function(d){ return d.image});
+
+	    Preloadimage.preloadImages(images).then(
+		    function handleResolve(imageLoactions){
+			    // Loading was successful.
+			    console.info( "Preload Successful" );
+
+			    $timeout(function(){
+				    $scope.isLoading = false;
+				    $scope.isSuccessful = true;
+			    },500);
+
+		    },
+		    function handleReject(imageLocation){
+			    // Loading failed on at least one image.
+			    $scope.isLoading = false;
+			    $scope.isSuccessful = false;
+
+			    console.error( "Image Failed", imageLocation );
+			    console.info( "Preload Failure" );
+		    },
+		    function handleNotify(event){
+			    $scope.percentLoaded = event.percent;
+			    console.info( "Percent loaded:", event.percent );
+			    angular.element();
+		    }
+	    )
+
+    })
+
+
+	//$scope.contents = [
+   //   {title:"Clipper1", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper1", price:150.00},
+   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
+   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
+   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
+   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
+   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00}
+	//];
 }
-wigsCtrl.$inject = ["$scope", "$state", "EtcProducts"];;
+wigsCtrl.$inject = ["$scope", "$state", "$timeout", "EtcProducts", "Preloadimage"];;
 
 
 'use strict';
@@ -1328,6 +1386,241 @@ angular.module('etc').directive('productDetail', [
 		};
 	}
 ]);
+'use strict';
+
+angular.module('etc').factory('Preloadimage', ["$q", "$rootScope", function( $q, $rootScope ) {
+
+	// I manage the preloading of image objects. Accepts an array of image URLs.
+	function Preloader( imageLocations ) {
+
+		// I am the image SRC values to preload.
+		this.imageLocations = imageLocations;
+
+		// As the images load, we'll need to keep track of the load/error
+		// counts when announing the progress on the loading.
+		this.imageCount = this.imageLocations.length;
+		this.loadCount = 0;
+		this.errorCount = 0;
+
+		// I am the possible states that the preloader can be in.
+		this.states = {
+			PENDING: 1,
+			LOADING: 2,
+			RESOLVED: 3,
+			REJECTED: 4
+		};
+
+		// I keep track of the current state of the preloader.
+		this.state = this.states.PENDING;
+
+		// When loading the images, a promise will be returned to indicate
+		// when the loading has completed (and / or progressed).
+		this.deferred = $q.defer();
+		this.promise = this.deferred.promise;
+
+	}
+
+
+	// ---
+	// STATIC METHODS.
+	// ---
+
+
+	// I reload the given images [Array] and return a promise. The promise
+	// will be resolved with the array of image locations.
+	Preloader.preloadImages = function( imageLocations ) {
+
+		var preloader = new Preloader( imageLocations );
+
+		return( preloader.load() );
+
+	};
+
+
+	// ---
+	// INSTANCE METHODS.
+	// ---
+
+
+	Preloader.prototype = {
+
+		// Best practice for "instnceof" operator.
+		constructor: Preloader,
+
+
+		// ---
+		// PUBLIC METHODS.
+		// ---
+
+
+		// I determine if the preloader has started loading images yet.
+		isInitiated: function isInitiated() {
+
+			return( this.state !== this.states.PENDING );
+
+		},
+
+
+		// I determine if the preloader has failed to load all of the images.
+		isRejected: function isRejected() {
+
+			return( this.state === this.states.REJECTED );
+
+		},
+
+
+		// I determine if the preloader has successfully loaded all of the images.
+		isResolved: function isResolved() {
+
+			return( this.state === this.states.RESOLVED );
+
+		},
+
+
+		// I initiate the preload of the images. Returns a promise.
+		load: function load() {
+
+			// If the images are already loading, return the existing promise.
+			if ( this.isInitiated() ) {
+
+				return( this.promise );
+
+			}
+
+			this.state = this.states.LOADING;
+
+			for ( var i = 0 ; i < this.imageCount ; i++ ) {
+
+				this.loadImageLocation( this.imageLocations[ i ] );
+
+			}
+
+			// Return the deferred promise for the load event.
+			return( this.promise );
+
+		},
+
+
+		// ---
+		// PRIVATE METHODS.
+		// ---
+
+
+		// I handle the load-failure of the given image location.
+		handleImageError: function handleImageError( imageLocation ) {
+
+			this.errorCount++;
+
+			// If the preload action has already failed, ignore further action.
+			if ( this.isRejected() ) {
+
+				return;
+
+			}
+
+			this.state = this.states.REJECTED;
+
+			this.deferred.reject( imageLocation );
+
+		},
+
+
+		// I handle the load-success of the given image location.
+		handleImageLoad: function handleImageLoad( imageLocation ) {
+
+			this.loadCount++;
+
+			// If the preload action has already failed, ignore further action.
+			if ( this.isRejected() ) {
+
+				return;
+
+			}
+
+			// Notify the progress of the overall deferred. This is different
+			// than Resolving the deferred - you can call notify many times
+			// before the ultimate resolution (or rejection) of the deferred.
+			this.deferred.notify({
+				percent: Math.ceil( this.loadCount / this.imageCount * 100 ),
+				imageLocation: imageLocation
+			});
+
+			// If all of the images have loaded, we can resolve the deferred
+			// value that we returned to the calling context.
+			if ( this.loadCount === this.imageCount ) {
+
+				this.state = this.states.RESOLVED;
+
+				this.deferred.resolve( this.imageLocations );
+
+			}
+
+		},
+
+
+		// I load the given image location and then wire the load / error
+		// events back into the preloader instance.
+		// --
+		// NOTE: The load/error events trigger a $digest.
+		loadImageLocation: function loadImageLocation( imageLocation ) {
+
+			var preloader = this;
+
+			// When it comes to creating the image object, it is critical that
+			// we bind the event handlers BEFORE we actually set the image
+			// source. Failure to do so will prevent the events from proper
+			// triggering in some browsers.
+			var image = $( new Image() )
+					.load(
+					function( event ) {
+
+						// Since the load event is asynchronous, we have to
+						// tell AngularJS that something changed.
+						$rootScope.$apply(
+							function() {
+
+								preloader.handleImageLoad( event.target.src );
+
+								// Clean up object reference to help with the
+								// garbage collection in the closure.
+								preloader = image = event = null;
+
+							}
+						);
+
+					}
+				)
+					.error(
+					function( event ) {
+
+						// Since the load event is asynchronous, we have to
+						// tell AngularJS that something changed.
+						$rootScope.$apply(
+							function() {
+
+								preloader.handleImageError( event.target.src );
+
+								// Clean up object reference to help with the
+								// garbage collection in the closure.
+								preloader = image = event = null;
+
+							}
+						);
+
+					}
+				)
+					.prop( "src", imageLocation )
+				;
+
+		}
+
+	};
+
+
+	// Return the factory instance.
+	return( Preloader );
+
+}]);
 'use strict';
 
 //Setting up route
@@ -1599,6 +1892,77 @@ function ShopCartController($scope, Cartlist) {
 ShopCartController.$inject = ["$scope", "Cartlist"];
 'use strict';
 
+angular.module('shop-cart').directive('shopCart', shopCartDirective);
+
+	function shopCartDirective($compile, Cartlist) {
+		return {
+			template: '<div layout="row"><div class="cart-title" flex="70">Shopping Cart</div><div class="cart-close" flex="30"><md-button class="md-fab md-mini" ng-click="close()"><md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon></md-button></div></div>',
+			restrict: 'E',
+			link: function postLink(scope, element, attrs) {
+				element.addClass('shopCartFloat');
+				scope.total = 0;
+				var cartContainer = angular.element('<div class="shopCartContainer" ></div>');
+				var cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{total | currency:"USD$"}}</div></div>');
+				var content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="60">{{item.name}}</div><div flex="20" class="item-price">{{item.price | currency:"$"}}</div></div>');
+				var noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
+				// Content Container
+				element.append(cartContainer);
+				// No content tag
+				cartContainer.append(noContent);
+				// content tag
+				cartContainer.append(content);
+				// Content Total
+				element.append(cartTotal);
+
+				//Compile tag
+				$compile(noContent)(scope);
+				$compile(cartTotal)(scope);
+				$compile(content)(scope);
+
+				//Read Existing Item
+				scope.items =  Cartlist.getItems();
+				scope.items.forEach(function(value){
+					cartContainer.append('<div class="shopCartContent" >{{value.name}}</div>');
+					$compile(cartContainer)(scope);
+				});
+
+				//Broadcast listner
+				scope.$on('cart-updated', function(event, args){
+					scope.open();
+					console.log(scope.items);
+
+					scope.total += parseFloat(args.product.price);
+
+					var targetUpdate = _.findIndex(scope.items, function(chr) {
+						return chr._id === args.product._id;
+					});
+					console.log(targetUpdate);
+
+					if(targetUpdate < 0){
+						console.log('undefined');
+						Cartlist.addItem(args.product);
+					}
+					else {
+						console.log('found: '+args.product.name);
+						//scope.lot(scope.items[targetUpdate]);
+					}
+				});
+
+				scope.close = function(){
+					TweenMax.to(element, 0.4, {scale:0});
+				};
+
+				scope.open = function(){
+					TweenMax.to(element, 0.4, {scale:1});
+				}
+
+			}
+		};
+	}
+	shopCartDirective.$inject = ["$compile", "Cartlist"];
+
+'use strict';
+
 angular.module('shop-cart').factory('Cartlist', Cartlist);
 
 function Cartlist() {
@@ -1606,6 +1970,7 @@ function Cartlist() {
 	return {
 		addItem: function(item) {
 			items.push(item);
+
 		},
 		getItems: function(){
 			return items;

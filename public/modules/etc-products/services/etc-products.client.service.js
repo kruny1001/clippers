@@ -7,6 +7,11 @@ angular.module('etc-products').factory('EtcProducts', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			list : {
+				method : 'GET',
+
+				cache : true, isArray:true
 			}
 		});
 	}

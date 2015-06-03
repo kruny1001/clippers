@@ -1,9 +1,12 @@
 <section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
 
+	<shop-cart hide-sm></shop-cart>
+
 	<div layout="row" layout-sm="column" layout-align="start start">
 		<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
 		<h3 class="md-title">andis > clipper</h3>
 	</div>
+
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
 	<div layout="row" layout-sm="column" layout-align="center">
@@ -90,8 +93,6 @@
 
 	</md-whiteframe>
 
-
-
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
 
 	<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">
@@ -127,7 +128,7 @@
 				<md-divider></md-divider>
 				<md-subheader class="md-no-sticky">md-offset class</md-subheader>
 				<md-list-item class="md-2-line" ng-repeat="phone in phones">
-					<md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>
+					<!--<md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>-->
 					<div class="md-list-item-text" ng-class="{'md-offset': $index != 0 }">
 						<h3> {{ phone.number }} </h3>
 						<p> {{ phone.type }} </p>

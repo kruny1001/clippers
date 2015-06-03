@@ -16,7 +16,7 @@ function DialogController($scope, $mdDialog) {
 	};
 }
 
-function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authentication,
+function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdDialog, Authentication,
                                EtcProducts, $timeout, $q, $state, ProductBrands, Cartlist) {
 
 	$scope.loadUsers = function() {
@@ -28,8 +28,8 @@ function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authe
 	};
 
 	$scope.addCart = function(){
-		Cartlist.addItem($scope.etcProduct);
-		$state.go('cart');
+		//Cartlist.addItem($scope.etcProduct);
+		$rootScope.$broadcast('cart-updated', {product: $scope.etcProduct});
 	};
 
 	$scope.authentication = Authentication;
@@ -148,7 +148,7 @@ function EtcProductsController($scope, $stateParams, $location, $mdDialog, Authe
 	/////
 
 
-	var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+	var imagePath = 'modules/etc/img/bunny.png';
 
 	$scope.phones = [
 		{ type: 'Home', number: '(555) 251-1234' },

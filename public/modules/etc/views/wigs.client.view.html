@@ -1,16 +1,33 @@
 <md-content layout="column" data-ng-controller="WigsController">
-    <h3 class="md-title">Today's Deal</h3>
-    <md-grid-list style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
-            md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
-            md-row-height="4:3"
-            md-gutter="1px" md-gutter-gt-sm="2px" >
-        <md-grid-tile
-            ng-repeat="content in etcProducts" ng-click="toGo(content)"
-            md-rowspan="1" md-colspan="1">
-            <img class="tileImg" src={{content.image}}>
-            <md-grid-tile-footer>
-                <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
-            </md-grid-tile-footer>
-        </md-grid-tile>
-    </md-grid-list>
+    <md-content layout="row">
+
+        <div show-gt-md hide-sm hide-md flex="15" style="background-color: yellowgreen;">
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+            <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
+        </div>
+
+        <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
+                      md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                      md-row-height="4:3"
+                      md-gutter="1px" md-gutter-gt-sm="2px" >
+
+            <md-grid-tile flex="80"
+                          flex-sm="100"
+                          flex-md="100"
+                    ng-repeat="content in etcProducts" ng-click="toGo(content)"
+                    md-rowspan="1" md-colspan="1">
+                <img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">
+                <md-grid-tile-footer>
+                    <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+
+    </md-content>
 </md-content>
