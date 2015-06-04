@@ -14,7 +14,6 @@
     "angular-bootstrap": "~0.11.2",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
-
     "underscore": "latest",
     "gsap": "latest",
     "bootstrap-sass-official": "latest",
@@ -38,7 +37,8 @@
     "angular-nvd3": "latest",
     "braintree-angular": "~1.2.1",
     "reveal.js": "~3.0.0",
-    "angular-localforage": "latest"
+    "angular-localforage": "latest",
+    "ionicons": "~2.0.1"
   },
   "resolutions": {
     "angular": "1.4.0"

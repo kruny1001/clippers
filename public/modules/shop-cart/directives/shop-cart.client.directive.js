@@ -1,13 +1,16 @@
+//<md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon>
+
 'use strict';
 
 angular.module('shop-cart').directive('shopCart', shopCartDirective);
 
 	function shopCartDirective($compile, Cartlist) {
 		return {
-			template: '<div layout="row"><div class="cart-title" flex="70">Shopping Cart</div><div class="cart-close" flex="30"><md-button class="md-fab md-mini" ng-click="close()"><md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon></md-button></div></div>',
+			template: '<div layout="row"><div class="cart-title md-body-2" flex="70">Shopping Cart</div><div class="cart-close" flex="30"><md-button class="md-fab md-mini" ng-click="close()"><span><i class="ion-close-round"></i></span></md-button></div></div>',
 			restrict: 'E',
 			link: function postLink(scope, element, attrs) {
 				element.addClass('shopCartFloat');
+
 				scope.total = 0;
 				var cartContainer = angular.element('<div class="shopCartContainer" ></div>');
 				var cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{total | currency:"USD$"}}</div></div>');
@@ -56,12 +59,23 @@ angular.module('shop-cart').directive('shopCart', shopCartDirective);
 					}
 				});
 
+				scope.$on('open-cart', function(event, args){
+					scope.open();
+				});
+
 				scope.close = function(){
-					TweenMax.to(element, 0.4, {scale:0});
+					var tlClose = new TimelineMax({paused:true});
+					tlClose.to(element, 0.4, {scale:0, alpha:0})
+						.set(element, {display:'none'}, 0.4);
+					tlClose.restart();
 				};
 
 				scope.open = function(){
-					TweenMax.to(element, 0.4, {scale:1});
+					var tlOpen = new TimelineMax({paused:true});
+					tlOpen.set(element, {display:'block'})
+						.to(element, 0.4, {scale:1, alpha:1});
+					console.log('open');
+					tlOpen.restart();
 				}
 
 			}

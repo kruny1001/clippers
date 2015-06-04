@@ -27,6 +27,7 @@ module.exports = {
 				//'public/lib/components-font-awesome/css/font-awesome.min.css',
 				'public/lib/nvd3/nv.d3.min.css',
 				'public/lib/reveal.js/css/reveal.css',
+				'public/lib/ionicons/css/ionicons.min.css',
 			],
 			js: [
 				'public/lib/angular/angular.min.js',

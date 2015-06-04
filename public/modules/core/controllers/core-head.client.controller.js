@@ -167,5 +167,10 @@ angular.module('core')
         }
       }
 
+      $scope.openCart = function(){
+        $rootScope.$broadcast('open-cart');
+      }
+
+
     }
 ]);

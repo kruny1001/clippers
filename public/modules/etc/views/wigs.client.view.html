@@ -12,22 +12,51 @@
             <md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>
         </div>
 
-        <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
-                      md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
-                      md-row-height="4:3"
-                      md-gutter="1px" md-gutter-gt-sm="2px" >
+        <md-content flex layout="column">
 
-            <md-grid-tile flex="80"
-                          flex-sm="100"
-                          flex-md="100"
-                    ng-repeat="content in etcProducts" ng-click="toGo(content)"
-                    md-rowspan="1" md-colspan="1">
-                <img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">
-                <md-grid-tile-footer>
-                    <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
-                </md-grid-tile-footer>
-            </md-grid-tile>
-        </md-grid-list>
+            <slide-show-cust></slide-show-cust>
+
+            <h3 class="md-title" style="text-align: center">BEST SELLING</h3>
+            <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
+                          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                          md-row-height="4:3"
+                          md-gutter="1px" md-gutter-gt-sm="2px" >
+
+                <md-grid-tile flex="80"
+                              flex-sm="100"
+                              flex-md="100"
+                              ng-repeat="content in etcProducts track by $index" ng-click="toGo(content)"
+                              md-rowspan="1" md-colspan="1">
+                    <img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">
+                    <md-grid-tile-footer>
+                        <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+
+            <h3 class="md-title" style="text-align: center">NEW ARRIVALS</h3>
+            <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
+                          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                          md-row-height="4:3"
+                          md-gutter="1px" md-gutter-gt-sm="2px" >
+
+                <md-grid-tile flex="80"
+                              flex-sm="100"
+                              flex-md="100"
+                              ng-repeat="content in etcProducts track by $index" ng-click="toGo(content)"
+                              md-rowspan="1" md-colspan="1">
+                    <img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">
+                    <md-grid-tile-footer>
+                        <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+
+
+        </md-content>
+
+
 
     </md-content>
+    <footer-info></footer-info>
 </md-content>

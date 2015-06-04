@@ -3,8 +3,8 @@
 	<shop-cart hide-sm></shop-cart>
 
 	<div layout="row" layout-sm="column" layout-align="start start">
-		<md-button class="md-primary md-raised" ng-click="goToParent()">Back</md-button>
-		<h3 class="md-title">andis > clipper</h3>
+		<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>
+		<h3 class="md-body-1">andis > clipper</h3>
 	</div>
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
@@ -30,7 +30,7 @@
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
 					<div class="md-body-2">Overview</div>
 					<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
-					<div layout="row">
+					<div layout="row" style="margin-top:14px">
 						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
 						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
 					</div>
@@ -44,6 +44,10 @@
 				<div style="padding:10px;">
 					<h1 class="md-title">Other things you might Fancy </h1>
 					<p class="md-body-1">Description Description Description</p>
+					<div layout="row" style="margin-top:14px">
+						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
+						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
+					</div>
 				</div>
 			</md-whiteframe>
 		</div>

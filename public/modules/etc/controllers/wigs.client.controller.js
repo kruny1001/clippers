@@ -4,6 +4,8 @@
 
 angular.module('etc').controller('WigsController',wigsCtrl);
 function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
+
+
     //$scope.degree = 0;
     $scope.toGo = function(content){
       //console.log(content);
