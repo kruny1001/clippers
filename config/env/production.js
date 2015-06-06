@@ -96,6 +96,7 @@ module.exports = {
 				//'public/lib/angular-nvd3/dist/angular-nvd3.min.js',
 
 				'public/lib/braintree-angular/dist/braintree-angular.js',
+				//'public/lib/braintree-web/dist/braintree.js',
 				//'public/lib/reveal.js/js/reveal.js',
 				'public/lib/localforage/dist/localforage.min.js',
 				'public/lib/angular-localforage/dist/angular-localForage.min.js',

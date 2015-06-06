@@ -35,7 +35,8 @@ function BtPaymentController($scope, $http, $braintree) {
             console.log("err: " + err);
             console.log("nonce: "+nonce);
 
-            $http.post('/buy-something', {nonce:nonce}).success(function(){
+            $http.post('/buy-something', {nonce:nonce}).success(function(data){
+                console.log(data);
                 alert('1');
             })
             .error(function(){

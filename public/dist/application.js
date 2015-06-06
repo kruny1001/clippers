@@ -239,10 +239,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compile
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
 	}
-]).constant("devConfig", {
-		"directive": "red"
-	})
-    .constant('clientTokenPath', 'eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiIyYmFjOWMxNjE4ZjA3Mzg2YjFmNjRkYTk1Mjc1MTliOWQ3NzMyMjIxOTIxOWUzZDgzOGI4MDVlZWExYzBkY2JhfGNyZWF0ZWRfYXQ9MjAxNS0wMy0wNlQxOTo1NToxOC45MTE2MTMxMjcrMDAwMFx1MDAyNm1lcmNoYW50X2lkPWRjcHNweTJicndkanIzcW5cdTAwMjZwdWJsaWNfa2V5PTl3d3J6cWszdnIzdDRuYzgiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvZGNwc3B5MmJyd2RqcjNxbi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzL2RjcHNweTJicndkanIzcW4vY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIn0sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsInRocmVlRFNlY3VyZSI6eyJsb29rdXBVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvZGNwc3B5MmJyd2RqcjNxbi90aHJlZV9kX3NlY3VyZS9sb29rdXAifSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwibWVyY2hhbnRBY2NvdW50SWQiOiJzdGNoMm5mZGZ3c3p5dHc1IiwiY3VycmVuY3lJc29Db2RlIjoiVVNEIn0sImNvaW5iYXNlRW5hYmxlZCI6dHJ1ZSwiY29pbmJhc2UiOnsiY2xpZW50SWQiOiIxMWQyNzIyOWJhNThiNTZkN2UzYzAxYTA1MjdmNGQ1YjQ0NmQ0ZjY4NDgxN2NiNjIzZDI1NWI1NzNhZGRjNTliIiwibWVyY2hhbnRBY2NvdW50IjoiY29pbmJhc2UtZGV2ZWxvcG1lbnQtbWVyY2hhbnRAZ2V0YnJhaW50cmVlLmNvbSIsInNjb3BlcyI6ImF1dGhvcml6YXRpb25zOmJyYWludHJlZSB1c2VyIiwicmVkaXJlY3RVcmwiOiJodHRwczovL2Fzc2V0cy5icmFpbnRyZWVnYXRld2F5LmNvbS9jb2luYmFzZS9vYXV0aC9yZWRpcmVjdC1sYW5kaW5nLmh0bWwifSwibWVyY2hhbnRJZCI6ImRjcHNweTJicndkanIzcW4iLCJ2ZW5tbyI6Im9mZmxpbmUiLCJhcHBsZVBheSI6eyJzdGF0dXMiOiJtb2NrIiwiY291bnRyeUNvZGUiOiJVUyIsImN1cnJlbmN5Q29kZSI6IlVTRCIsIm1lcmNoYW50SWRlbnRpZmllciI6Im1lcmNoYW50LmNvbS5icmFpbnRyZWVwYXltZW50cy5kZXYtZGNvcGVsYW5kIiwic3VwcG9ydGVkTmV0d29ya3MiOlsidmlzYSIsIm1hc3RlcmNhcmQiLCJhbWV4Il19fQ==');
+]).constant("devConfig", {"directive": "red"})
 
 
 /**
@@ -1672,12 +1669,95 @@ angular.module('payment').config(['$stateProvider',
 ]);
 'use strict';
 
-angular.module('payment').controller('BtPaymentTestController', ['$scope',
-	function($scope) {
-		// Bt payment test controller logic
-		// ...
+angular.module('payment').controller('BtPaymentTestController', ['$scope','$http', 'clientTokenPath','TokenBraintree',
+	function($scope, $http, clientTokenPath, TokenBraintree) {
+		var token='';
+
+		var token = TokenBraintree.get();
+		token.$promise.then(function(data){
+			console.log(data);
+		})
+		console.log(clientTokenPath);
+
+		$http.get('/client-token').success(function(data){
+			console.log(data);
+			braintree.setup(data, "custom", {
+				id:"checkout",
+				hostedFields:{
+					styles: {
+						"input": {
+							"color": "#3A3A3A",
+							"transition": colorTransition,
+							"-webkit-transition": colorTransition
+						},
+						":focus": { color: "#333333" },
+						".invalid": { color: "#FF0000" }
+					},
+					number:{
+						selector:"#number"
+					},
+					expirationDate:{
+						selector: "#expiration-date"
+					}
+				}
+			});
+		});
+		var colorTransition = 'color 100ms ease-out';
+
+		$scope.addCustomer = function(){
+			$http.get('/addNewCustomer').success(function(data){
+				$scope.resultCust = data;
+				console.log(data);
+			});
+		}
+
 	}
 ]);
+
+angular.module('payment').controller('dropinCtrl', dropinCtrl);
+function dropinCtrl($http) {
+	var vm = this;
+	vm.title = 'dropin test';
+	$http.get('/client-token').success(function (data) {
+		braintree.setup(data, "dropin", {
+			container: "payment-form"
+		});
+	});
+}
+dropinCtrl.$inject = ["$http"];
+
+
+	angular.module('payment').controller('checkout', checkout);
+
+	function checkout($scope, $http) {
+
+		var client;
+
+		$scope.creditCard = {
+			cardholderName: null,
+			number: null,
+			expirationMonth: null,
+			expirationYear:  null,
+			cvv: null
+		};
+
+		$scope.dropinOptions = {
+			onPaymentMethodReceived: function (payload) {
+				//e.preventDefault();
+				console.log(payload); // yay
+				// - Send nonce to your server (e.g. to make a transaction)
+				$http.post('/buy-something', {payment_method_nonce: payload.nonce}).success(function(response){
+						console.log(response);
+						$scope.result = response;
+				});
+
+			}
+		}
+	}
+	checkout.$inject = ["$scope", "$http"];;
+
+
+
 'use strict';
 
 angular.module('payment')
@@ -1715,7 +1795,8 @@ function BtPaymentController($scope, $http, $braintree) {
             console.log("err: " + err);
             console.log("nonce: "+nonce);
 
-            $http.post('/buy-something', {nonce:nonce}).success(function(){
+            $http.post('/buy-something', {nonce:nonce}).success(function(data){
+                console.log(data);
                 alert('1');
             })
             .error(function(){
@@ -1744,6 +1825,23 @@ angular.module('payment').directive('btPayment', [
 		};
 	}
 ]);
+'use strict';
+
+angular.module('payment').factory('TokenBraintree', ['$resource',
+	function($resource) {
+		// Tokenbraintree service logic
+		// ...
+
+		// Public API
+		return $resource('/client-token',{},
+			{ 'get':    {method:'GET'},
+			'save':   {method:'POST'},
+			'query':  {method:'GET', isArray:true},
+			'remove': {method:'DELETE'},
+			'delete': {method:'DELETE'} });
+	}
+]);
+
 'use strict';
 
 //Setting up route

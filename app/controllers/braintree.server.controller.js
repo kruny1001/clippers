@@ -23,8 +23,9 @@ exports.token = function(req, res) {
 };
 
 exports.purchase = function(req, res) {
-    var nonce = req.body.nonce;
-    console.log(nonce);
+    var nonce = req.body.payment_method_nonce;
+    console.log(req);
+    //nonce = 'fake-google-wallet-nonce'
     gateway.transaction.sale({
         amount: "10.00",
         paymentMethodNonce: nonce
@@ -32,7 +33,36 @@ exports.purchase = function(req, res) {
         if (err) {
             res.send('error:', err);
         } else {
-            res.send('successfully charged $10, check your sandbox dashboard!');
+            if(result.success)
+                res.json(result);
+            else{
+                res.json(result.message);
+            }
+
         }
     });
 };
+
+exports.creditCard = function(req, res){
+
+}
+
+exports.testAddCustomer = function(req, res){
+    gateway.customer.create({
+        firstName: "Jen",
+        lastName: "Smith",
+        company: "Braintree",
+        email: "jen@example.com",
+        phone: "312.555.1234",
+        fax: "614.555.5678",
+        website: "www.example.com"
+    }, function (err, result) {
+        result.success;
+        // true
+        if(err !=="")
+            res.send('result:', result);
+
+        result.customer.id;
+        // e.g. 494019
+    });
+}

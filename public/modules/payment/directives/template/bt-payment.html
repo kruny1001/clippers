@@ -1,26 +1,14 @@
 <div>
     <h3 class="md-title">{{title}}</h3>
+
     <form data-ng-submit="submitPayment()">
         <h1 class="md-title">Buy some things</h1>
         <braintree-dropin></braintree-dropin>
         <md-button class="md-primary md-raised" type="submit">Buy for $14</md-button>
     </form>
+
     <p class="md-body-1">{{result}}</p>
-
-
-    <input
-            ng-model="creditCard.number"
-            placeholder="4111111111111111"
-            />
-
-    <input
-            ng-model="creditCard.expirationDate"
-            placeholder="10/18"
-            />
-
-    <input
-            type="submit"
-            value="Purchase"
-            ng-click="payButtonClicked()"
-            />
+    <input ng-model="creditCard.number" placeholder="4111111111111111"/>
+    <input ng-model="creditCard.expirationDate" placeholder="10/18"/>
+    <input type="submit" value="Purchase" ng-click="payButtonClicked()"/>
 </div>

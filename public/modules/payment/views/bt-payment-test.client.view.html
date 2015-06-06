@@ -1,9 +1,132 @@
 <section class="" data-ng-controller="BtPaymentTestController">
 
-    <md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"
-                   layout="column" layout-align="space-around start">
-        <h1 class="md-title">Test Payment by brain tree</h1>
-        <bt-payment></bt-payment>
-    </md-whiteframe>
+    <!--<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"-->
+                   <!--layout="column" layout-align="space-around start">-->
+        <!--<h1 class="md-title">Test Payment by brain tree</h1>-->
+        <!--<bt-payment></bt-payment>-->
+    <!--</md-whiteframe>-->
 
+    <!--<div ng-controller="dropinCtrl as vm">-->
+        <!--{{vm.title}}-->
+        <!--<form id="dropIn" method="post" action="/buy-something">-->
+            <!--<div id="payment-form"></div>-->
+            <!--<input type="submit" value="Pay $10">-->
+        <!--</form>-->
+
+    <!--</div>-->
+
+
+    <!--<form id="checkout" action="/buy-something" method="post" ng-controller="BtPaymentTestController">-->
+        <!--<md-input-container flex="">-->
+            <!--<label>number</label>-->
+            <!--<input type="text" data-braintree-name="number">-->
+        <!--</md-input-container>-->
+        <!--<md-input-container flex="">-->
+            <!--<label>expiration date</label>-->
+            <!--<input type="text" data-braintree-name="expiration_date">-->
+        <!--</md-input-container>-->
+        <!--<input type="submit" id="submit" value="Pay">-->
+    <!--</form>-->
+
+
+
+    <div class="container">
+
+        <div layout="row" layout-sm="column" layout-align="center center" layout-margin layout-padding>
+            <md-content style="width:100%" flex-gt-md="50" flex-sm="100">
+                <h2 class="md-title">Shipping Address</h2>
+                <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                        <label>First name</label>
+                        <input ng-model="user.firstName">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Last Name</label>
+                        <input ng-model="theMax">
+                    </md-input-container>
+                </div>
+
+                <md-input-container flex="">
+                    <label>Address</label>
+                    <input ng-model="user.address">
+                </md-input-container>
+                <md-input-container md-no-float="">
+                    <input ng-model="user.address2" placeholder="Address 2">
+                </md-input-container>
+
+                <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                        <label>City</label>
+                        <input ng-model="user.city">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>State</label>
+                        <input ng-model="user.state">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Postal Code</label>
+                        <input ng-model="user.postalCode">
+                    </md-input-container>
+                </div>
+            </md-content>
+            <md-content style="width:100%" flex="100" flex-gt-md="50" flex-sm="100">
+                <h2 class="md-title">Billing Address</h2>
+                <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                        <label>First name</label>
+                        <input ng-model="user.firstName">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Last Name</label>
+                        <input ng-model="theMax">
+                    </md-input-container>
+                </div>
+
+                <md-input-container flex="">
+                    <label>Address</label>
+                    <input ng-model="user.address">
+                </md-input-container>
+                <md-input-container md-no-float="">
+                    <input ng-model="user.address2" placeholder="Address 2">
+                </md-input-container>
+
+                <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                        <label>City</label>
+                        <input ng-model="user.city">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>State</label>
+                        <input ng-model="user.state">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Postal Code</label>
+                        <input ng-model="user.postalCode">
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+
+        <h1 class="md-title">Buy some things</h1>
+        <!--<form action="/buy-something" method="post">-->
+            <!--<div layout="column">-->
+                <!--<braintree-dropin></braintree-dropin>-->
+
+                <!--<md-button class="md-warn md-raised" type="submit">Check Out</md-button>-->
+            <!--</div>-->
+        <!--</form>-->
+    </div>
+
+
+    <!-- Braintree Angular Version-->
+    <div ng-controller="checkout">
+        <form>
+            <braintree-dropin options="dropinOptions">Loading payment form...</braintree-dropin>
+            <input type="submit" value="Buy for $14"/>
+        </form>
+        <pre>{{result}}</pre>
+    </div>
+
+    <md-button class="md-primary md-raised" ng-click="addCustomer()"> addCustomer </md-button>
+    <pre>{{resultCust}}</pre>
 </section>

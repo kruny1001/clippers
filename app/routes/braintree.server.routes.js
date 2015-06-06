@@ -10,4 +10,8 @@ module.exports = function(app) {
     app.get('/client-token', paymentCtrl.token);
 
     app.post('/buy-something', paymentCtrl.purchase);
+
+    app.post('/buy-web', paymentCtrl.creditCard);
+
+    app.get('/addNewCustomer', paymentCtrl.testAddCustomer);
 };
