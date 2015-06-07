@@ -1,0 +1,33 @@
+<section data-ng-controller="TransactionsController">
+	This is the Transactions
+	<!--<div ng-repeat="t in transactions track by $index">-->
+		<!--<div class="md-title">{{t.id}}</div>-->
+		<!--<div class="md-body-1">{{t.status}}</div>-->
+		<!--<div class="md-body-1">{{t.amount}}</div>-->
+		<!--<div class="md-body-1">{{t.customer}}</div>-->
+	<!--</div>-->
+	<md-input-container>
+		<label>Title</label>
+		<input ng-model="test">
+	</md-input-container>
+	<md-button class="md-warn md-raised" ng-click="findT(test)">Find Transaction</md-button>
+
+	<pre>{{result}}</pre>
+
+	<table st-table="rowCollection" class="table table-striped">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Status</th>
+			<th>Amount</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="md-caption" ng-repeat="row in transactions">
+			<td ng-click="findT(row.id)">{{row.id}}</td>
+			<td>{{row.status}}</td>
+			<td>{{row.amount | currency}}</td>
+		</tr>
+		</tbody>
+	</table>
+</section>

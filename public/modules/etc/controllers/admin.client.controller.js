@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('etc').controller('AdminController', ['$scope',
-	function($scope) {
-		// Admin controller logic
-		// ...
+angular.module('etc').controller('AdminController', ['$scope','$state',
+	function($scope, $state) {
+		$scope.toGo = function(name){
+			$state.go(name);
+		}
 	}
 ]);

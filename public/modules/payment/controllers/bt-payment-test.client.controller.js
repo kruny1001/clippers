@@ -4,36 +4,35 @@ angular.module('payment').controller('BtPaymentTestController', ['$scope','$http
 	function($scope, $http, clientTokenPath, TokenBraintree) {
 		var token='';
 
-		var token = TokenBraintree.get();
-		token.$promise.then(function(data){
-			console.log(data);
-		})
-		console.log(clientTokenPath);
+		//var token = TokenBraintree.get();
+		//token.$promise.then(function(data){
+		//	console.log(data);
+		//})
 
-		$http.get('/client-token').success(function(data){
-			console.log(data);
-			braintree.setup(data, "custom", {
-				id:"checkout",
-				hostedFields:{
-					styles: {
-						"input": {
-							"color": "#3A3A3A",
-							"transition": colorTransition,
-							"-webkit-transition": colorTransition
-						},
-						":focus": { color: "#333333" },
-						".invalid": { color: "#FF0000" }
-					},
-					number:{
-						selector:"#number"
-					},
-					expirationDate:{
-						selector: "#expiration-date"
-					}
-				}
-			});
-		});
-		var colorTransition = 'color 100ms ease-out';
+		//$http.get('/client-token').success(function(data){
+		//	console.log(data);
+		//	braintree.setup(data, "custom", {
+		//		id:"checkout",
+		//		hostedFields:{
+		//			styles: {
+		//				"input": {
+		//					"color": "#3A3A3A",
+		//					"transition": colorTransition,
+		//					"-webkit-transition": colorTransition
+		//				},
+		//				":focus": { color: "#333333" },
+		//				".invalid": { color: "#FF0000" }
+		//			},
+		//			number:{
+		//				selector:"#number"
+		//			},
+		//			expirationDate:{
+		//				selector: "#expiration-date"
+		//			}
+		//		}
+		//	});
+		//});
+		//var colorTransition = 'color 100ms ease-out';
 
 		$scope.addCustomer = function(){
 			$http.get('/addNewCustomer').success(function(data){
@@ -49,11 +48,11 @@ angular.module('payment').controller('dropinCtrl', dropinCtrl);
 function dropinCtrl($http) {
 	var vm = this;
 	vm.title = 'dropin test';
-	$http.get('/client-token').success(function (data) {
-		braintree.setup(data, "dropin", {
-			container: "payment-form"
-		});
-	});
+	//$http.get('/client-token').success(function (data) {
+	//	braintree.setup(data, "dropin", {
+	//		container: "payment-form"
+	//	});
+	//});
 }
 
 
@@ -80,7 +79,6 @@ function dropinCtrl($http) {
 						console.log(response);
 						$scope.result = response;
 				});
-
 			}
 		}
 	};
