@@ -23,11 +23,13 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 				'public/lib/angular-material/angular-material.min.css',
+
+				'public/lib/nvd3/nv.d3.min.css',
+				'public/lib/ionicons/css/ionicons.min.css',
+				//'public/lib/reveal.js/css/reveal.css',
 				//'public/lib/angular-material/default-theme.css',
 				//'public/lib/components-font-awesome/css/font-awesome.min.css',
-				'public/lib/nvd3/nv.d3.min.css',
-				'public/lib/reveal.js/css/reveal.css',
-				'public/lib/ionicons/css/ionicons.min.css',
+
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
@@ -53,7 +55,7 @@ module.exports = {
 				'public/lib/gsap/src/minified/TimelineMax.min.js',
 				'public/lib/gsap/src/minified/TweenMax.min.js',
 
-				//'public/lib/gsap/src/minified/utils/Draggable.min.js',
+				'public/lib/gsap/src/minified/utils/Draggable.min.js',
 				//'public/lib/gsap/src/minified/plugins/TextPlugin.min.js',
 				'public/lib/gsap/src/minified/plugins/ScrollToPlugin.min.js',
 				'public/lib/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
@@ -73,7 +75,7 @@ module.exports = {
 				'public/lib/lodash/dist/lodash.min.js',
 				//'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
 
-				//'public/lib/d3/d3.min.js',
+				'public/lib/d3/d3.min.js',
 				//'public/lib/d3-timeline/src/d3-timeline.js',
 
 				//'public/lib/topojson/topojson.js',

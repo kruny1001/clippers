@@ -46,8 +46,10 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-material/angular-material.min.css',
+
         'public/lib/nvd3/nv.d3.min.css',
         'public/lib/ionicons/css/ionicons.min.css',
+
         //'public/lib/reveal.js/css/reveal.css',
         //'public/lib/angular-material/default-theme.css',
 
@@ -117,7 +119,7 @@ module.exports = {
         //'public/lib/tinymce/plugins/media/plugin.min.js',
 
         'public/lib/string/lib/string.js',
-        'public/lib/moment/min/moment-with-locales.min.js',
+        //'public/lib/moment/min/moment-with-locales.min.js',
 
         //'public/third/prism/prism.js',
         //'public/lib/nvd3/nv.d3.min.js',
