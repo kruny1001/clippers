@@ -80,12 +80,21 @@
 
 	<!--</md-grid-list>-->
 
+	<div layout="row" layout-sm="column">
+		<div style="background-color: #f4a49c; width:100%;" flex-gt-sm="65" flex>
+			I'm above on mobile, and to the left on larger devices.
+		</div>
+		<div layout="column"style="background-color: #ff4029" flex>
+			<div style="background-color:#d2ff4d">I'm below on mobile, and to the right on larger devices.</div>
+			<div style="background-color:#5effcd">I'm below on mobile, and to the right on larger devices.</div>
 
+		</div>
+	</div>
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
 	<div layout="row" layout-sm="column" layout-align="center start" style="max-width: 1058px;">
-		<md-card flex="65" flex-sm="100">
+		<md-card flex-gt-sm="65" flex>
 			<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
 			<!--<img   ng-src="http://thefancy-media-ec4.thefancy.com/1280/20141013/736407931687275136_3777be935160.jpg" class="md-card-image" alt="Washed Out">-->
 			<md-card-content>
@@ -95,7 +104,8 @@
 				</p>
 			</md-card-content>
 		</md-card>
-		<div layout="column" layout-margin flex="30" flex-sm="100" style="margin-top:10px;">
+
+		<div layout="column" layout-margin flex-gt-sm="30" flex style="margin-top:10px;">
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
 					layout="column" layout-align="start start">
