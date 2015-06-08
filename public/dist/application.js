@@ -92,9 +92,8 @@ ApplicationConfiguration.registerModule('payment');
 ApplicationConfiguration.registerModule('product-brands');
 'use strict';
 
-// Use application configuration module to register a new module
-ApplicationConfiguration.registerModule('review');
-
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('reviews');
 'use strict';
 
 // Use application configuration module to register a new module
@@ -2111,7 +2110,172 @@ angular.module('product-brands').factory('ProductBrands', ['$resource',
 ]);
 'use strict';
 
-angular.module('review').directive('reviewWrite', ['$compile',
+//Setting up route
+angular.module('reviews').config(['$stateProvider',
+	function($stateProvider) {
+		// Reviews state routing
+		$stateProvider.
+		state('listReviews', {
+			url: '/reviews',
+			templateUrl: 'modules/reviews/views/list-reviews.client.view.html'
+		}).
+		state('createReview', {
+			url: '/reviews/create',
+			templateUrl: 'modules/reviews/views/create-review.client.view.html'
+		}).
+		state('viewReview', {
+			url: '/reviews/:reviewId',
+			templateUrl: 'modules/reviews/views/view-review.client.view.html'
+		}).
+		state('editReview', {
+			url: '/reviews/:reviewId/edit',
+			templateUrl: 'modules/reviews/views/edit-review.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Reviews controller
+angular.module('reviews').controller('ReviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Reviews',
+	function($scope, $stateParams, $location, Authentication, Reviews) {
+		$scope.authentication = Authentication;
+
+		// Create new Review
+		$scope.create = function() {
+			// Create new Review object
+			var review = new Reviews ({
+				title: this.title,
+				rate: this.rate,
+				pros: this.pros,
+				cons: this.cons,
+				notes: this.notes
+			});
+
+			// Redirect after save
+			review.$save(function(response) {
+				$location.path('reviews/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Review
+		$scope.remove = function(review) {
+			if ( review ) { 
+				review.$remove();
+
+				for (var i in $scope.reviews) {
+					if ($scope.reviews [i] === review) {
+						$scope.reviews.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.review.$remove(function() {
+					$location.path('reviews');
+				});
+			}
+		};
+
+		// Update existing Review
+		$scope.update = function() {
+			var review = $scope.review;
+
+			review.$update(function() {
+				$location.path('reviews/' + review._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Reviews
+		$scope.find = function() {
+			$scope.reviews = Reviews.query();
+		};
+
+		// Find existing Review
+		$scope.findOne = function() {
+			$scope.review = Reviews.get({ 
+				reviewId: $stateParams.reviewId
+			});
+		};
+	}
+]);
+'use strict';
+
+angular.module('reviews').directive('reviewList', ['$compile','Reviews',
+	function($compile) {
+		return {
+			restrict: 'E',
+			controller: reviewCtrl,
+			controllerAs: 'review',
+			link: function postLink(scope, element, attrs) {
+				var container = angular.element('<md-content></md-content>');
+				var list = angular.element('<md-list></md-list>');
+				var subHeader = angular.element('<md-subheader class="md-no-sticky"></md-subheader>');
+				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in review.reviews"></md-list-item>');
+				var image = angular.element('<img ng-src="{{item.face}}" class="md-avatar" alt="{{item.who}}">');
+				var reviewContent = angular.element('<div class="md-list-item-text"></div>');
+				var reviewContent_what = angular.element('<h3 class="md-title">{{item.title}}</h3>');
+				var reviewContent_rate = angular.element('<rating ng-model="item.rate" max="review.max" readonly="review.isReadonly" on-hover="review.hoveringOver(value)" on-leave="review.overStar = null"></rating>');
+				var reviewContent_who = angular.element('<h3>{{item.user.displayName}}</h3>');
+				var reviewContent_notes = angular.element('<p>{{item.notes}}</p>');
+				var reviewContent_prosConsContainer = angular.element('<div layout="column" layout-gt-sm="row" layout-align="center center" layout-align-gt-sm="space-around start" layout-margin layout-padding></div>');
+				var reviewContent_pros = angular.element('<div flex-gt-sm="50" flex="100"><div class="md-body-2">Pros</div><p ng-bind="item.pros"></p></div>');
+				var reviewContent_cons = angular.element('<div flex-gt-sm="50" flex="100"><div class="md-body-2">Cons</div><p ng-bind="item.cons"></p></div>');
+
+				reviewContent_rate.css('pointer-events','none');
+
+				container.append(list);
+				list.append(subHeader);
+				list.append(listItem);
+				listItem.append(image);
+				listItem.append(reviewContent);
+				reviewContent.append(reviewContent_what);
+				reviewContent.append(reviewContent_rate);
+				reviewContent.append(reviewContent_who);
+				reviewContent.append(reviewContent_notes);
+
+
+				reviewContent_prosConsContainer.append(reviewContent_pros);
+				reviewContent_prosConsContainer.append(reviewContent_cons);
+				reviewContent.append(reviewContent_prosConsContainer);
+
+				$compile(container)(scope);
+				element.append(container);
+			}
+		};
+	}
+]);
+
+function reviewCtrl(Reviews){
+	console.log('Test Review Ctrl');
+	var vm = this;
+	vm.max = 5;
+	vm.isReadonly = true;
+	vm.hoveringOver = function(value) {
+		vm.overStar = value;
+		vm.percent = 100 * (value / vm.max);
+	};
+	var imagePath = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ39h-I8zmB9QVskyCaly2VpKL07s1NgkZxYn6VXQYA796U5daOQ';
+	var reviewQuery = Reviews.query();
+	reviewQuery.$promise.then(function(result){
+		vm.reviews = result.map(function(data){
+			var review = {};
+			review = data;
+			review.face = imagePath;
+			return review;
+		})
+	});
+}
+reviewCtrl.$inject = ["Reviews"];
+
+
+'use strict';
+
+angular.module('reviews').directive('reviewWrite', ['$compile',
 	function($compile) {
 		return {
 			controller: reviewWriteCtrl,
@@ -2142,73 +2306,17 @@ function reviewWriteCtrl() {
 }
 'use strict';
 
-angular.module('review').directive('reviewList', ['$compile',
-	function($compile) {
-		return {
-			restrict: 'E',
-			controller: reviewCtrl,
-			controllerAs: 'review',
-			link: function postLink(scope, element, attrs) {
-				var container = angular.element('<md-content></md-content>');
-				var list = angular.element('<md-list></md-list>');
-				var subHeader = angular.element('<md-subheader class="md-no-sticky"></md-subheader>');
-				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in review.reviews"></md-list-item>');
-				var image = angular.element('<img ng-src="{{item.face}}" class="md-avatar" alt="{{item.who}}">');
-				var reviewContent = angular.element('<div class="md-list-item-text"></div>');
-				var reviewContent_rate = angular.element('<rating ng-model="item.rate" max="review.max" readonly="review.isReadonly" on-hover="review.hoveringOver(value)" on-leave="review.overStar = null"></rating>');
-				var reviewContent_who = angular.element('<h3>{{item.who}}</h3>');
-				var reviewContent_what = angular.element('<h4>{{item.what}}</h4>');
-				var reviewContent_notes = angular.element('<p>{{item.notes}}</p>');
-
-				reviewContent_rate.css('pointer-events','none');
-
-				container.append(list);
-				list.append(subHeader);
-				list.append(listItem);
-				listItem.append(image);
-				listItem.append(reviewContent);
-				reviewContent.append(reviewContent_rate);
-				reviewContent.append(reviewContent_who);
-				reviewContent.append(reviewContent_what);
-				reviewContent.append(reviewContent_notes);
-
-				$compile(container)(scope);
-				element.append(container);
+//Reviews service used to communicate Reviews REST endpoints
+angular.module('reviews').factory('Reviews', ['$resource',
+	function($resource) {
+		return $resource('reviews/:reviewId', { reviewId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
 			}
-		};
+		});
 	}
 ]);
-
-function reviewCtrl(){
-	console.log('Test Review Ctrl');
-	var vm = this;
-	vm.max = 5;
-	vm.isReadonly = true;
-	vm.hoveringOver = function(value) {
-		vm.overStar = value;
-		vm.percent = 100 * (value / vm.max);
-	};
-	var imagePath = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ39h-I8zmB9QVskyCaly2VpKL07s1NgkZxYn6VXQYA796U5daOQ';
-	vm.reviews = [{
-		face : imagePath,
-		what: 'Awesome!',
-		who: 'W. Candy',
-		when: '3:08PM',
-		rate: 4,
-		notes: " Product is Awesome! Delivery Awesome! Queality fabulaous!"
-	},
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'W. Candy',
-			when: '3:08PM',
-			rate: 5,
-			notes: " I'll be in your neighborhood doing errands"
-		}];
-
-}
-
-
 'use strict';
 
 //Setting up route

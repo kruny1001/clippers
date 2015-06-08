@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('review').directive('reviewWrite', ['$compile',
+angular.module('reviews').directive('reviewWrite', ['$compile',
 	function($compile) {
 		return {
 			controller: reviewWriteCtrl,
