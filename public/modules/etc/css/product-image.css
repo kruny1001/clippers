@@ -1,0 +1,53 @@
+.thumbnail_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    float:left;
+}
+
+.thumbnail {
+    position:absolute;
+    width:100%;
+    height:100%;
+    text-align:center;
+}
+
+.thumbnail img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height:100%;
+    max-width:100%;
+}
+
+.text-center {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    z-index: 11;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.63);
+    display:none;
+}
+
+.text-button {
+    position: absolute;
+    padding-bottom: 50%;
+    padding: 10px;
+    top: 42%;
+    left:30%;
+    width: 40%;
+    background-color: rgb(70, 211, 223);
+    margin: auto;
+    border: 2px rgb(122, 112, 124) solid;
+    border-radius: 20px;
+}
+
+.text-button-hover {
+    display:block;
+}

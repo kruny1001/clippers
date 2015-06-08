@@ -7,10 +7,85 @@
 		<h3 class="md-body-1">andis > clipper</h3>
 	</div>
 
+	<!--<md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"-->
+				  <!--md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4"-->
+				  <!--md-row-height="1:1"-->
+				  <!--md-gutter="1px" md-gutter-gt-sm="1px" >-->
+		<!--<md-grid-tile md-rowspan="2" md-colspan="2"-->
+					  <!--ng-mouseenter="hover = true"-->
+					  <!--ng-mouseleave="hover = false">-->
+
+                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
+                        <!--<div class="text-button">Price</div>-->
+                    <!--</span>-->
+
+                    <!--<span class="thumbnail_container">-->
+                        <!--<div class="thumbnail">-->
+							<!--<img ng-src="{{content.image}}" />-->
+						<!--</div>-->
+                    <!--</span>-->
+
+			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
+			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
+			<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+			<!--<md-grid-tile-footer>-->
+				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
+			<!--</md-grid-tile-footer>-->
+		<!--</md-grid-tile>-->
+		<!--<md-grid-tile md-rowspan="1" md-colspan="2"-->
+					  <!--ng-mouseenter="hover = true"-->
+					  <!--ng-mouseleave="hover = false">-->
+
+                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
+                        <!--<div class="text-button">Price</div>-->
+                    <!--</span>-->
+
+                    <!--<span class="thumbnail_container">-->
+                        <!--<div class="thumbnail">-->
+							<!--<img ng-src="{{content.image}}" />-->
+						<!--</div>-->
+                    <!--</span>-->
+
+			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
+			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
+			<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+			<!--<md-grid-tile-footer>-->
+				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
+			<!--</md-grid-tile-footer>-->
+		<!--</md-grid-tile>-->
+		<!--<md-grid-tile md-rowspan="1" md-colspan="2"-->
+					  <!--ng-mouseenter="hover = true"-->
+					  <!--ng-mouseleave="hover = false">-->
+
+                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
+                        <!--<div class="text-button">Price</div>-->
+                    <!--</span>-->
+
+                    <!--<span class="thumbnail_container">-->
+                        <!--<div class="thumbnail">-->
+							<!--<img ng-src="{{content.image}}" />-->
+						<!--</div>-->
+                    <!--</span>-->
+
+			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
+			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
+			<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+			<!--<md-grid-tile-footer>-->
+				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
+			<!--</md-grid-tile-footer>-->
+		<!--</md-grid-tile>-->
+
+	<!--</md-grid-list>-->
+
+
+
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
-	<div layout="row" layout-sm="column" layout-align="center">
-		<md-card class="card-image" flex="65" flex-sm="100">
+	<div layout="row" layout-sm="column" layout-align="center start" style="max-width: 1058px;">
+		<md-card flex="65" flex-sm="100">
 			<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
 			<!--<img   ng-src="http://thefancy-media-ec4.thefancy.com/1280/20141013/736407931687275136_3777be935160.jpg" class="md-card-image" alt="Washed Out">-->
 			<md-card-content>
@@ -20,7 +95,6 @@
 				</p>
 			</md-card-content>
 		</md-card>
-
 		<div layout="column" layout-margin flex="30" flex-sm="100" style="margin-top:10px;">
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
@@ -53,6 +127,7 @@
 		</div>
 	</div>
 
+
 	<md-whiteframe
 			layout="row" flex="95" flex-sm="100" style="margin-top:10px;"
 			class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base">
@@ -61,6 +136,9 @@
 			<md-list-item class="md-2-line contact-item"
 						  ng-repeat="(index, contact) in allContacts"
 						  ng-if="contacts.indexOf(contact) < 0">
+
+
+
 				<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
 				<div class="md-list-item-text compact">
 					<h3>{{contact.name}}</h3>
@@ -96,6 +174,9 @@
 
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
 	<review-list></review-list>
+
+	<h3 class="md-title" style="margin-left:10px;">Review Write</h3>
+	<review-write></review-write>
 
 	<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">
 

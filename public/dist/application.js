@@ -2111,14 +2111,27 @@ angular.module('product-brands').factory('ProductBrands', ['$resource',
 ]);
 'use strict';
 
-angular.module('review').directive('reviewWrite', [
-	function() {
+angular.module('review').directive('reviewWrite', ['$compile',
+	function($compile) {
 		return {
 			controller: reviewWriteCtrl,
 			controllerAs: 'ctrl',
 			restrict: 'E',
 			link: function postLink(scope, element, attrs) {
+				var container = angular.element('<md-content></md-content>');
 
+				var textField = angular.element('<textarea></textarea>');
+				var btnContainer = angular.element('<div layout="row"></div>');
+				var addVideo = angular.element('<md-button class="md-primary md-raised">Add Video</md-button>')
+				var addPhoto = angular.element('<md-button class="md-primary md-raised">Add Image</md-button>')
+				textField.addClass('review-textarea');
+				container.append(textField);
+				btnContainer.append(addVideo);
+				btnContainer.append(addPhoto);
+				container.append(btnContainer);
+
+				$compile(container)(scope);
+				element.append(container);
 			}
 		};
 	}
@@ -2134,15 +2147,15 @@ angular.module('review').directive('reviewList', ['$compile',
 		return {
 			restrict: 'E',
 			controller: reviewCtrl,
-			controllerAs: 'ctrl',
+			controllerAs: 'review',
 			link: function postLink(scope, element, attrs) {
 				var container = angular.element('<md-content></md-content>');
 				var list = angular.element('<md-list></md-list>');
 				var subHeader = angular.element('<md-subheader class="md-no-sticky"></md-subheader>');
-				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in ctrl.reviews"></md-list-item>');
+				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in review.reviews"></md-list-item>');
 				var image = angular.element('<img ng-src="{{item.face}}" class="md-avatar" alt="{{item.who}}">');
 				var reviewContent = angular.element('<div class="md-list-item-text"></div>');
-				var reviewContent_rate = angular.element('<rating ng-model="item.rate" max="ctrl.max" readonly="ctrl.isReadonly" on-hover="ctrl.hoveringOver(value)" on-leave="ctrl.overStar = null"></rating>');
+				var reviewContent_rate = angular.element('<rating ng-model="item.rate" max="review.max" readonly="review.isReadonly" on-hover="review.hoveringOver(value)" on-leave="review.overStar = null"></rating>');
 				var reviewContent_who = angular.element('<h3>{{item.who}}</h3>');
 				var reviewContent_what = angular.element('<h4>{{item.what}}</h4>');
 				var reviewContent_notes = angular.element('<p>{{item.notes}}</p>');
@@ -2167,6 +2180,7 @@ angular.module('review').directive('reviewList', ['$compile',
 ]);
 
 function reviewCtrl(){
+	console.log('Test Review Ctrl');
 	var vm = this;
 	vm.max = 5;
 	vm.isReadonly = true;
