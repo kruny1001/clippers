@@ -332,9 +332,9 @@ angular.module('ui.tinymce', [])
 'use strict';
 
 angular.module('core')
-  .run(["$rootScope", function ($rootScope) {
+  .run(function ($rootScope) {
 
-  }])
+  })
   .controller('CoreHeadController',
   ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication','stateService',
     function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication, stateService) {
@@ -819,7 +819,6 @@ function stateService($state) {
         }
     };
 }
-stateService.$inject = ["$state"];
 
 'use strict';
 
@@ -1063,7 +1062,6 @@ function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdD
 
 
 }
-EtcProductsController.$inject = ["$rootScope", "$scope", "$stateParams", "$location", "$mdDialog", "Authentication", "EtcProducts", "$timeout", "$q", "$state", "ProductBrands", "Cartlist"];
 
 
 
@@ -1266,15 +1264,13 @@ function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
    //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
    //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00}
 	//];
-}
-wigsCtrl.$inject = ["$scope", "$state", "$timeout", "EtcProducts", "Preloadimage"];;
+};
 
 
 'use strict';
 
 angular.module('etc').directive('colorPicker', [
 	function() {
-		ColorPickerCtrl.$inject = ["$scope"];
 		return {
 			templateUrl: 'modules/etc/directives/template/color-picker.html',
 			restrict: 'E',
@@ -1370,7 +1366,6 @@ angular.module('etc').directive('colorPicker', [
 
 angular.module('etc').directive('gallery', [
 	function() {
-        galleryCtrl.$inject = ["$scope"];
 		return {
 			templateUrl: 'modules/etc/directives/template/gallery.html',
 			restrict: 'E',
@@ -1415,7 +1410,6 @@ angular.module('etc').directive('gallery', [
 
 angular.module('etc').directive('productDetail', [
 	function() {
-		ProductDetailCtrl.$inject = ["$scope"];
 		return {
 			templateUrl: 'modules/etc/directives/template/product-detail.html',
 			restrict: 'E',
@@ -1433,7 +1427,7 @@ angular.module('etc').directive('productDetail', [
 ]);
 'use strict';
 
-angular.module('etc').factory('Preloadimage', ["$q", "$rootScope", function( $q, $rootScope ) {
+angular.module('etc').factory('Preloadimage', function( $q, $rootScope ) {
 
 	// I manage the preloading of image objects. Accepts an array of image URLs.
 	function Preloader( imageLocations ) {
@@ -1665,7 +1659,7 @@ angular.module('etc').factory('Preloadimage', ["$q", "$rootScope", function( $q,
 	// Return the factory instance.
 	return( Preloader );
 
-}]);
+});
 'use strict';
 
 angular.module('footer').directive('footerInfo', [
@@ -1838,7 +1832,6 @@ function dropinCtrl($http) {
 	//	});
 	//});
 }
-dropinCtrl.$inject = ["$http"];
 
 
 	angular.module('payment').controller('checkout', checkout);
@@ -1866,8 +1859,7 @@ dropinCtrl.$inject = ["$http"];
 				});
 			}
 		}
-	}
-	checkout.$inject = ["$scope", "$http"];;
+	};
 
 
 
@@ -1923,7 +1915,6 @@ function BtPaymentController($scope, $http, $braintree) {
     startup();
 
 }
-BtPaymentController.$inject = ["$scope", "$http", "$braintree"];
 'use strict';
 
 angular.module('payment').controller('TransactionsController', TransactionsController);
@@ -1947,7 +1938,6 @@ angular.module('payment').controller('TransactionsController', TransactionsContr
 
 
 	}
-	TransactionsController.$inject = ["$scope", "$http"];
 
 'use strict';
 
@@ -2212,7 +2202,7 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 			controller: reviewCtrl,
 			controllerAs: 'review',
 			link: function postLink(scope, element, attrs) {
-				var container = angular.element('<md-content></md-content>');
+				var container = angular.element('<md-content class="review-list-container"></md-content>');
 				var list = angular.element('<md-list></md-list>');
 				var subHeader = angular.element('<md-subheader class="md-no-sticky"></md-subheader>');
 				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in review.reviews"></md-list-item>');
@@ -2228,6 +2218,7 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 
 				reviewContent_rate.css('pointer-events','none');
 
+				//container.addClass('review-list-container');
 				container.append(list);
 				list.append(subHeader);
 				list.append(listItem);
@@ -2270,7 +2261,6 @@ function reviewCtrl(Reviews){
 		})
 	});
 }
-reviewCtrl.$inject = ["Reviews"];
 
 
 'use strict';
@@ -2369,7 +2359,6 @@ function ShopCartController($scope, Cartlist) {
 		});
 	}
 }
-ShopCartController.$inject = ["$scope", "Cartlist"];
 //<md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon>
 
 'use strict';
@@ -2453,7 +2442,6 @@ angular.module('shop-cart').directive('shopCart', shopCartDirective);
 			}
 		};
 	}
-	shopCartDirective.$inject = ["$compile", "Cartlist"];
 
 'use strict';
 
@@ -2543,6 +2531,10 @@ angular.module('slide-show').directive('slideShowCust', [
 				///////////////////////////////////////////////////////
 				// functions for building nested timelines
 				function animateSlide1() {
+					var header = $('.title');
+					var p1 = $('.product1');
+					var p2 = $('.product2');
+					var p3 = $('.product3');
 
 					var slideTL1 = new TimelineMax({
 						onComplete: prepNext,
@@ -2552,10 +2544,12 @@ angular.module('slide-show').directive('slideShowCust', [
 					slideTL1
 						.add("slide1fade")
 						.set(slide1,{'opacity':1})
-						.add( TweenMax.to(slide1, fadeSpeed, {css:{autoAlpha:0}}) )
+						.add( TweenMax.to(slide1, fadeSpeed, {css:{autoAlpha:0}}))
 						.add("slide1afterfade")
+						.fromTo(header, 0.7, {y:'-200'},{y:0}, 0)
 						.add( TweenMax.to(slide1, duration) )
-						.from(progressBar, slideTL1.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0);
+						.from(progressBar, slideTL1.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0)
+
 
 					return slideTL1;
 				}
@@ -2666,9 +2660,6 @@ angular.module('slide-show').directive('slideShowCust', [
 				}).on("mouseleave",function(){
 					tl.resume();
 				});
-
-
-
 					//////////////////////////////////
 					// build timeline
 						scope.build = function(){
@@ -2685,6 +2676,99 @@ angular.module('slide-show').directive('slideShowCust', [
 		};
 	}
 ]);
+
+
+
+angular.module('slide-show').controller('DemoCtrl', DemoCtrl);
+function DemoCtrl ($timeout, $q, $log) {
+	var self = this;
+	self.simulateQuery = false;
+	self.isDisabled = false;
+	self.repos = loadAll();
+	self.querySearch = querySearch;
+	self.selectedItemChange = selectedItemChange;
+	self.searchTextChange = searchTextChange;
+	// ******************************
+	// Internal methods
+	// ******************************
+	/**
+	 * Search for repos... use $timeout to simulate
+	 * remote dataservice call.
+	 */
+	function querySearch(query) {
+		var results = query ? self.repos.filter(createFilterFor(query)) : self.repos,
+			deferred;
+		if (self.simulateQuery) {
+			deferred = $q.defer();
+			$timeout(function () {
+				deferred.resolve(results);
+			}, Math.random() * 1000, false);
+			return deferred.promise;
+		} else {
+			return results;
+		}
+	}
+
+	function searchTextChange(text) {
+		$log.info('Text changed to ' + text);
+	}
+
+	function selectedItemChange(item) {
+		$log.info('Item changed to ' + JSON.stringify(item));
+	}
+
+	/**
+	 * Build `components` list of key/value pairs
+	 */
+	function loadAll() {
+		var repos = [
+			{
+				'name': 'Angular 1',
+				'url': 'https://github.com/angular/angular.js',
+				'watchers': '3,623',
+				'forks': '16,175',
+			},
+			{
+				'name': 'Angular 2',
+				'url': 'https://github.com/angular/angular',
+				'watchers': '469',
+				'forks': '760',
+			},
+			{
+				'name': 'Angular Material',
+				'url': 'https://github.com/angular/material',
+				'watchers': '727',
+				'forks': '1,241',
+			},
+			{
+				'name': 'Bower Material',
+				'url': 'https://github.com/angular/bower-material',
+				'watchers': '42',
+				'forks': '84',
+			},
+			{
+				'name': 'Material Start',
+				'url': 'https://github.com/angular/material-start',
+				'watchers': '81',
+				'forks': '303',
+			}
+		];
+		return repos.map(function (repo) {
+			repo.value = repo.name.toLowerCase();
+			return repo;
+		});
+	}
+
+	/**
+	 * Create filter function for a query string
+	 */
+	function createFilterFor(query) {
+		var lowercaseQuery = angular.lowercase(query);
+		return function filterFn(item) {
+			return (item.value.indexOf(lowercaseQuery) === 0);
+		};
+	}
+};
 'use strict';
 
 // Config HTTP Error Handling

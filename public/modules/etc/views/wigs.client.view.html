@@ -18,6 +18,43 @@
             <slide-show-cust></slide-show-cust>
             <jumbo-menu></jumbo-menu>
 
+
+            <h3 class="md-title" style="text-align: center">Search</h3>
+            <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
+                <md-content style="color:black;" layout-padding layout="column">
+                    <form ng-submit="$event.preventDefault()">
+                        <md-autocomplete
+                                ng-disabled="ctrl.isDisabled"
+                                md-no-cache="ctrl.noCache"
+                                md-selected-item="ctrl.selectedItem"
+                                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                md-search-text="ctrl.searchText"
+                                md-selected-item-change="ctrl.selectedItemChange(item)"
+                                md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                md-item-text="item.name"
+                                md-min-length="0"
+                                placeholder="Pick an Angular repository"
+                                md-menu-class="autocomplete-custom-template">
+                            <md-item-template>
+          <span class="item-title">
+            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+            <span> {{item.name}} </span>
+          </span>
+          <span class="item-metadata">
+            <span class="item-metastat">
+              <strong>{{item.watchers}}</strong> watchers
+            </span>
+            <span class="item-metastat">
+              <strong>{{item.forks}}</strong> forks
+            </span>
+          </span>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </form>
+                </md-content>
+            </div>
+
+
             <h3 class="md-title" style="text-align: center">BEST SELLING</h3>
             <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
                           md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"

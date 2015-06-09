@@ -7,7 +7,7 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 			controller: reviewCtrl,
 			controllerAs: 'review',
 			link: function postLink(scope, element, attrs) {
-				var container = angular.element('<md-content></md-content>');
+				var container = angular.element('<md-content class="review-list-container"></md-content>');
 				var list = angular.element('<md-list></md-list>');
 				var subHeader = angular.element('<md-subheader class="md-no-sticky"></md-subheader>');
 				var listItem = angular.element('<md-list-item class="md-3-line" ng-repeat="item in review.reviews"></md-list-item>');
@@ -23,6 +23,7 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 
 				reviewContent_rate.css('pointer-events','none');
 
+				//container.addClass('review-list-container');
 				container.append(list);
 				list.append(subHeader);
 				list.append(listItem);
