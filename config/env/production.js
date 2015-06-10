@@ -101,7 +101,8 @@ module.exports = {
 				//'public/lib/braintree-web/dist/braintree.js',
 				//'public/lib/reveal.js/js/reveal.js',
 				'public/lib/localforage/dist/localforage.min.js',
-				'public/lib/angular-localforage/dist/angular-localForage.min.js',
+				//'public/lib/angular-localforage/dist/angular-localForage.min.js',
+				'public/lib/angular-local-storage/dist/angular-local-storage.min.js'
 
 			]
 		},

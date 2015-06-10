@@ -1,4 +1,5 @@
 <md-content layout="column" data-ng-controller="WigsController">
+    <shop-cart hide-sm></shop-cart>
     <md-content layout="row">
         <!--<div show-gt-md hide-sm hide-md flex="15" style="width:250px; background-color: yellowgreen;">-->
             <!-- -->
@@ -14,10 +15,8 @@
         <!--</div>-->
 
         <md-content flex layout="column">
-
             <slide-show-cust></slide-show-cust>
             <jumbo-menu></jumbo-menu>
-
 
             <h3 class="md-title" style="text-align: center">Search</h3>
             <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
@@ -111,8 +110,6 @@
                     </md-grid-tile-footer>
                 </md-grid-tile>
             </md-grid-list>
-
-
         </md-content>
 
 

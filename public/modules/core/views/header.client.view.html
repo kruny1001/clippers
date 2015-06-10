@@ -11,9 +11,16 @@
 
 	<span class="docs-title" hide-sm>{{subTitle}}</span>
 	<span flex hide-sm></span>
-	<span><div style="width: 100%; min-width:50px; text-align: center;" class="md-fab md-mini" ng-click="openCart()">
-		<md-icon class="ion-android-cart"></md-icon>item 1</div></span>
-	<span><div style="width: 100%; min-width:50px; text-align: center;" class="md-fab md-mini" ng-click="toggleLeft()"><md-icon class="ion-gear-b"></md-icon></div></span>
+	<span>
+		<div style="width: 100%; min-width:50px; text-align: center;" class="md-fab md-mini" ng-click="openCart()">
+			<md-icon class="ion-android-cart" aria-label="Shopping Cart (Core)" style=" height: auto; width: auto;"></md-icon>
+		</div>
+	</span>
+	<span>
+		<div style="width: 100%; min-width:50px; text-align: center;" class="md-fab md-mini" ng-click="toggleLeft()">
+			<md-icon class="ion-gear-b" aria-label="Setting (Core)" style="  height: auto; width: auto;"></md-icon>
+		</div>
+	</span>
 </div>
 
 <div ng-controller="CoreHeadController" class="class-menu">

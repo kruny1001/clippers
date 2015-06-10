@@ -4,18 +4,34 @@
 
 angular.module('shop-cart').directive('shopCart', shopCartDirective);
 
-	function shopCartDirective($compile, Cartlist) {
-		return {
-			template: '<div layout="row"><div class="cart-title md-body-2" flex="70">Shopping Cart</div><div class="cart-close" flex="30"><md-button class="md-fab md-mini" ng-click="close()"><span><i class="ion-close-round"></i></span></md-button></div></div>',
-			restrict: 'E',
-			link: function postLink(scope, element, attrs) {
-				element.addClass('shopCartFloat');
+function shopCartDirective($compile, $state, Cartlist) {
+	return {
+		template: '<div layout="row">' +
+								'<md-button class="md-fab md-mini" ng-click="close()" aria-label="Shopping Cart Close (shop-cart)">' +
+									'<span><md-icon class="ion-close-round"></md-icon></span></md-button></div>',
+		controller:shopCartDirectiveCtrl,
+		controllerAs:'shCtrl',
+		restrict: 'E',
+		link: function postLink(scope, element, attrs) {
+			var cartContainer, cartTotal, content, noContent, checkOut, testAdd, clearAll;
+			var isOpen = false;
+			var shopCartCtrl;
 
-				scope.total = 0;
-				var cartContainer = angular.element('<div class="shopCartContainer" ></div>');
-				var cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{total | currency:"USD$"}}</div></div>');
-				var content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="60">{{item.name}}</div><div flex="20" class="item-price">{{item.price | currency:"$"}}</div></div>');
-				var noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
+			element.addClass('shopCartFloat');
+			scope.total = 0;
+
+			function create(){
+				cartContainer = angular.element('<div class="shopCartContainer" ></div>');
+				noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
+				content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in shCtrl.items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="50">{{item.name}}</div><div flex="25" class="item-price">{{item.price | currency:"$"}}</div><div flex="10" class="item-qnt">{{item.qnt}}</div></div>');
+				cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{shCtrl.total | currency:"USD$"}}</div></div>');
+				checkOut = angular.element('<div style="text-align:center;">Proceed to Checkout</div>');
+				clearAll = angular.element('<div style="text-align:center;">Clear Add</div>');
+
+				if(shopCartCtrl == undefined){
+					shopCartCtrl = element.controller('shopCart');
+				}
+
 				// Content Container
 				element.append(cartContainer);
 				// No content tag
@@ -24,60 +40,92 @@ angular.module('shop-cart').directive('shopCart', shopCartDirective);
 				cartContainer.append(content);
 				// Content Total
 				element.append(cartTotal);
+				element.append(checkOut);
+				element.append(clearAll);
 
 				//Compile tag
 				$compile(noContent)(scope);
 				$compile(cartTotal)(scope);
 				$compile(content)(scope);
 
-				//Read Existing Item
-				scope.items =  Cartlist.getItems();
-				scope.items.forEach(function(value){
-					cartContainer.append('<div class="shopCartContent" >{{value.name}}</div>');
-					$compile(cartContainer)(scope);
-				});
+				$compile(cartContainer)(scope);
+
+				checkOut.on('click', function(){
+					$state.go('checkout');
+				})
+				clearAll.on('click', shopCartCtrl.clearAll);
 
 				//Broadcast listner
 				scope.$on('cart-updated', function(event, args){
 					scope.open();
-					console.log(scope.items);
 
-					scope.total += parseFloat(args.product.price);
-
-					var targetUpdate = _.findIndex(scope.items, function(chr) {
+					var targetUpdate = _.findIndex(shopCartCtrl.items, function(chr) {
 						return chr._id === args.product._id;
 					});
-					console.log(targetUpdate);
 
-					if(targetUpdate < 0){
-						console.log('undefined');
-						Cartlist.addItem(args.product);
-					}
-					else {
-						console.log('found: '+args.product.name);
-						//scope.lot(scope.items[targetUpdate]);
-					}
+					Cartlist.addItem(args.product, targetUpdate);
+					shopCartCtrl.total = Cartlist.getTotal();
 				});
 
 				scope.$on('open-cart', function(event, args){
 					scope.open();
 				});
 
-				scope.close = function(){
-					var tlClose = new TimelineMax({paused:true});
-					tlClose.to(element, 0.4, {scale:0, alpha:0})
-						.set(element, {display:'none'}, 0.4);
-					tlClose.restart();
-				};
+			};
 
-				scope.open = function(){
-					var tlOpen = new TimelineMax({paused:true});
-					tlOpen.set(element, {display:'block'})
-						.to(element, 0.4, {scale:1, alpha:1});
-					console.log('open');
-					tlOpen.restart();
-				}
+			// Close Shopping Cart Directive
+			scope.close = function(){
+				var tlClose = new TimelineMax({paused:true});
+				tlClose
+					.to(element, 0.4, {scale:0, alpha:0})
+					.set(element, {display:'none'}, 0.4);
+				tlClose.restart();
+				isOpen = false;
+			};
 
-			}
-		};
+			// Open Shopping Cart Directive
+			scope.open = function(){
+				var tlOpen = new TimelineMax({paused:true});
+				tlOpen
+					.set(element, {display:'block'})
+					.to(element, 0.4, {scale:1, alpha:1});
+				tlOpen.restart();
+				isOpen = true;
+			};
+
+			create();
+		}
+	};
+}
+
+function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
+
+	var shCtrl = this;
+	shCtrl.total = 0;
+
+	shCtrl.items = Cartlist.getItems();
+	shCtrl.total = Cartlist.getTotal();
+
+
+
+	shCtrl.changeItems = function(){
+		console.log('changeItems');
+		shCtrl.items.push({name: 'test123', price:"20"});
+		$scope.$digest();
 	}
+
+	shCtrl.checkOut = function(){
+		console.log('checkout');
+		$state.go('checkout');
+	}
+
+	shCtrl.clearAll = function(){
+		localStorageService.clearAll;
+		shCtrl.items = Cartlist.clearItem();
+		$scope.$digest();
+		console.log('cleared All items');
+	}
+
+
+
+}

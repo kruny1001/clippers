@@ -5,6 +5,10 @@ angular.module('payment').config(['$stateProvider',
 	function($stateProvider) {
 		// Payment state routing
 		$stateProvider.
+		state('checkout', {
+			url: '/checkout',
+			templateUrl: 'modules/payment/views/checkout.client.view.html'
+		}).
 		state('transactions', {
 			url: '/transactions',
 			templateUrl: 'modules/payment/views/transactions.client.view.html'

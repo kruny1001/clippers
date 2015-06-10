@@ -1,8 +1,8 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compileProvider',
-	function($stateProvider, $urlRouterProvider, $compileProvider) {
+angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compileProvider','localStorageServiceProvider',
+	function($stateProvider, $urlRouterProvider, $compileProvider, localStorageServiceProvider) {
 
 		// disable dubug data Information
 		$compileProvider.debugInfoEnabled(true);
@@ -19,6 +19,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compile
 			url: '/dev',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
+
+		localStorageServiceProvider.setPrefix('shoppingCart');
+
 	}
 ]).constant("devConfig", {"directive": "red"})
 

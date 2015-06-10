@@ -78,3 +78,14 @@
     color: black;
     text-align: left;
 }
+
+.item-qnt{
+    margin-top: 3px;
+    padding: 3px;
+    position: relative;
+    background-color: #cde1de;
+    border-radius: 5px;
+    color: black;
+    text-align: left;
+    margin-left: 3px;
+}

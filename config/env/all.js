@@ -120,6 +120,7 @@ module.exports = {
 
         'public/lib/string/lib/string.js',
         //'public/lib/moment/min/moment-with-locales.min.js',
+        'public/lib/angular-local-storage/dist/angular-local-storage.js',
 
         //'public/third/prism/prism.js',
         //'public/lib/nvd3/nv.d3.min.js',

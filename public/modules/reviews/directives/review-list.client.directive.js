@@ -47,7 +47,6 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 ]);
 
 function reviewCtrl(Reviews){
-	console.log('Test Review Ctrl');
 	var vm = this;
 	vm.max = 5;
 	vm.isReadonly = true;

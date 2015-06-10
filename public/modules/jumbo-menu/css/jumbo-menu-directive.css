@@ -7,3 +7,11 @@
     display:none;
     z-index:9;
 }
+
+.first-column{
+    background-color: #c4e3f3;
+}
+
+.second-column{
+    background-color: #c2d4f3;
+}

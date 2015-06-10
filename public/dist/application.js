@@ -14,7 +14,8 @@ var ApplicationConfiguration = (function() {
 		//'oc.lazyLoad',
 		//'nvd3',
 		'braintree-angular',
-		'LocalForageModule'
+		'LocalStorageModule'
+
 	];
 
 	// Add a new vertical module
@@ -229,8 +230,8 @@ angular.module('articles').factory('Articles', ['$resource',
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compileProvider',
-	function($stateProvider, $urlRouterProvider, $compileProvider) {
+angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compileProvider','localStorageServiceProvider',
+	function($stateProvider, $urlRouterProvider, $compileProvider, localStorageServiceProvider) {
 
 		// disable dubug data Information
 		$compileProvider.debugInfoEnabled(true);
@@ -247,6 +248,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$compile
 			url: '/dev',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
+
+		localStorageServiceProvider.setPrefix('shoppingCart');
+
 	}
 ]).constant("devConfig", {"directive": "red"})
 
@@ -370,11 +374,9 @@ angular.module('core')
           });
       };
       var scrollTo = function(){
-        console.log('scrollTo funciton');
       };
 
       $scope.change = function(){
-        console.log("changed");
         if(user._id !== undefined){
           $location.path('/d2l-classes/'+user._id);
         }
@@ -442,7 +444,6 @@ angular.module('core')
       }
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-            console.log('closed');
             if(toState.name === "openboard"){
                 $scope.title = "Getting Started";
                 $scope.subTitle = "Tutorial";
@@ -464,7 +465,6 @@ angular.module('core')
               $scope.title = "Profile";
               $scope.subTitle = "Edit Profile";
             }
-
         });
 
       $scope.sliderNavEvent = function(name, target){
@@ -476,7 +476,6 @@ angular.module('core')
             //console.log(target);
             //TweenMax.to($window, 1.2, {scrollTo:{y:target}, ease:Power4.easeOut});
           });
-        console.log(name);
         if(name === 'Your Classes'){
           $state.go('listD2lClasses');
         }
@@ -490,7 +489,6 @@ angular.module('core')
           $state.go('listD2lClassesAll');
         }
         else if(name ==='Sign In'){
-          console.log('sign in ');
           $location.path('/signin');
         }
         else if(name ==='Sign Out'){
@@ -1191,79 +1189,62 @@ angular.module('etc').controller('EtcController', ['$scope',
 angular.module('etc').controller('WigsController',wigsCtrl);
 function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 
-
-    //$scope.degree = 0;
-    $scope.toGo = function(content){
-      //console.log(content);
-      $state.go("viewEtcProduct", { etcProductId: content._id })
-      //var target = $('#'+targetId);
-      //$scope.degree += 180;
-      //TweenMax.to(target, 0.4 , {rotationY: $scope.degree});
-      //console.log($scope.degree);
-    };
+	$scope.toGo = function(content){
+		$state.go("viewEtcProduct", { etcProductId: content._id })
+	};
 
 	$scope.cartGo = function(stateName){
 		$state.go(stateName);
 	};
 
-		$scope.isLoading = true;
-		$scope.isSuccessful = false;
-		$scope.percentLoaded = 0;
+	$scope.isLoading = true;
+	$scope.isSuccessful = false;
+	$scope.percentLoaded = 0;
 
-	var testData =[1,2,3,4];
+	//var testData =[1,2,3,4];
+	//
+	//$scope.append = function(){
+	//	testData.forEach(function(value){
+	//		$scope.etcProducts.push({name:'232', image:'modules/etc/img/products/1.png'});
+	//	});
+	//	$scope.$digest();
+	//}
 
-	$scope.append = function(){
-		testData.forEach(function(value){
-			$scope.etcProducts.push({name:'232', image:'modules/etc/img/products/1.png'});
-		});
-		$scope.$digest();
-	}
-
+	// Load Product
 	$scope.loadProduct = EtcProducts.list();
-    $scope.loadProduct.$promise.then(function(data){
+	$scope.loadProduct.$promise.then(function(data){
 
-	    $scope.etcProducts = data;
-	    console.log(data);
-	    testData = data;
-	    var images = data.map(function(d){ return d.image});
+		$scope.etcProducts = data;
+		//console.log(data);
+		//testData = data;
+		var images = data.map(function(d){ return d.image});
 
-	    Preloadimage.preloadImages(images).then(
-		    function handleResolve(imageLoactions){
-			    // Loading was successful.
-			    console.info( "Preload Successful" );
+		Preloadimage.preloadImages(images).then(
+			function handleResolve(imageLoactions){
+				// Loading was successful.
+				//console.info( "Preload Successful" );
 
-			    $timeout(function(){
-				    $scope.isLoading = false;
-				    $scope.isSuccessful = true;
-			    },500);
+				$timeout(function(){
+					$scope.isLoading = false;
+					$scope.isSuccessful = true;
+				},500);
 
-		    },
-		    function handleReject(imageLocation){
-			    // Loading failed on at least one image.
-			    $scope.isLoading = false;
-			    $scope.isSuccessful = false;
+			},
+			function handleReject(imageLocation){
+				// Loading failed on at least one image.
+				$scope.isLoading = false;
+				$scope.isSuccessful = false;
 
-			    console.error( "Image Failed", imageLocation );
-			    console.info( "Preload Failure" );
-		    },
-		    function handleNotify(event){
-			    $scope.percentLoaded = event.percent;
-			    console.info( "Percent loaded:", event.percent );
-			    angular.element();
-		    }
-	    )
-
-    })
-
-
-	//$scope.contents = [
-   //   {title:"Clipper1", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper1", price:150.00},
-   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00},
-   //   {title:"Clipper2", image:"http://img.auctiva.com/imgdata/1/1/2/0/6/5/5/webimg/613326218_o.jpg", Desc:"Cliper2", price:200.00}
-	//];
+				console.error( "Image Failed", imageLocation );
+				console.info( "Preload Failure" );
+			},
+			function handleNotify(event){
+				$scope.percentLoaded = event.percent;
+				//console.info( "Percent loaded:", event.percent );
+				angular.element();
+			}
+		)
+	});
 };
 
 
@@ -1688,6 +1669,9 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 			controller: jumboMenuCtrl,
 			controllerAs: 'ctrl',
 			link: function postLink(scope, element, attrs) {
+
+				var jumboMenuCtrl;
+
 				var menuContainer = angular.element('<div layout="row" layout-align="center center" layout-margin></div>')
 				//var title = angular.element('<div>{{ctrl.title}}</div>');
 				var menu1 = angular.element('<div>Adjustable<br>Blade Clippers</div>');
@@ -1700,16 +1684,16 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				var expandMenu3 = angular.element('<div> Expand Menu: Cordless Trimmers</div>');
 				var expandMenu4 = angular.element('<div> Expand Menu: Corded Trimmers</div>');
 
-				expandMenu1.addClass('expand-menu').css('background-color','red');
+				expandMenu1.addClass('expand-menu')//.css('background-color','red');
 				expandMenu2.addClass('expand-menu').css('background-color','blue');
 				expandMenu3.addClass('expand-menu').css('background-color','orange');
 				expandMenu4.addClass('expand-menu').css('background-color','yellow');
 
-
-				menu1.bind("mouseenter",function() {
+				menu1.bind("click",function() {
 					TweenMax.set(expandMenu1, {display: 'block'});
 					TweenMax.set([expandMenu2, expandMenu3, expandMenu4], {display: 'none'});
 				});
+
 				menu2.bind("mouseenter",function() {
 					TweenMax.set(expandMenu2, {display: 'block'});
 					TweenMax.set([expandMenu1, expandMenu3, expandMenu4], {display: 'none'});
@@ -1727,12 +1711,31 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					TweenMax.set([expandMenu1, expandMenu2, expandMenu3, expandMenu4], {display: 'none'});
 				});
 
+				var contentContainer = angular.element('<div layout="column"></div>');
+				var contentRow = angular.element('<div layout="row"></div>');
+				var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
+				var contentSecondCol = angular.element('<div class="second-column" flex-gt-sm="70"></div>');
+
+				var contentList1 = angular.element('<ul><li ng-repeat="menu in ctrl.menus">{{menu.name}}</li></ul>');
+				var contentList2 = angular.element('<ul><li ng-repeat="item in ctrl.items">{{item.name}}</li></ul>');
+
+				contentContainer.append(contentRow);
+				contentRow.append(contentFirstCol);
+				contentRow.append(contentSecondCol);
+
+
+				$compile(contentList1)(scope);
+				$compile(contentList2)(scope);
+				contentFirstCol.append(contentList1);
+				contentSecondCol.append(contentList2);
+				expandMenu1.append(contentContainer);
+
 				menu1.css('margin','0 15px 0 15px');
 				menu2.css('margin','0 15px 0 15px');
 				menu3.css('margin','0 15px 0 15px');
 				menu4.css('margin','0 15px 0 15px');
 
-				$compile(menu1)(scope);
+
 				//menuContainer.append(title);
 				menuContainer.append(menu1);
 				menuContainer.append(menu2);
@@ -1745,7 +1748,14 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				element.append(expandMenu4);
 
 				element.append(menuContainer);
+
+				console.log('Check');
+				var ctrl = element.controller('jumboMenu')
+
 				element.css('background-color', '#e5e9e8');
+				element.css('border-top', '2px rgb(136, 111, 111) solid');
+				element.css('border-bottom', '2px rgb(136, 111, 111) solid');
+
 			}
 		};
 	}
@@ -1758,6 +1768,9 @@ function jumboMenuCtrl() {
 	vm.expandMenu = function(index){
 		console.log(vm.menus[index]);
 	}
+
+	vm.menus = [{name: 'Hello'}, {name: 'World'}, {name: 'Lool'}];
+	vm.items = [{name: 'Hello'}, {name: 'World'}, {name: 'Lool'}];
 }
 'use strict';
 
@@ -1766,6 +1779,10 @@ angular.module('payment').config(['$stateProvider',
 	function($stateProvider) {
 		// Payment state routing
 		$stateProvider.
+		state('checkout', {
+			url: '/checkout',
+			templateUrl: 'modules/payment/views/checkout.client.view.html'
+		}).
 		state('transactions', {
 			url: '/transactions',
 			templateUrl: 'modules/payment/views/transactions.client.view.html'
@@ -1915,6 +1932,14 @@ function BtPaymentController($scope, $http, $braintree) {
     startup();
 
 }
+'use strict';
+
+angular.module('payment').controller('CheckoutController', ['$scope',
+	function($scope) {
+		// Checkout controller logic
+		// ...
+	}
+]);
 'use strict';
 
 angular.module('payment').controller('TransactionsController', TransactionsController);
@@ -2242,7 +2267,6 @@ angular.module('reviews').directive('reviewList', ['$compile','Reviews',
 ]);
 
 function reviewCtrl(Reviews){
-	console.log('Test Review Ctrl');
 	var vm = this;
 	vm.max = 5;
 	vm.isReadonly = true;
@@ -2365,18 +2389,34 @@ function ShopCartController($scope, Cartlist) {
 
 angular.module('shop-cart').directive('shopCart', shopCartDirective);
 
-	function shopCartDirective($compile, Cartlist) {
-		return {
-			template: '<div layout="row"><div class="cart-title md-body-2" flex="70">Shopping Cart</div><div class="cart-close" flex="30"><md-button class="md-fab md-mini" ng-click="close()"><span><i class="ion-close-round"></i></span></md-button></div></div>',
-			restrict: 'E',
-			link: function postLink(scope, element, attrs) {
-				element.addClass('shopCartFloat');
+function shopCartDirective($compile, $state, Cartlist) {
+	return {
+		template: '<div layout="row">' +
+								'<md-button class="md-fab md-mini" ng-click="close()" aria-label="Shopping Cart Close (shop-cart)">' +
+									'<span><md-icon class="ion-close-round"></md-icon></span></md-button></div>',
+		controller:shopCartDirectiveCtrl,
+		controllerAs:'shCtrl',
+		restrict: 'E',
+		link: function postLink(scope, element, attrs) {
+			var cartContainer, cartTotal, content, noContent, checkOut, testAdd, clearAll;
+			var isOpen = false;
+			var shopCartCtrl;
 
-				scope.total = 0;
-				var cartContainer = angular.element('<div class="shopCartContainer" ></div>');
-				var cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{total | currency:"USD$"}}</div></div>');
-				var content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="60">{{item.name}}</div><div flex="20" class="item-price">{{item.price | currency:"$"}}</div></div>');
-				var noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
+			element.addClass('shopCartFloat');
+			scope.total = 0;
+
+			function create(){
+				cartContainer = angular.element('<div class="shopCartContainer" ></div>');
+				noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
+				content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in shCtrl.items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="50">{{item.name}}</div><div flex="25" class="item-price">{{item.price | currency:"$"}}</div><div flex="10" class="item-qnt">{{item.qnt}}</div></div>');
+				cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{shCtrl.total | currency:"USD$"}}</div></div>');
+				checkOut = angular.element('<div style="text-align:center;">Proceed to Checkout</div>');
+				clearAll = angular.element('<div style="text-align:center;">Clear Add</div>');
+
+				if(shopCartCtrl == undefined){
+					shopCartCtrl = element.controller('shopCart');
+				}
+
 				// Content Container
 				element.append(cartContainer);
 				// No content tag
@@ -2385,78 +2425,134 @@ angular.module('shop-cart').directive('shopCart', shopCartDirective);
 				cartContainer.append(content);
 				// Content Total
 				element.append(cartTotal);
+				element.append(checkOut);
+				element.append(clearAll);
 
 				//Compile tag
 				$compile(noContent)(scope);
 				$compile(cartTotal)(scope);
 				$compile(content)(scope);
 
-				//Read Existing Item
-				scope.items =  Cartlist.getItems();
-				scope.items.forEach(function(value){
-					cartContainer.append('<div class="shopCartContent" >{{value.name}}</div>');
-					$compile(cartContainer)(scope);
-				});
+				$compile(cartContainer)(scope);
+
+				checkOut.on('click', function(){
+					$state.go('checkout');
+				})
+				clearAll.on('click', shopCartCtrl.clearAll);
 
 				//Broadcast listner
 				scope.$on('cart-updated', function(event, args){
 					scope.open();
-					console.log(scope.items);
 
-					scope.total += parseFloat(args.product.price);
-
-					var targetUpdate = _.findIndex(scope.items, function(chr) {
+					var targetUpdate = _.findIndex(shopCartCtrl.items, function(chr) {
 						return chr._id === args.product._id;
 					});
-					console.log(targetUpdate);
 
-					if(targetUpdate < 0){
-						console.log('undefined');
-						Cartlist.addItem(args.product);
-					}
-					else {
-						console.log('found: '+args.product.name);
-						//scope.lot(scope.items[targetUpdate]);
-					}
+					Cartlist.addItem(args.product, targetUpdate);
+					shopCartCtrl.total = Cartlist.getTotal();
 				});
 
 				scope.$on('open-cart', function(event, args){
 					scope.open();
 				});
 
-				scope.close = function(){
-					var tlClose = new TimelineMax({paused:true});
-					tlClose.to(element, 0.4, {scale:0, alpha:0})
-						.set(element, {display:'none'}, 0.4);
-					tlClose.restart();
-				};
+			};
 
-				scope.open = function(){
-					var tlOpen = new TimelineMax({paused:true});
-					tlOpen.set(element, {display:'block'})
-						.to(element, 0.4, {scale:1, alpha:1});
-					console.log('open');
-					tlOpen.restart();
-				}
+			// Close Shopping Cart Directive
+			scope.close = function(){
+				var tlClose = new TimelineMax({paused:true});
+				tlClose
+					.to(element, 0.4, {scale:0, alpha:0})
+					.set(element, {display:'none'}, 0.4);
+				tlClose.restart();
+				isOpen = false;
+			};
 
-			}
-		};
+			// Open Shopping Cart Directive
+			scope.open = function(){
+				var tlOpen = new TimelineMax({paused:true});
+				tlOpen
+					.set(element, {display:'block'})
+					.to(element, 0.4, {scale:1, alpha:1});
+				tlOpen.restart();
+				isOpen = true;
+			};
+
+			create();
+		}
+	};
+}
+
+function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
+
+	var shCtrl = this;
+	shCtrl.total = 0;
+
+	shCtrl.items = Cartlist.getItems();
+	shCtrl.total = Cartlist.getTotal();
+
+
+
+	shCtrl.changeItems = function(){
+		console.log('changeItems');
+		shCtrl.items.push({name: 'test123', price:"20"});
+		$scope.$digest();
 	}
+
+	shCtrl.checkOut = function(){
+		console.log('checkout');
+		$state.go('checkout');
+	}
+
+	shCtrl.clearAll = function(){
+		localStorageService.clearAll;
+		shCtrl.items = Cartlist.clearItem();
+		$scope.$digest();
+		console.log('cleared All items');
+	}
+
+
+
+}
 
 'use strict';
 
 angular.module('shop-cart').factory('Cartlist', Cartlist);
 
-function Cartlist() {
-	var items = [];
+function Cartlist(localStorageService) {
+
+	var items = localStorageService.get('shoppingList') || [];
+	var total = 0;
+
 	return {
-		addItem: function(item) {
-			items.push(item);
+		addItem: function(item, exist) {
+			if(item.qnt === undefined)
+				item.qnt = 1;
+			else
+				item.qnt += 1;
+
+			if(exist < 0)
+				items.push(item);
+
+			localStorageService.set('shoppingList', items);
 
 		},
 		getItems: function(){
 			return items;
+		},
+		clearItem: function(){
+			localStorageService.clearAll;
+			return items = [];
+		},
+		getTotal: function(){
+			console.log('total');
+			total = 0;
+			items.forEach(function(value){
+				total += value.qnt * value.price;
+			})
+			return total;
 		}
+
 
 	};
 }

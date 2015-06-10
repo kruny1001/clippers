@@ -39,11 +39,9 @@ angular.module('core')
           });
       };
       var scrollTo = function(){
-        console.log('scrollTo funciton');
       };
 
       $scope.change = function(){
-        console.log("changed");
         if(user._id !== undefined){
           $location.path('/d2l-classes/'+user._id);
         }
@@ -111,7 +109,6 @@ angular.module('core')
       }
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-            console.log('closed');
             if(toState.name === "openboard"){
                 $scope.title = "Getting Started";
                 $scope.subTitle = "Tutorial";
@@ -133,7 +130,6 @@ angular.module('core')
               $scope.title = "Profile";
               $scope.subTitle = "Edit Profile";
             }
-
         });
 
       $scope.sliderNavEvent = function(name, target){
@@ -145,7 +141,6 @@ angular.module('core')
             //console.log(target);
             //TweenMax.to($window, 1.2, {scrollTo:{y:target}, ease:Power4.easeOut});
           });
-        console.log(name);
         if(name === 'Your Classes'){
           $state.go('listD2lClasses');
         }
@@ -159,7 +154,6 @@ angular.module('core')
           $state.go('listD2lClassesAll');
         }
         else if(name ==='Sign In'){
-          console.log('sign in ');
           $location.path('/signin');
         }
         else if(name ==='Sign Out'){
