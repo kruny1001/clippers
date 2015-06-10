@@ -72,7 +72,7 @@ module.exports = {
 				 */
 
 				//'public/lib/Snap.svg/dist/snap.svg-min.js',
-				'public/lib/lodash/dist/lodash.min.js',
+				'public/lib/lodash/lodash.min.js',
 				//'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
 
 				'public/lib/d3/d3.min.js',
