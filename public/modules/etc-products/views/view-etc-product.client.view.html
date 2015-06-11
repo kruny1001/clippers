@@ -2,6 +2,7 @@
 
 	<shop-cart hide-sm></shop-cart>
 
+	<!-- Link Path-->
 	<div layout="row" layout-sm="column" layout-align="start start">
 		<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>
 		<h3 class="md-body-1">Andis > Clipper</h3>
@@ -83,6 +84,7 @@
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
 	<div layout="row" layout-sm="column" layout-align="center start" style="max-width: 1058px;">
+		<!-- main product image -->
 		<md-card flex-gt-sm="65" flex>
 			<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
 			<!--<img   ng-src="http://thefancy-media-ec4.thefancy.com/1280/20141013/736407931687275136_3777be935160.jpg" class="md-card-image" alt="Washed Out">-->
@@ -94,26 +96,30 @@
 			</md-card-content>
 		</md-card>
 
+		<!-- product sub info-->
 		<div layout="column" layout-margin flex-gt-sm="30" flex style="margin-top:10px;">
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
-					layout="column" layout-align="start start">
+					layout="column">
 
-				<div style="padding:10px; margin:10px;">
+				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
 					<div class="md-body-2">Overview</div>
 					<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
+
 					<div layout="row" style="margin-top:14px">
 						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
 						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
 					</div>
 				</div>
+
 				<md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
 			</md-whiteframe>
 
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base"
 					layout="column">
+
 				<div style="padding:10px;">
 					<h1 class="md-title">Other things you might Fancy </h1>
 					<p class="md-body-1">Description Description Description</p>

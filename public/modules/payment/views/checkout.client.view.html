@@ -1,7 +1,7 @@
-<section data-ng-controller="CheckoutController">
+<section data-ng-controller="CheckoutController as check">
 
+	<!-- shop cart directive-->
 	<shop-cart hide-sm></shop-cart>
-
 
 	<div layout="column" layout-align="center start" style="max-width: 1058px;">
 		<md-whiteframe
@@ -12,35 +12,55 @@
 			<div class="md-title">Shopping Cart</div>
 		</md-whiteframe>
 
+		<!-- List shopping cart items-->
 		<md-whiteframe
 				class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
 				layout="column" layout-align="start start"
-				style="width:100%">
-			<div layout="row" class="md-caption" style="padding:10px; margin:10px; width:100%;">
-				<div flex="60">Item</div>
+				style="width:100%"
+				ng-repeat="item in check.items track by $index">
+			<div layout="row" class="md-caption checkout-title" style="padding: 0 10px 0 10px; margin: 10px 10px 0 10px; width: 100%; text-align: center">
+				<div flex="60" style="text-align:left;">Item</div>
 				<div flex="12">Price</div>
 				<div flex="12">Quantity</div>
 				<div flex="12">Total</div>
+			</div>
+			<div layout="row" class="md-caption" style="  padding: 0 10px 0 10px; margin: 0 10px 10px 10px; width:100%; text-align: center">
+				<div flex="60" layout="row">
+					<span class="figure-img">
+						<em class="figure-shadow"></em>
+						<img ng-src="{{item.image}}">
+					</span>
+					<div style="margin:10px 0px 10px; padding: 10px; font-weight: bold;">
+						{{item.name}}
+					</div>
+				</div>
+				<div flex="12">
+					<div style="margin:10px 0px 10px; padding: 10px 0 0 0;">
+					{{item.price | currency}}
+					</div>
+				</div>
+				<div flex="12">
+					<div style="margin:10px 0px 10px; padding: 10px 0 0 0;">
+					{{item.qnt}}
+					</div>
+				</div>
+				<div flex="12">
+					<div style="margin:10px 0px 10px; padding: 10px 0 0 0;">
+					{{item.qnt * item.price | currency}}</div>
+				</div>
 			</div>
 		</md-whiteframe>
 
 		<md-whiteframe
+				flex="100"
 				class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
 				layout="column" layout-align="start start"
 				style="width:100%">
-			<div layout="row" class="md-caption" style="padding:10px; margin:10px; width:100%; ">
-				<div flex="60">Item</div>
-				<div flex="12">Price</div>
-				<div flex="12">Quantity</div>
-				<div flex="12">Total</div>
-			</div>
+			<h1 class="md-title">Review</h1>
 		</md-whiteframe>
+
 	</div>
 
-	<div>Shopping Cart</div>
-
-	<div>Order from TopClipper</div>
-
-	<div>Items</div>
+	<footer-info></footer-info>
 
 </section>

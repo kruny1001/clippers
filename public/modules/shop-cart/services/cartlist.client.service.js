@@ -3,7 +3,6 @@
 angular.module('shop-cart').factory('Cartlist', Cartlist);
 
 function Cartlist(localStorageService) {
-
 	var items = localStorageService.get('shoppingList') || [];
 	var total = 0;
 
@@ -16,15 +15,13 @@ function Cartlist(localStorageService) {
 
 			if(exist < 0)
 				items.push(item);
-
 			localStorageService.set('shoppingList', items);
-
 		},
 		getItems: function(){
 			return items;
 		},
 		clearItem: function(){
-			localStorageService.clearAll;
+			localStorageService.remove('shoppingList');
 			return items = [];
 		},
 		getTotal: function(){

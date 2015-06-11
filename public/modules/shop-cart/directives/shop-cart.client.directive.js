@@ -1,5 +1,4 @@
 //<md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon>
-
 'use strict';
 
 angular.module('shop-cart').directive('shopCart', shopCartDirective);
@@ -102,30 +101,18 @@ function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
 
 	var shCtrl = this;
 	shCtrl.total = 0;
-
 	shCtrl.items = Cartlist.getItems();
 	shCtrl.total = Cartlist.getTotal();
-
-
-
-	shCtrl.changeItems = function(){
-		console.log('changeItems');
-		shCtrl.items.push({name: 'test123', price:"20"});
-		$scope.$digest();
-	}
 
 	shCtrl.checkOut = function(){
 		console.log('checkout');
 		$state.go('checkout');
-	}
+	};
 
 	shCtrl.clearAll = function(){
 		localStorageService.clearAll;
 		shCtrl.items = Cartlist.clearItem();
 		$scope.$digest();
 		console.log('cleared All items');
-	}
-
-
-
+	};
 }

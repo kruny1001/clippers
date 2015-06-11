@@ -1,15 +1,17 @@
 <md-dialog aria-label="Mango (Fruit)">
     <div style="position:fixed; top: 0px; right:20px;"> Close </div>
-    <div layout-gt-md="row" layout-sm="column">
-        <div flex-gt-md="60" flex style="background-color:rosybrown;">
-            <img style="width:100%;" src="http://thefancy-media-ec4.thefancy.com/commerce/original/20150507/4c29b7bfcc824c50823cc374db9235b9.jpg">
-            <div layout="row" style="position:absolute; bottom: 0px; color:white">
-                <md-button>1</md-button>
-                <md-button>2</md-button>
-                <md-button>3</md-button>
-            </div>
+    <div layout-gt-sm="row" layout-sm="column">
+        <div flex-gt-sm="60" flex="50" style="background-color:rosybrown;">
+
+                <img style="position:relative; width:100%;" src="http://thefancy-media-ec4.thefancy.com/commerce/original/20150507/4c29b7bfcc824c50823cc374db9235b9.jpg">
+                <div layout="row" style="position:absolute; bottom: 0px; color:white">
+                    <md-button>1</md-button>
+                    <md-button>2</md-button>
+                    <md-button>3</md-button>
+                </div>
+
         </div>
-        <div flex-gt-md="40" flex style="padding:5px;">
+        <div id="product-info" flex-gt-sm="40" flex="50" style="padding:5px;   overflow: auto; max-height: 100%; position: relative;">
             <h2 class="md-title">Sample Product</h2>
             <p class="md-title">$12</p>
             <div layout="column" layout-align="center center">
@@ -19,6 +21,9 @@
                 <md-tab label="Info">
                     <md-content class="md-padding">
                         <h1 class="md-display-1">Tab One</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
                     </md-content>
                 </md-tab>

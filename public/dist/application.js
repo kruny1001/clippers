@@ -1934,12 +1934,16 @@ function BtPaymentController($scope, $http, $braintree) {
 }
 'use strict';
 
-angular.module('payment').controller('CheckoutController', ['$scope',
-	function($scope) {
-		// Checkout controller logic
-		// ...
-	}
-]);
+angular.module('payment').controller('CheckoutController', CheckoutController);
+
+function CheckoutController($scope, Cartlist) {
+	var vm = this;
+	vm.total = 0;
+
+	vm.items = Cartlist.getItems();
+	vm.total = Cartlist.getTotal();
+}
+
 'use strict';
 
 angular.module('payment').controller('TransactionsController', TransactionsController);
@@ -2384,7 +2388,6 @@ function ShopCartController($scope, Cartlist) {
 	}
 }
 //<md-icon md-svg-icon="modules/shop-cart/img/codepen.svg"></md-icon>
-
 'use strict';
 
 angular.module('shop-cart').directive('shopCart', shopCartDirective);
@@ -2487,32 +2490,20 @@ function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
 
 	var shCtrl = this;
 	shCtrl.total = 0;
-
 	shCtrl.items = Cartlist.getItems();
 	shCtrl.total = Cartlist.getTotal();
-
-
-
-	shCtrl.changeItems = function(){
-		console.log('changeItems');
-		shCtrl.items.push({name: 'test123', price:"20"});
-		$scope.$digest();
-	}
 
 	shCtrl.checkOut = function(){
 		console.log('checkout');
 		$state.go('checkout');
-	}
+	};
 
 	shCtrl.clearAll = function(){
 		localStorageService.clearAll;
 		shCtrl.items = Cartlist.clearItem();
 		$scope.$digest();
 		console.log('cleared All items');
-	}
-
-
-
+	};
 }
 
 'use strict';
@@ -2520,7 +2511,6 @@ function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
 angular.module('shop-cart').factory('Cartlist', Cartlist);
 
 function Cartlist(localStorageService) {
-
 	var items = localStorageService.get('shoppingList') || [];
 	var total = 0;
 
@@ -2533,15 +2523,13 @@ function Cartlist(localStorageService) {
 
 			if(exist < 0)
 				items.push(item);
-
 			localStorageService.set('shoppingList', items);
-
 		},
 		getItems: function(){
 			return items;
 		},
 		clearItem: function(){
-			localStorageService.clearAll;
+			localStorageService.remove('shoppingList');
 			return items = [];
 		},
 		getTotal: function(){
