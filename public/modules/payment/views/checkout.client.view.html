@@ -31,7 +31,10 @@
 						<img ng-src="{{item.image}}">
 					</span>
 					<div style="margin:10px 0px 10px; padding: 10px; font-weight: bold;">
-						{{item.name}}
+						{{item.name}}<br/>
+						<md-button class="md-warn">+</md-button>
+						<md-button class="md-warn">-</md-button>
+						<md-button class="md-warn">remove</md-button>
 					</div>
 				</div>
 				<div flex="12">
@@ -57,10 +60,97 @@
 				layout="column" layout-align="start start"
 				style="width:100%">
 			<h1 class="md-title">Review</h1>
-		</md-whiteframe>
 
+			<div>
+
+				<div layout="row" layout-sm="column" layout-align="center center" layout-margin >
+					<div style="width:100%" flex>
+						<h2 class="md-title">Shipping Address</h2>
+						<div layout="" layout-sm="column">
+							<md-input-container flex="">
+								<label>First name</label>
+								<input ng-model="user.firstName">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>Last Name</label>
+								<input ng-model="theMax">
+							</md-input-container>
+						</div>
+
+						<md-input-container flex="">
+							<label>Address</label>
+							<input ng-model="user.address">
+						</md-input-container>
+						<md-input-container md-no-float="">
+							<input ng-model="user.address2" placeholder="Address 2">
+						</md-input-container>
+
+						<div layout="" layout-sm="column">
+							<md-input-container flex="">
+								<label>City</label>
+								<input ng-model="user.city">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>State</label>
+								<input ng-model="user.state">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>Postal Code</label>
+								<input ng-model="user.postalCode">
+							</md-input-container>
+						</div>
+					</div>
+					<div style="width:100%" flex>
+						<h2 class="md-title">Billing Address</h2>
+						<div layout="" layout-sm="column">
+							<md-input-container flex="">
+								<label>First name</label>
+								<input ng-model="user.firstName">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>Last Name</label>
+								<input ng-model="theMax">
+							</md-input-container>
+						</div>
+
+						<md-input-container flex="">
+							<label>Address</label>
+							<input ng-model="user.address">
+						</md-input-container>
+						<md-input-container md-no-float="">
+							<input ng-model="user.address2" placeholder="Address 2">
+						</md-input-container>
+
+						<div layout="" layout-sm="column">
+							<md-input-container flex="">
+								<label>City</label>
+								<input ng-model="user.city">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>State</label>
+								<input ng-model="user.state">
+							</md-input-container>
+							<md-input-container flex="">
+								<label>Postal Code</label>
+								<input ng-model="user.postalCode">
+							</md-input-container>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h3 class="md-body-2">Total:</h3>
+			<!-- Braintree Angular Version-->
+			<div ng-controller="checkout">
+				<form>
+					<braintree-dropin options="dropinOptions">Loading payment form...</braintree-dropin>
+					<md-button class="md-raised md-primary" type="submit">Buy for $14</md-button>
+				</form>
+				<!--<pre>{{result}}</pre>-->
+			</div>
+		</md-whiteframe>
 	</div>
 
-	<footer-info></footer-info>
+	<!--<footer-info></footer-info>-->
 
 </section>

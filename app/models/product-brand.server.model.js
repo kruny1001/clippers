@@ -23,7 +23,8 @@ var ProductBrandSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+	types:[String]
 });
 
 mongoose.model('ProductBrand', ProductBrandSchema);

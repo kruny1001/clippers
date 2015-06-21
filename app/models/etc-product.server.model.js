@@ -39,6 +39,10 @@ var EtcProductSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    type:{
+        type:String,
+        default:''
     }
 });
 

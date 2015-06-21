@@ -18,17 +18,18 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					//console.log(key + ': ' + value);
 					var menu = angular.element('<div>'+value.menuName+'</div>');
 					menu.css('margin','0 15px 0 15px');
+
 					menu.bind("mouseenter",function() {
 						//console.log('menu entered ' + this);
 						TweenMax.set(expandsMenu[key], {display: 'block'});
 						element.append(expandsMenu[key]);
 
 						element.bind("mouseleave",function() {
-							//console.log('menu leave ' + this);
 							TweenMax.set(expandsMenu[key], {display: 'none'});
 							expandsMenu[key].detach();
 						});
 					});
+
 					menuContainer.append(menu);
 				});
 
@@ -85,6 +86,7 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				element.append(menuContainer);
 
 				element.css('background-color', '#e5e9e8');
+				element.css('z-index', '99');
 				element.css('border-top', '2px rgb(136, 111, 111) solid');
 				element.css('border-bottom', '2px rgb(136, 111, 111) solid');
 			}
@@ -102,9 +104,9 @@ function jumboMenuCtrl() {
 	vm.menuItems = [
 		{menuName: 'Clipers',
 			subMenus:[
-				{name:'Clipers1',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/24140-dualvolt-cord-cordless-clipper-kit-rcc-angle-390x460.png'},
-				{name:'Clipers2',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/68100-headstyler-clipper-kit-rs-1-angle-390x460.png'},
-				{name:'Clipers3',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/18665-home-haircut-19-piece-kit-mc-2-straight-390x460.png'}
+				{name:'Andis',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/24140-dualvolt-cord-cordless-clipper-kit-rcc-angle-390x460.png'},
+				{name:'Wahl',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/68100-headstyler-clipper-kit-rs-1-angle-390x460.png'},
+				{name:'Oster',link:'#/123', imageUrl:'https://at-home.andis.com/images_and_docs/18665-home-haircut-19-piece-kit-mc-2-straight-390x460.png'}
 			]
 		},
 		{menuName: 'Trimmers',
@@ -115,6 +117,18 @@ function jumboMenuCtrl() {
 		},
 		{menuName: 'Accessaries',
 			subMenus:[
+				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
+				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
+				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
+				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
+				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
 				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
 				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'}]}

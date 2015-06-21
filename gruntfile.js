@@ -143,7 +143,24 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'karma.conf.js'
 			}
+		},
+
+		"babel": {
+			options: {
+				sourceMap: false,
+				modules: "amd"
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'testES6/',
+					src: ['*.es6'],
+					dest: 'testES6/dist',
+					ext:'.js'
+				}]
+			}
 		}
+
 	});
 
 	// Load NPM tasks
@@ -180,4 +197,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('test', ['test:server', 'test:client']);
 	grunt.registerTask('test:server', ['env:test', 'mochaTest']);
 	grunt.registerTask('test:client', ['env:test', 'karma:unit']);
+
+	grunt.registerTask("default2", ['babel']);
 };

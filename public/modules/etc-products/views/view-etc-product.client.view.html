@@ -5,7 +5,8 @@
 	<!-- Link Path-->
 	<div layout="row" layout-sm="column" layout-align="start start">
 		<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>
-		<h3 class="md-body-1">Andis > Clipper</h3>
+
+        <h3 class="md-body-1">Andis > Clipper</h3>
 	</div>
 
 	<!--<md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"-->
@@ -83,7 +84,7 @@
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
-	<div layout="row" layout-sm="column" layout-align="center start" style="max-width: 1058px;">
+	<div layout="row" layout-sm="column" layout-align="center center">
 		<!-- main product image -->
 		<md-card flex-gt-sm="65" flex>
 			<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
@@ -101,7 +102,6 @@
 			<md-whiteframe
 					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
 					layout="column">
-
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
 					<div class="md-body-2">Overview</div>
@@ -133,26 +133,7 @@
 	</div>
 
 
-	<!--<md-whiteframe-->
-			<!--layout="row" flex="95" flex-sm="100" style="margin-top:10px;"-->
-			<!--class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base">-->
-		<!--<div style="padding:10px;">-->
-			<!--<h1 class="md-title">Social Media</h1>-->
-			<!--<md-list-item class="md-2-line contact-item"-->
-						  <!--ng-repeat="(index, contact) in allContacts"-->
-						  <!--ng-if="contacts.indexOf(contact) < 0">-->
 
-
-
-				<!--<img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />-->
-				<!--<div class="md-list-item-text compact">-->
-					<!--<h3>{{contact.name}}</h3>-->
-					<!--<p>{{contact.email}}</p>-->
-				<!--</div>-->
-			<!--</md-list-item>-->
-
-		<!--</div>-->
-	<!--</md-whiteframe>-->
 
 	<!--<md-whiteframe-->
 			<!--layout="column" flex="95" flex-sm="100" style="margin-top:10px;"-->
@@ -176,6 +157,117 @@
 			    <!--</div>-->
 	    	<!--</div>-->
 	<!--</md-whiteframe>-->
+
+    <h3 class="md-title" style="margin-left:10px;">Product Details</h3>
+    <md-content class="review-list-container">
+        <h3 class="md-title">Best for: Heavy duty for high-volume haircutting</h3>
+        <p class="md-body-1">
+            RECHARGEABLE:
+            Powerful, cordless convenience
+            Rotary Motor
+            120V | 60Hz | MAX 3000SPM
+            Rotary motor for heavy-duty use; perfect for removing weight and bulk.
+            Professional power in cordless design.
+            Ceramic blade runs cooler and stays sharper.
+            20% lighter, 10% smaller and 15% faster than traditional clippers.
+            Includes Sensa-Charge® for rapid charging.
+            Works with all UltraEdge® and CeramicEdge® blades.
+        </p>
+
+        <p class="md-body-1">
+        FEATURES
+        Rotary motor for heavy-duty use; perfect for removing weight and bulk.
+        Professional power in cordless design.
+        Ceramic blade runs cooler and stays sharper.
+        20% lighter, 10% smaller and 15% faster than traditional clippers.
+        Includes Sensa-Charge® for rapid charging.
+        Works with all UltraEdge® and CeramicEdge® blades.
+
+        PRODUCT SPECIFICATIONS
+        ModelBGR+
+        Item Number64850
+        UPC Code0 40102 64850 2
+        Weight1.10 lbs.
+        Length7.63 in.
+        Body MaterialPolymer
+        FinishMatte Black
+
+        MOTOR
+        TypeRotary
+        Strokes per Minute3000 spm
+        Volts120 V
+        Frequency60 Hz
+
+        BLADE
+        Item Number64480
+        NameCeramicEdge® Detachable Blade, Size 000
+        TypeCeramicEdge™
+        MaterialCarbon Steel
+
+        PACKAGING SPECIFICATIONS
+        Packaging TypeGift Box
+        Height9.375 in.
+        Width13.5 in.
+        Depth4.5 in.
+        Weight6.3 lbs.
+
+        APPROVALS
+        </p>
+    </md-content>
+
+	<h3 class="md-title" style="margin-left:10px;">Review Summary</h3>
+    <div class="score-total"
+            style="text-align: center;
+            color:white;
+            background: #0b5675;
+            padding: 10px 0px;"
+            layout="row" layout-align="space-around center" layout-padding layout-margin>
+        <div>
+            <span class="md-body-2">Review Score</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #02a2ff;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                8.2
+            </span>
+        </div>
+        <div>
+            <span class="md-body-2">Reviews</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ffb24a;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                102
+            </span>
+        </div>
+        <div>
+            <span class="md-body-2">Delivery</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ff52c7;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                Free
+            </span>
+        </div>
+    </div>
 
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
 	<review-list></review-list>
