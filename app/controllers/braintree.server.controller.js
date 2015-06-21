@@ -23,16 +23,39 @@ exports.token = function(req, res) {
 };
 
 exports.purchase = function(req, res) {
-    var nonce = req.body.payment_method_nonce;
-    //console.log(req);
+    var nonce = req.body.nonce;
+    console.log(req.body);
+    console.log(nonce);
     //nonce = 'fake-google-wallet-nonce'
     gateway.transaction.sale({
         amount: "10.00",
         customFields:{topcliper:'123'},
-        paymentMethodNonce: nonce
+        paymentMethodNonce: nonce,
+        billing: {
+            firstName: "Paul",
+            lastName: "Smith",
+            company: "Braintree",
+            streetAddress: "1 E Main St",
+            extendedAddress: "Suite 403",
+            locality: "Chicago",
+            region: "IL",
+            postalCode: "60622",
+            countryCodeAlpha2: "US"
+        },
+        shipping: {
+            firstName: "Jen",
+            lastName: "Smith",
+            company: "Braintree",
+            streetAddress: "1 E 1st St",
+            extendedAddress: "5th Floor",
+            locality: "Bartlett",
+            region: "IL",
+            postalCode: "60103",
+            countryCodeAlpha2: "US"
+        },
     }, function (err, result) {
         if (err) {
-            res.send('error:', err);
+            res.status(err).json(result);
         } else {
             if(result.success)
                 res.json(result);

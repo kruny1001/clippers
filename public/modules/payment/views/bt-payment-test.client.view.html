@@ -127,6 +127,24 @@
         <pre>{{result}}</pre>
     </div>
 
+    <div ng-controller="CustomCheckoutController">
+            <input
+                    ng-model="cCard.number"
+                    placeholder="4111111111111111"
+                    />
+
+            <input
+                    ng-model="cCard.expirationDate"
+                    placeholder="10/18"
+                    />
+
+            <input
+                    type="submit"
+                    value="Purchase"
+                    ng-click="makePayment()"
+                    />
+    </div>
+
     <md-button class="md-primary md-raised" ng-click="addCustomer()"> addCustomer </md-button>
     <pre>{{resultCust}}</pre>
 </section>

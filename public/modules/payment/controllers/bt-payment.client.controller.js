@@ -30,7 +30,13 @@ function BtPaymentController($scope, $http, $braintree) {
         // - Make sure client is ready to use
         client.tokenizeCard({
             number: $scope.creditCard.number,
-            expirationDate: $scope.creditCard.expirationDate
+            cardholderName: "John Smith",
+            expirationDate: $scope.creditCard.expirationDate,
+            cvv:"832",
+            billingAddress: {
+                postalCode: "94107"
+            }
+
         }, function (err, nonce) {
             console.log("err: " + err);
             console.log("nonce: "+nonce);
