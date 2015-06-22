@@ -1677,7 +1677,6 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 
 				//Create Menus
 				angular.forEach(ctrl.menuItems, function(value, key) {
-					//console.log(key + ': ' + value);
 					var menu = angular.element('<div>'+value.menuName+'</div>');
 					menu.css('margin','0 15px 0 15px');
 
@@ -1698,7 +1697,6 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				// Create Sub Expand Menus
 				var expandsMenu = [];
 				angular.forEach(ctrl.menuItems, function(value, key) {
-					//console.log(value);
 
 					//columns
 					var contentList1 = angular.element('<ul></ul>');
@@ -1707,11 +1705,11 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					var expandMenu = angular.element('<div> Expand Menu: Adjustable Blade Clippers</div>');
 					expandMenu.addClass('expand-menu');
 					var contentContainer = angular.element('<div class="subMenuExpanded" layout="column"></div>');
-					var contentRow = angular.element('<div layout="row"></div>');
+					var contentRow = angular.element('<div layout="row" layout-sm="column"></div>');
 					var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
-					var contentSecondCol = angular.element('<div layout="row" class="second-column" flex-gt-sm="70"></div>');
-					var imageList = angular.element('<div layout="row"></div>');
 
+					var contentSecondCol = angular.element('<div layout="row" hide-sm class="second-column" flex-gt-sm="70"></div>');
+					var imageList = angular.element('<div layout="row"></div>');
 
 					// Column 1 Contents
 					var colContent1 = [];

@@ -2,106 +2,49 @@
 
 	<shop-cart hide-sm></shop-cart>
 
-	<!-- Link Path-->
+
 	<div layout="row" layout-sm="column" layout-align="start start">
 		<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>
 
-        <h3 class="md-body-1">Andis > Clipper</h3>
+        <!--<h3 class="md-body-1">Andis > Clipper</h3>-->
 	</div>
 
-	<!--<md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"-->
-				  <!--md-cols-sm="1" md-cols-md="4" md-cols-gt-md="4"-->
-				  <!--md-row-height="1:1"-->
-				  <!--md-gutter="1px" md-gutter-gt-sm="1px" >-->
-		<!--<md-grid-tile md-rowspan="2" md-colspan="2"-->
-					  <!--ng-mouseenter="hover = true"-->
-					  <!--ng-mouseleave="hover = false">-->
-
-                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
-                        <!--<div class="text-button">Price</div>-->
-                    <!--</span>-->
-
-                    <!--<span class="thumbnail_container">-->
-                        <!--<div class="thumbnail">-->
-							<!--<img ng-src="{{content.image}}" />-->
-						<!--</div>-->
-                    <!--</span>-->
-
-			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
-			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
-			<!--&lt;!&ndash;</span>&ndash;&gt;-->
-
-			<!--<md-grid-tile-footer>-->
-				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
-			<!--</md-grid-tile-footer>-->
-		<!--</md-grid-tile>-->
-		<!--<md-grid-tile md-rowspan="1" md-colspan="2"-->
-					  <!--ng-mouseenter="hover = true"-->
-					  <!--ng-mouseleave="hover = false">-->
-
-                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
-                        <!--<div class="text-button">Price</div>-->
-                    <!--</span>-->
-
-                    <!--<span class="thumbnail_container">-->
-                        <!--<div class="thumbnail">-->
-							<!--<img ng-src="{{content.image}}" />-->
-						<!--</div>-->
-                    <!--</span>-->
-
-			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
-			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
-			<!--&lt;!&ndash;</span>&ndash;&gt;-->
-
-			<!--<md-grid-tile-footer>-->
-				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
-			<!--</md-grid-tile-footer>-->
-		<!--</md-grid-tile>-->
-		<!--<md-grid-tile md-rowspan="1" md-colspan="2"-->
-					  <!--ng-mouseenter="hover = true"-->
-					  <!--ng-mouseleave="hover = false">-->
-
-                    <!--<span class="text-center" ng-class="{'text-button-hover': hover}">-->
-                        <!--<div class="text-button">Price</div>-->
-                    <!--</span>-->
-
-                    <!--<span class="thumbnail_container">-->
-                        <!--<div class="thumbnail">-->
-							<!--<img ng-src="{{content.image}}" />-->
-						<!--</div>-->
-                    <!--</span>-->
-
-			<!--&lt;!&ndash;<span style="width:100%">&ndash;&gt;-->
-			<!--&lt;!&ndash;<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">&ndash;&gt;-->
-			<!--&lt;!&ndash;</span>&ndash;&gt;-->
-
-			<!--<md-grid-tile-footer>-->
-				<!--<h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>-->
-			<!--</md-grid-tile-footer>-->
-		<!--</md-grid-tile>-->
-
-	<!--</md-grid-list>-->
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
-	<div layout="row" layout-sm="column" layout-align="center center">
+	<div layout="row" layout-sm="column" layout-align="center start">
 		<!-- main product image -->
-		<md-card flex-gt-sm="65" flex>
-			<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
-			<!--<img   ng-src="http://thefancy-media-ec4.thefancy.com/1280/20141013/736407931687275136_3777be935160.jpg" class="md-card-image" alt="Washed Out">-->
-			<md-card-content>
-				<h2 class="md-title" style="margin-left:10px;">{{etcProduct.name}}</h2>
-				<p class="md-body-2" style="margin-left:10px;">
-					{{etcProduct.brand.name}}
-				</p>
-			</md-card-content>
-		</md-card>
+
+
+		<div layout="column" layout-margin flex-gt-sm="65" flex="100">
+			<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
+				<div style="padding:10px;">
+					<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
+
+					<h2 class="md-title" style="margin-left:10px;"> {{etcProduct.name}} </h2>
+					<p class="md-body-2" style="margin-left:10px;"> {{etcProduct.brand.name}} </p>
+					<div layout="row">
+						<div style="height:75px; width:75px; background-color: #ce8483; margin-right:5px;"></div>
+						<div style="height:75px; width:75px; background-color: #ce8483; margin-right:5px;"></div>
+						<div style="height:75px; width:75px; background-color: #ce8483; margin-right:5px;"></div>
+					</div>
+				</div>
+			</md-whiteframe>
+
+			<md-whiteframe hide-gt-sm class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
+				<div style="padding:10px;">
+					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
+					<div class="md-body-2">Overview</div>
+					<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
+					<md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
+				</div>
+			</md-whiteframe>
+
+		</div>
 
 		<!-- product sub info-->
-		<div layout="column" layout-margin flex-gt-sm="30" flex style="margin-top:10px;">
-			<md-whiteframe
-					class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
-					layout="column">
+		<div layout="column" hide-sm layout-margin flex-gt-sm="30" flex>
+			<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
 					<div class="md-body-2">Overview</div>
@@ -132,35 +75,65 @@
 		</div>
 	</div>
 
+	<div class="score-total"
+		 style="text-align: center;
+            color:white;
+            background: #0b5675;
+            padding: 10px 0px;"
+		 layout="row" layout-align="space-around center" layout-padding layout-margin>
+		<div>
+			<span class="md-body-2">Review Score</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #02a2ff;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                8.2
+            </span>
+		</div>
+		<div>
+			<span class="md-body-2">Reviews</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ffb24a;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                102
+            </span>
+		</div>
+		<div>
+			<span class="md-body-2">Delivery</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ff52c7;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                Free
+            </span>
+		</div>
+	</div>
 
 
 
-	<!--<md-whiteframe-->
-			<!--layout="column" flex="95" flex-sm="100" style="margin-top:10px;"-->
-			<!--class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base">-->
+	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column" style="margin-left: 8px; margin-right: 8px; padding:10px;">
+		<h3 class="md-title" style="margin-left:10px;">Product Details</h3>
 
-        <!--<h1 class="md-title">Description</h1>-->
-
-
-			<!--<div style="-->
-			       <!--padding:10px;-->
-			       <!--display: block;-->
-					  <!--float: right;-->
-					  <!--position: relative;">-->
-				<!--<div style="-->
-                    <!--width:100%;-->
-                    <!--height:300px;-->
-                    <!--border: 1px solid;-->
-                    <!--border-radius: 0 50% 50% 0">-->
-                        <!--<h2>Title</h2>-->
-                        <!--&lt;!&ndash;<img id="clipper" style="position:absolute; top:10px;" src="https://barber-and-beauty.andis.com/images/bgrc-angled.png"></div>&ndash;&gt;-->
-			    <!--</div>-->
-	    	<!--</div>-->
-	<!--</md-whiteframe>-->
-
-    <h3 class="md-title" style="margin-left:10px;">Product Details</h3>
-    <md-content class="review-list-container">
-        <h3 class="md-title">Best for: Heavy duty for high-volume haircutting</h3>
+		<h3 class="md-title">Best for: Heavy duty for high-volume haircutting</h3>
         <p class="md-body-1">
             RECHARGEABLE:
             Powerful, cordless convenience
@@ -213,126 +186,19 @@
 
         APPROVALS
         </p>
-    </md-content>
+   	</md-whiteframe>
 
-	<h3 class="md-title" style="margin-left:10px;">Review Summary</h3>
-    <div class="score-total"
-            style="text-align: center;
-            color:white;
-            background: #0b5675;
-            padding: 10px 0px;"
-            layout="row" layout-align="space-around center" layout-padding layout-margin>
-        <div>
-            <span class="md-body-2">Review Score</span><br/>
-            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
-                  background: #02a2ff;
-                  color: white;
-                  width: 80px;
-                  height: 80px;
-                  display: inline-block;
-                  font-weight: bold;
-                  -webkit-border-radius: 40px;
-                  -moz-border-radius: 40px;
-                  border-radius: 40px;">
-                8.2
-            </span>
-        </div>
-        <div>
-            <span class="md-body-2">Reviews</span><br/>
-            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
-                  background: #ffb24a;
-                  color: white;
-                  width: 80px;
-                  height: 80px;
-                  display: inline-block;
-                  font-weight: bold;
-                  -webkit-border-radius: 40px;
-                  -moz-border-radius: 40px;
-                  border-radius: 40px;">
-                102
-            </span>
-        </div>
-        <div>
-            <span class="md-body-2">Delivery</span><br/>
-            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
-                  background: #ff52c7;
-                  color: white;
-                  width: 80px;
-                  height: 80px;
-                  display: inline-block;
-                  font-weight: bold;
-                  -webkit-border-radius: 40px;
-                  -moz-border-radius: 40px;
-                  border-radius: 40px;">
-                Free
-            </span>
-        </div>
-    </div>
+
+
 
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
 	<review-list></review-list>
 
 	<!--<h3 class="md-title" style="margin-left:10px;">Review Write</h3>-->
-	<!--<review-write></review-write>-->
+
 
 	<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">
-
+		<review-write></review-write>
 	</div>
-
-	<!--<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">-->
-		<!--<md-content>-->
-			<!--<md-list>-->
-				<!--<md-subheader class="md-no-sticky">3 line item</md-subheader>-->
-				<!--<md-list-item class="md-3-line" ng-repeat="item in todos">-->
-					<!--<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}">-->
-					<!--<div class="md-list-item-text">-->
-						<!--<h3>{{ item.who }}</h3>-->
-						<!--<h4>{{ item.what }}</h4>-->
-						<!--<p>{{ item.notes }}</p>-->
-					<!--</div>-->
-				<!--</md-list-item>-->
-				<!--<md-divider></md-divider>-->
-				<!--<md-subheader class="md-no-sticky">2 line item</md-subheader>-->
-				<!--<md-list-item class="md-2-line">-->
-					<!--<img ng-src="{{todos[0].face}}?20" class="review-list" alt="{{todos[0].who}}">-->
-					<!--<div class="md-list-item-text">-->
-						<!--<h3>{{ todos[0].who }}</h3>-->
-						<!--<p>Secondary text</p>-->
-					<!--</div>-->
-				<!--</md-list-item>-->
-				<!--<md-divider></md-divider>-->
-				<!--<md-subheader class="md-no-sticky">3 line item, long paragraph (see on mobile)</md-subheader>-->
-				<!--<md-list-item class="md-3-line">-->
-					<!--<img ng-src="{{todos[0].face}}?25" class="md-avatar" alt="{{todos[0].who}}">-->
-					<!--<div class="md-list-item-text">-->
-						<!--<h3>{{ todos[0].who }}</h3>-->
-						<!--<p>Secondary line text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.</p>-->
-					<!--</div>-->
-				<!--</md-list-item>-->
-				<!--<md-divider></md-divider>-->
-				<!--<md-subheader class="md-no-sticky">md-offset class</md-subheader>-->
-				<!--<md-list-item class="md-2-line" ng-repeat="phone in phones">-->
-					<!--&lt;!&ndash;<md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>&ndash;&gt;-->
-					<!--<div class="md-list-item-text" ng-class="{'md-offset': $index != 0 }">-->
-						<!--<h3> {{ phone.number }} </h3>-->
-						<!--<p> {{ phone.type }} </p>-->
-					<!--</div>-->
-				<!--</md-list-item>-->
-			<!--</md-list>-->
-		<!--</md-content>-->
-	<!--</div>-->
-
-	<!-- Product Detail Directive-->
-	<!--<product-detail title="etcProduct.name" style="width:100%;"></product-detail>-->
-
-
-	<!-- Color Picker-->
-	<!--<div layout="row" layout-sm="column" layout-align="center">-->
-		<!--<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base"-->
-					   <!--layout="column" layout-align="space-around start">-->
-			<!--<h3>Image List</h3>-->
-			<!--<gallery style="width:100%"></gallery>-->
-		<!--</md-whiteframe>-->
-	<!--</div>-->
 
 </section>
