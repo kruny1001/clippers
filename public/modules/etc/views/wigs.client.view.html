@@ -1,24 +1,11 @@
 <md-content layout="column" data-ng-controller="WigsController">
     <shop-cart hide-sm></shop-cart>
     <md-content layout="row">
-        <!--<div show-gt-md hide-sm hide-md flex="15" style="width:250px; background-color: yellowgreen;">-->
-            <!-- -->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!--<md-button class="md-primary md-raised" ng-click="cartGo('cart')">Cart</md-button>-->
-            <!-- -->
-        <!--</div>-->
 
         <md-content flex layout="column">
 
             <slide-show-cust></slide-show-cust>
             <jumbo-menu></jumbo-menu>
-
 
             <h3 class="md-title" style="text-align: center">Search</h3>
             <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
@@ -37,18 +24,18 @@
                                 placeholder="Pick an Angular repository"
                                 md-menu-class="autocomplete-custom-template">
                             <md-item-template>
-          <span class="item-title">
-            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-            <span> {{item.name}} </span>
-          </span>
-          <span class="item-metadata">
-            <span class="item-metastat">
-              <strong>{{item.watchers}}</strong> watchers
-            </span>
-            <span class="item-metastat">
-              <strong>{{item.forks}}</strong> forks
-            </span>
-          </span>
+                              <span class="item-title">
+                                <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+                                <span> {{item.name}} </span>
+                              </span>
+                              <span class="item-metadata">
+                                <span class="item-metastat">
+                                  <strong>{{item.watchers}}</strong> watchers
+                                </span>
+                                <span class="item-metastat">
+                                  <strong>{{item.forks}}</strong> forks
+                                </span>
+                              </span>
                             </md-item-template>
                         </md-autocomplete>
                     </form>
@@ -58,7 +45,7 @@
 
             <h3 class="md-title" style="text-align: center">BEST SELLING</h3>
             <md-grid-list flex style="padding:20px; margin:20px;" class="gridListdemoBasicUsage"
-                          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
                           md-row-height="1:1"
                           md-gutter="1px" md-gutter-gt-sm="2px" >
 
@@ -71,7 +58,7 @@
                               ng-mouseleave="hover = false">
 
                     <span class="text-center" ng-class="{'text-button-hover': hover}">
-                        <div class="text-button">Price</div>
+                        <div class="text-button">{{content.price| currency:"$"}}</div>
                     </span>
 
                     <span class="thumbnail_container">
@@ -84,8 +71,9 @@
                         <!--<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">-->
                     <!--</span>-->
 
-                    <md-grid-tile-footer>
-                        <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
+                    <md-grid-tile-footer style="  background: rgba(0, 0, 0, 0.67);">
+                        <h3 >{{content.name}}</h3>
+                        <!--{{content.price| currency:"$"}}-->
                     </md-grid-tile-footer>
                 </md-grid-tile>
             </md-grid-list>

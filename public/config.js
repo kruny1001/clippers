@@ -14,7 +14,8 @@ var ApplicationConfiguration = (function() {
 		//'oc.lazyLoad',
 		//'nvd3',
 		'braintree-angular',
-		'LocalStorageModule'
+		'LocalStorageModule',
+		'textAngular'
 
 	];
 

@@ -14,7 +14,8 @@ var ApplicationConfiguration = (function() {
 		//'oc.lazyLoad',
 		//'nvd3',
 		'braintree-angular',
-		'LocalStorageModule'
+		'LocalStorageModule',
+		'textAngular'
 
 	];
 
@@ -864,6 +865,16 @@ function DialogController($scope, $mdDialog) {
 function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdDialog, Authentication,
                                EtcProducts, $timeout, $q, $state, ProductBrands, Cartlist) {
 
+	$scope.thumbNail = [
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-straight-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-straight.png'},
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-angle-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-angle.png'},
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-package-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-package.png'},];
+
+	$scope.clickThumbImage = function(index){
+		console.log(index);
+		$scope.etcProduct.image =$scope.thumbNail[index].actualImage;
+	}
+
 	$scope.loadUsers = function() {
 		// Use timeout to simulate a 650ms request.
 		$scope.brands = [];
@@ -1678,15 +1689,18 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				//Create Menus
 				angular.forEach(ctrl.menuItems, function(value, key) {
 					var menu = angular.element('<div>'+value.menuName+'</div>');
-					menu.css('margin','0 15px 0 15px');
 
+					var crntExpandMenu;
+
+					menu.css('margin','0 15px 0 15px');
 					menu.bind("mouseenter",function() {
 						//console.log('menu entered ' + this);
+						TweenMax.set(expandsMenu, {display: 'none'}); //reset
 						TweenMax.set(expandsMenu[key], {display: 'block'});
 						element.append(expandsMenu[key]);
 
 						element.bind("mouseleave",function() {
-							TweenMax.set(expandsMenu[key], {display: 'none'});
+							TweenMax.set(expandsMenu, {display: 'none'});
 							expandsMenu[key].detach();
 						});
 					});
@@ -1697,15 +1711,14 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				// Create Sub Expand Menus
 				var expandsMenu = [];
 				angular.forEach(ctrl.menuItems, function(value, key) {
-
 					//columns
-					var contentList1 = angular.element('<ul></ul>');
-					var contentList2 = angular.element('<ul style="display: -webkit-inline-box;"></ul>');
+					var contentList1 = angular.element('<ul class="firstList"></ul>');
+					var contentList2 = angular.element('<ul class="secondList" style="display: -webkit-inline-box;"></ul>');
 
-					var expandMenu = angular.element('<div> Expand Menu: Adjustable Blade Clippers</div>');
+					var expandMenu = angular.element('<div></div>');
 					expandMenu.addClass('expand-menu');
 					var contentContainer = angular.element('<div class="subMenuExpanded" layout="column"></div>');
-					var contentRow = angular.element('<div layout="row" layout-sm="column"></div>');
+					var contentRow = angular.element('<div class="subMenuExpanded" layout="row" layout-sm="column"></div>');
 					var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
 
 					var contentSecondCol = angular.element('<div layout="row" hide-sm class="second-column" flex-gt-sm="70"></div>');
@@ -1722,14 +1735,16 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					// Column 2 Contents
 					var colContent2 = [];
 					angular.forEach(value.subMenus, function(value, key){
-						var col2 = angular.element('<li></li>');
-						var imageContainer = angular.element('<img/>');
-						imageContainer.attr("src", value.imageUrl);
-						imageContainer.css('width', '100px');
-						imageContainer.css('height', '100px');
-						col2.append(imageContainer);
-						contentList2.append(col2);
-						this.push(col2);
+						if(value.imageUrl){
+							var col2 = angular.element('<li></li>');
+							var imageContainer = angular.element('<img/>');
+							imageContainer.attr("src", value.imageUrl);
+							imageContainer.css('width', '100px');
+							imageContainer.css('height', '100px');
+							col2.append(imageContainer);
+							contentList2.append(col2);
+							this.push(col2);
+						}
 					}, colContent2);
 
 					contentContainer.append(contentRow);
@@ -1777,20 +1792,16 @@ function jumboMenuCtrl() {
 		},
 		{menuName: 'Accessaries',
 			subMenus:[
+				{name:'Accessaries1',link:'', },
+				{name:'Accessaries2',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
 				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+				{name:'Accessaries3',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+
+				{name:'Accessaries3',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
-				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
-				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries2',link:'', },
 				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'}]}
 	];
 }
@@ -2441,25 +2452,32 @@ angular.module('reviews').directive('reviewWrite', ['$compile',
 			link: function postLink(scope, element, attrs) {
 				var container = angular.element('<md-content></md-content>');
 
-				var textField = angular.element('<textarea></textarea>');
+				//var textField = angular.element('<textarea ng-model="htmlcontent" style="width: 100%"></textarea>');
+				var angularText = angular.element('<div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled="disabled"></div>')
 				var btnContainer = angular.element('<div layout="row"></div>');
 				var addVideo = angular.element('<md-button class="md-primary md-raised">Add Video</md-button>')
 				var addPhoto = angular.element('<md-button class="md-primary md-raised">Add Image</md-button>')
-				textField.addClass('review-textarea');
-				container.append(textField);
+				//textField.addClass('review-textarea');
+				//container.append(textField);
 				btnContainer.append(addVideo);
 				btnContainer.append(addPhoto);
 				container.append(btnContainer);
 
 				$compile(container)(scope);
+				$compile(angularText)(scope);
+				element.append(angularText);
 				element.append(container);
 			}
 		};
 	}
 ]);
 
-function reviewWriteCtrl() {
-
+function reviewWriteCtrl($scope) {
+	$scope.orightml = '<h2>Try me!</h2>'+
+		'<p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p>'
+		+'<p><img class="ta-insert-video" ta-insert-video="http://www.youtube.com/embed/2maA1-mvicY" src="" allowfullscreen="true" width="300" frameborder="0" height="250"/></p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li>Super Easy <b>Theming</b> Options</li><li style="color: green;">Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li class="text-danger">Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE8+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p><h4>Supports non-latin Characters</h4>';
+	$scope.htmlcontent = $scope.orightml;
+	$scope.disabled = false;
 }
 'use strict';
 
@@ -2751,6 +2769,9 @@ angular.module('slide-show').directive('slideShowCust', [
 				updateZindex();
 
 
+				var windowWidth = $(window).outerWidth();
+				var titleWIdth = 300;//$('.slide-title')[0].outerWidth();
+
 				///////////////////////////////////////////////////////
 				// functions for building nested timelines
 				function animateSlide1() {
@@ -2764,10 +2785,13 @@ angular.module('slide-show').directive('slideShowCust', [
 						onCompleteParams: ["{self}", slide1]
 					});
 
+
 					slideTL1
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide1fade")
 						.set(slide1,{'opacity':1})
 						.add( TweenMax.to(slide1, fadeSpeed, {css:{autoAlpha:0}}))
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide1afterfade")
 						.fromTo(header, 0.7, {y:'-200'},{y:0}, 0)
 						.add( TweenMax.to(slide1, duration) )
@@ -2785,9 +2809,11 @@ angular.module('slide-show').directive('slideShowCust', [
 					});
 
 					slideTL2
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide2fade")
 						//.set(slide2,{'opacity':1})
 						.add(TweenMax.to(slide2, fadeSpeed, {css:{autoAlpha:0}}) )
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide2afterfade")
 						.add(TweenMax.to(slide2, duration))
 						.from(progressBar, slideTL2.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0);
@@ -2803,9 +2829,11 @@ angular.module('slide-show').directive('slideShowCust', [
 					});
 
 					slideTL3
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide3fade")
 						//.set(slide3, {'opacity':1})
 						.add(TweenMax.to(slide3, fadeSpeed, {css:{autoAlpha:0}}))
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide3afterfade")
 						.add(TweenMax.to(slide3, duration))
 						.from(progressBar, slideTL3.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0);

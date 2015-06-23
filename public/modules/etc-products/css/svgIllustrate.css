@@ -1,0 +1,37 @@
+.reference-box {
+    stroke: #333;
+    fill: transparent;
+}
+
+.distance {
+    stroke: #ccc;
+    stroke-width: 2;
+}
+.distance--min {
+    stroke: #c73a11;
+}
+.distance--helper {
+    stroke-dasharray: 4;
+}
+
+.point {
+    fill: #ccc;
+}
+.point--central {
+    fill: #333;
+}
+.point--edge--min {
+    fill: #e85c33;
+}
+
+.path {
+    fill: transparent;
+    stroke: #e53a2b;
+    stroke-dasharray: 4;
+}
+
+.arrow {
+    fill: none;
+    stroke: #333;
+    stroke-width: 3;
+}

@@ -49,6 +49,7 @@ module.exports = {
 
         'public/lib/nvd3/nv.d3.min.css',
         'public/lib/ionicons/css/ionicons.min.css',
+        'public/lib/textAngular/dist/textAngular.css',
 
         //'public/lib/reveal.js/css/reveal.css',
         //'public/lib/angular-material/default-theme.css',
@@ -131,6 +132,10 @@ module.exports = {
         //'public/lib/reveal.js/js/reveal.js',
         'public/lib/localforage/dist/localforage.js',
         'public/lib/angular-localforage/dist/angular-localForage.js',
+        'public/lib/textAngular/dist/textAngular-rangy.min.js',
+        'public/lib/textAngular/dist/textAngular-sanitize.js',
+        'public/lib/textAngular/dist/textAngularSetup.js',
+        'public/lib/textAngular/dist/textAngular.js'
 
 
       ]

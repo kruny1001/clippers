@@ -19,6 +19,16 @@ function DialogController($scope, $mdDialog) {
 function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdDialog, Authentication,
                                EtcProducts, $timeout, $q, $state, ProductBrands, Cartlist) {
 
+	$scope.thumbNail = [
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-straight-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-straight.png'},
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-angle-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-angle.png'},
+		{imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-package-thumb.png', actualImage:'https://barber-and-beauty.andis.com/images_and_docs/63700-ultraedge-bgrc-clipper-bgrc-package.png'},];
+
+	$scope.clickThumbImage = function(index){
+		console.log(index);
+		$scope.etcProduct.image =$scope.thumbNail[index].actualImage;
+	}
+
 	$scope.loadUsers = function() {
 		// Use timeout to simulate a 650ms request.
 		$scope.brands = [];

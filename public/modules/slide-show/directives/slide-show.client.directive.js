@@ -44,6 +44,9 @@ angular.module('slide-show').directive('slideShowCust', [
 				updateZindex();
 
 
+				var windowWidth = $(window).outerWidth();
+				var titleWIdth = 300;//$('.slide-title')[0].outerWidth();
+
 				///////////////////////////////////////////////////////
 				// functions for building nested timelines
 				function animateSlide1() {
@@ -57,10 +60,13 @@ angular.module('slide-show').directive('slideShowCust', [
 						onCompleteParams: ["{self}", slide1]
 					});
 
+
 					slideTL1
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide1fade")
 						.set(slide1,{'opacity':1})
 						.add( TweenMax.to(slide1, fadeSpeed, {css:{autoAlpha:0}}))
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide1afterfade")
 						.fromTo(header, 0.7, {y:'-200'},{y:0}, 0)
 						.add( TweenMax.to(slide1, duration) )
@@ -78,9 +84,11 @@ angular.module('slide-show').directive('slideShowCust', [
 					});
 
 					slideTL2
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide2fade")
 						//.set(slide2,{'opacity':1})
 						.add(TweenMax.to(slide2, fadeSpeed, {css:{autoAlpha:0}}) )
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide2afterfade")
 						.add(TweenMax.to(slide2, duration))
 						.from(progressBar, slideTL2.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0);
@@ -96,9 +104,11 @@ angular.module('slide-show').directive('slideShowCust', [
 					});
 
 					slideTL3
+						.add(TweenMax.set('.slide-title',{x:0}))
 						.add("slide3fade")
 						//.set(slide3, {'opacity':1})
 						.add(TweenMax.to(slide3, fadeSpeed, {css:{autoAlpha:0}}))
+						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
 						.add("slide3afterfade")
 						.add(TweenMax.to(slide3, duration))
 						.from(progressBar, slideTL3.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0);

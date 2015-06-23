@@ -16,15 +16,18 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				//Create Menus
 				angular.forEach(ctrl.menuItems, function(value, key) {
 					var menu = angular.element('<div>'+value.menuName+'</div>');
-					menu.css('margin','0 15px 0 15px');
 
+					var crntExpandMenu;
+
+					menu.css('margin','0 15px 0 15px');
 					menu.bind("mouseenter",function() {
 						//console.log('menu entered ' + this);
+						TweenMax.set(expandsMenu, {display: 'none'}); //reset
 						TweenMax.set(expandsMenu[key], {display: 'block'});
 						element.append(expandsMenu[key]);
 
 						element.bind("mouseleave",function() {
-							TweenMax.set(expandsMenu[key], {display: 'none'});
+							TweenMax.set(expandsMenu, {display: 'none'});
 							expandsMenu[key].detach();
 						});
 					});
@@ -35,15 +38,14 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				// Create Sub Expand Menus
 				var expandsMenu = [];
 				angular.forEach(ctrl.menuItems, function(value, key) {
-
 					//columns
-					var contentList1 = angular.element('<ul></ul>');
-					var contentList2 = angular.element('<ul style="display: -webkit-inline-box;"></ul>');
+					var contentList1 = angular.element('<ul class="firstList"></ul>');
+					var contentList2 = angular.element('<ul class="secondList" style="display: -webkit-inline-box;"></ul>');
 
-					var expandMenu = angular.element('<div> Expand Menu: Adjustable Blade Clippers</div>');
+					var expandMenu = angular.element('<div></div>');
 					expandMenu.addClass('expand-menu');
 					var contentContainer = angular.element('<div class="subMenuExpanded" layout="column"></div>');
-					var contentRow = angular.element('<div layout="row" layout-sm="column"></div>');
+					var contentRow = angular.element('<div class="subMenuExpanded" layout="row" layout-sm="column"></div>');
 					var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
 
 					var contentSecondCol = angular.element('<div layout="row" hide-sm class="second-column" flex-gt-sm="70"></div>');
@@ -60,14 +62,16 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					// Column 2 Contents
 					var colContent2 = [];
 					angular.forEach(value.subMenus, function(value, key){
-						var col2 = angular.element('<li></li>');
-						var imageContainer = angular.element('<img/>');
-						imageContainer.attr("src", value.imageUrl);
-						imageContainer.css('width', '100px');
-						imageContainer.css('height', '100px');
-						col2.append(imageContainer);
-						contentList2.append(col2);
-						this.push(col2);
+						if(value.imageUrl){
+							var col2 = angular.element('<li></li>');
+							var imageContainer = angular.element('<img/>');
+							imageContainer.attr("src", value.imageUrl);
+							imageContainer.css('width', '100px');
+							imageContainer.css('height', '100px');
+							col2.append(imageContainer);
+							contentList2.append(col2);
+							this.push(col2);
+						}
 					}, colContent2);
 
 					contentContainer.append(contentRow);
@@ -115,20 +119,16 @@ function jumboMenuCtrl() {
 		},
 		{menuName: 'Accessaries',
 			subMenus:[
+				{name:'Accessaries1',link:'', },
+				{name:'Accessaries2',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
 				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+				{name:'Accessaries3',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
+
+				{name:'Accessaries3',link:'', },
 				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
-				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
-				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'},
-				{name:'Accessaries1',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/63765-easycut+-clipper-kit-raca-straight-390x460.png'},
-				{name:'Accessaries2',link:'', imageUrl:'https://at-home.andis.com/images_and_docs/18575-home-haircut-9-piece-kit-mc-2-straight-390x460.png'},
+				{name:'Accessaries2',link:'', },
 				{name:'Accessaries3',link:'', imageUrl:'https://barber-and-beauty.andis.com/images_and_docs/64850-ceramic-bgr+-clipper-bgr+-straight-390x460.png'}]}
 	];
 }

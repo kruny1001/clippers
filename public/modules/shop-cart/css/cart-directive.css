@@ -14,9 +14,9 @@
 .shopCartFloat{
     display:none;
     position: fixed;
-    top: 38px;
+    top: 78px;
     right: 10px;
-    width:360px;
+    width:328px;
     background-color: #dd5567;
     color: white;
     padding:3px;
