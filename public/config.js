@@ -4,7 +4,8 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
-	var applicationModuleVendorDependencies = ['ngResource',
+	var applicationModuleVendorDependencies = [
+		'ngResource',
 		'ngCookies',  'ngAnimate',  'ngTouch',
 		'ngMessages',
 		'ngSanitize',  'ui.router',
@@ -15,7 +16,7 @@ var ApplicationConfiguration = (function() {
 		//'nvd3',
 		'braintree-angular',
 		'LocalStorageModule',
-		'textAngular'
+		//'textAngular'
 
 	];
 

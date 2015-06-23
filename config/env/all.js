@@ -132,6 +132,7 @@ module.exports = {
         //'public/lib/reveal.js/js/reveal.js',
         'public/lib/localforage/dist/localforage.js',
         'public/lib/angular-localforage/dist/angular-localForage.js',
+
         'public/lib/textAngular/dist/textAngular-rangy.min.js',
         'public/lib/textAngular/dist/textAngular-sanitize.js',
         'public/lib/textAngular/dist/textAngularSetup.js',

@@ -33,7 +33,7 @@ module.exports = {
 
 			],
 			js: [
-				'public/lib/angular/angular.min.js',
+				'public/lib/angular/angular.js',
 				'public/lib/angular-messages/angular-messages.min.js',
 				'public/lib/angular-resource/angular-resource.min.js',
 				'public/lib/angular-cookies/angular-cookies.min.js',
@@ -104,8 +104,10 @@ module.exports = {
 				'public/lib/localforage/dist/localforage.min.js',
 				//'public/lib/angular-localforage/dist/angular-localForage.min.js',
 				'public/lib/angular-local-storage/dist/angular-local-storage.min.js',
-				'public/lib/textAngular/dist/textAngular-rangy.js',
+
+				'public/lib/textAngular/dist/textAngular-rangy.min.js',
 				'public/lib/textAngular/dist/textAngular-sanitize.js',
+				'public/lib/textAngular/dist/textAngularSetup.js',
 				'public/lib/textAngular/dist/textAngular.js'
 
 			]
