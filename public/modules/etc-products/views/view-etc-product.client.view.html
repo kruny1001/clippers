@@ -37,48 +37,51 @@
 			<md-whiteframe hide-gt-sm class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
-
                     <h2 class="md-title"> {{etcProduct.name}} </h2>
                     <p class="md-body-2"> {{etcProduct.brand.name}} </p>
-
                     <div class="md-body-2">Overview</div>
 					<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
-
 				</div>
-                <md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
+                <div layout="column" layout-align="center center" style="margin-bottom: 5px;">
+                    <md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
+                    <md-button ng-click="addCart()" class="md-warn md-raised wide-btn">Check Out</md-button>
+                </div>
 			</md-whiteframe>
 		</div>
+
 		<!-- product sub info-->
 		<div layout="column" hide-sm  style="margin-left:4px; margin-right:8px;" flex-gt-sm="34" flex="100">
 			<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
-                    <h2 class="md-title"> {{etcProduct.name}} </h2>
-                    <!--<p class="md-body-2"> {{etcProduct.brand.name}}</p>-->
-					<!--<div class="md-body-2">Overview</div>-->
-					<!--<div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality &#45;&#45; </div>-->
+                    <h2 class="md-body-2"> {{etcProduct.name}} </h2>
+				</div>
+			</md-whiteframe>
 
+			<md-whiteframe class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base" layout="column">
+				<div style="padding:10px;">
+					<h1 class="md-title"></h1>
+					<p class="md-body-1">You also may like this items</p>
 					<!--<div layout="row" style="margin-top:14px">-->
 						<!--<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">-->
 						<!--<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">-->
 					<!--</div>-->
 				</div>
-				<div layout="column" layout-align="center center" style="margin-bottom: 5px;">
+                <div layout="column" layout-align="center center" style="margin-bottom: 5px;">
                     <md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
                     <md-button ng-click="addCart()" class="md-warn md-raised wide-btn">Check Out</md-button>
                 </div>
 			</md-whiteframe>
 
-			<md-whiteframe class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base" layout="column">
-				<div style="padding:10px;">
-					<h1 class="md-title">Other things you might Fancy </h1>
-					<p class="md-body-1">You also may like this items</p>
-					<div layout="row" style="margin-top:14px">
-						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
-						<img ng-click="showDetail()" class="card-image-sm" src="http://thefancy-media-ec6.thefancy.com/commerce/original/20150513/cdecb6072c3b40deb3af33d9cfd86497.jpg">
-					</div>
-				</div>
-			</md-whiteframe>
+            <md-whiteframe class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base" layout="column">
+                <div style="padding:10px;">
+                    <p class="md-body-2">Social</p>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-facebook.svg" class="logo-icons-s24" aria-label="FacebookIcon"></md-icon>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-google-plus.svg" class="logo-icons-s24" aria-label="GooglePlusIcon"></md-icon>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-slack.svg" class="logo-icons-s24" aria-label="Cake"></md-icon>
+                </div>
+
+            </md-whiteframe>
 		</div>
 	</div>
 

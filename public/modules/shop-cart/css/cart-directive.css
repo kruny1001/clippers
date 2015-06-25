@@ -17,7 +17,7 @@
     top: 78px;
     right: 10px;
     width:328px;
-    background-color: #dd5567;
+    background-color:  rgb(63, 81, 181);
     color: white;
     padding:3px;
     border-radius:5px;
@@ -27,7 +27,7 @@
 .shopCartFloat hr{
     border-top: 4px double #FFFFFF;
     text-align: center;
-    margin-top:2px;
+    margin-top:12px;
     margin-bottom:2px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .shopCartContainer::-webkit-scrollbar:vertical {
-    width: 11px;
+    width: 5px;
 }
 
 .shopCartContainer::-webkit-scrollbar:horizontal {
@@ -50,16 +50,17 @@
 
 .shopCartContainer::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    border: 2px solid white; /* should match background, can't be transparent */
-    background-color: rgba(0, 0, 0, .5);
+    border: 1px solid #f7ecb5; /* should match background, can't be transparent */
+    background-color: rgba(255, 181, 196, 0.5);
 }
 
 .shopCartContainer .item-name{
     margin-top: 3px;
     margin-right:3px;
+    margin-left: 3px;
     padding:3px;
     position:relative;
-    background-color: #cde1de;
+    background-color: white;
     border-radius:5px;
     color: black;
 }
@@ -68,14 +69,14 @@
     margin-top: 3px;
     padding:3px;
     position:relative;
-    background-color: #cde1de;
+    background-color: white;
     border-radius:5px;
     color: black;
     text-align:left;
 }
 
 .shopCartTotal{
-    color: black;
+    color: white;
     text-align: left;
 }
 
@@ -83,9 +84,24 @@
     margin-top: 3px;
     padding: 3px;
     position: relative;
-    background-color: #cde1de;
+    background-color: white;
     border-radius: 5px;
     color: black;
     text-align: left;
     margin-left: 3px;
+}
+
+.cart-thumb-img{
+    width:45px;
+    height:45px;
+    background-color: white;
+    margin-top: 3px;
+    padding:3px;
+    position:relative;
+    border-radius:5px;
+
+}
+
+.cart-btn-font{
+    font-size: 12px;
 }

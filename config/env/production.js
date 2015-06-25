@@ -23,17 +23,16 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 				'public/lib/angular-material/angular-material.min.css',
-
 				'public/lib/nvd3/nv.d3.min.css',
 				'public/lib/ionicons/css/ionicons.min.css',
 				'public/lib/textAngular/dist/textAngular.css',
+
 				//'public/lib/reveal.js/css/reveal.css',
 				//'public/lib/angular-material/default-theme.css',
 				//'public/lib/components-font-awesome/css/font-awesome.min.css',
-
 			],
 			js: [
-				'public/lib/angular/angular.js',
+				'public/lib/angular/angular.min.js',
 				'public/lib/angular-messages/angular-messages.min.js',
 				'public/lib/angular-resource/angular-resource.min.js',
 				'public/lib/angular-cookies/angular-cookies.min.js',
@@ -61,47 +60,17 @@ module.exports = {
 				'public/lib/gsap/src/minified/plugins/ScrollToPlugin.min.js',
 				'public/lib/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
 				'public/lib/gsap/src/minified/plugins/CSSPlugin.min.js',
-				//'public/lib/3rd/SplitText.min.js',
-
-				//'public/lib/ng-context-menu/dist/ng-context-menu.min.js',
-				//'public/lib/threejs/build/three.min.js',
-
-				/*
-				 'public/lib/tremulajs/libs/hammer.js',
-				 'public/lib/tremulajs/libs/jsBezier-0.6.js',
-				 'public/lib/tremulajs/dist/Tremula.js',
-				 */
 
 				//'public/lib/Snap.svg/dist/snap.svg-min.js',
 				'public/lib/lodash/lodash.min.js',
 				//'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
 
 				'public/lib/d3/d3.min.js',
-				//'public/lib/d3-timeline/src/d3-timeline.js',
-
-				//'public/lib/topojson/topojson.js',
-				//'public/lib/angular-smart-table/dist/smart-table.min.js',
-
-
-				//'public/lib/tinymce/tinymce.min.js',
-				//'public/lib/tinymce/plugins/image/plugin.min.js',
-				//'public/lib/tinymce/plugins/link/plugin.min.js',
-				//'public/lib/tinymce/plugins/fullscreen/plugin.min.js',
-				//'public/lib/tinymce/plugins/code/plugin.min.js',
-				//'public/lib/tinymce/plugins/table/plugin.min.js',
-				//'public/lib/tinymce/plugins/contextmenu/plugin.min.js',
-				//'public/lib/tinymce/plugins/media/plugin.min.js',
-				//
 				'public/lib/string/lib/string.min.js',
-				//'public/lib/moment/min/moment-with-locales.min.js',
-
-				//'public/lib/nvd3/nv.d3.min.js',
-				//'public/lib/angular-nvd3/dist/angular-nvd3.min.js',
 
 				'public/lib/braintree-angular/dist/braintree-angular.js',
-				//'public/lib/braintree-web/dist/braintree.js',
-				//'public/lib/reveal.js/js/reveal.js',
 				'public/lib/localforage/dist/localforage.min.js',
+
 				//'public/lib/angular-localforage/dist/angular-localForage.min.js',
 				'public/lib/angular-local-storage/dist/angular-local-storage.min.js',
 
@@ -109,7 +78,6 @@ module.exports = {
 				'public/lib/textAngular/dist/textAngular-sanitize.js',
 				'public/lib/textAngular/dist/textAngularSetup.js',
 				'public/lib/textAngular/dist/textAngular.js'
-
 			]
 		},
 		css: 'public/dist/application.min.css',

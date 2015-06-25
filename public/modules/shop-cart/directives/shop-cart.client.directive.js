@@ -5,14 +5,17 @@ angular.module('shop-cart').directive('shopCart', shopCartDirective);
 
 function shopCartDirective($compile, $state, Cartlist) {
 	return {
-		template: '<div layout="row">' +
-								'<md-button class="md-fab md-mini" ng-click="close()" aria-label="Shopping Cart Close (shop-cart)">' +
-									'<span><md-icon class="ion-close-round"></md-icon></span></md-button></div>',
+		template: '<div layout="row" layout-align="space-between start">' +
+									'<div class="md-body-2">Shopping Cart</div>'+
+									'<md-button class="md-raised cart-btn-font" ng-click="close()" aria-label="Shopping Cart Close (shop-cart)">' +
+										'close' +
+									'</md-button>' +
+							'</div>',
 		controller:shopCartDirectiveCtrl,
 		controllerAs:'shCtrl',
 		restrict: 'E',
 		link: function postLink(scope, element, attrs) {
-			var cartContainer, cartTotal, content, noContent, checkOut, testAdd, clearAll;
+			var cartContainer, cartTotal, content, noContent, checkOut, testAdd, clearAll, btnContainer;
 			var isOpen = false;
 			var shopCartCtrl;
 
@@ -21,11 +24,12 @@ function shopCartDirective($compile, $state, Cartlist) {
 
 			function create(){
 				cartContainer = angular.element('<div class="shopCartContainer" ></div>');
-				noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center center"><div flex>No Items</div></div>');
-				content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in shCtrl.items track by $index"><img width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="50">{{item.name}}</div><div flex="25" class="item-price">{{item.price | currency:"$"}}</div><div flex="10" class="item-qnt">{{item.qnt}}</div></div>');
+				noContent = angular.element('<div ng-if="items" layout="column" class="md-body-1" layout-align="center start"><div flex>No Items</div></div>');
+				content = angular.element('<div layout="row" class="md-caption" ng-repeat="item in shCtrl.items track by $index"><img class="cart-thumb-img" width="45" height="45" ng-src="{{item.image}}"><div class="item-name" flex="50">{{item.name}}</div><div flex="25" class="item-price">{{item.price | currency:"$"}}</div><div flex="10" class="item-qnt">{{item.qnt}}</div></div>');
 				cartTotal = angular.element('<hr/><div layout="row" class="md-caption"><div flex="70">Total: </div><div flex="30" class="shopCartTotal" >{{shCtrl.total | currency:"USD$"}}</div></div>');
-				checkOut = angular.element('<div style="text-align:center;">Proceed to Checkout</div>');
-				clearAll = angular.element('<div style="text-align:center;">Clear Add</div>');
+				btnContainer = angular.element('<div layout="row", layout-align="center center"></div>');
+				checkOut = angular.element('<md-button class="md-raised md-warn cart-btn-font" ng-click="shCtrl.goToCheckOut()">Proceed to Checkout </md-button>');
+				clearAll = angular.element('<md-button class="md-raised cart-btn-font" ng-click="shCtrl.clearAll()">Clear Add</md-button>');
 
 				if(shopCartCtrl == undefined){
 					shopCartCtrl = element.controller('shopCart');
@@ -38,9 +42,16 @@ function shopCartDirective($compile, $state, Cartlist) {
 				// content tag
 				cartContainer.append(content);
 				// Content Total
+
 				element.append(cartTotal);
-				element.append(checkOut);
-				element.append(clearAll);
+
+
+				//Create Checkout and clear history btns
+				btnContainer.append(checkOut);
+				btnContainer.append(clearAll);
+
+				element.append(btnContainer);
+				$compile(btnContainer)(scope);
 
 				//Compile tag
 				$compile(noContent)(scope);
@@ -49,10 +60,7 @@ function shopCartDirective($compile, $state, Cartlist) {
 
 				$compile(cartContainer)(scope);
 
-				checkOut.on('click', function(){
-					$state.go('checkout');
-				})
-				clearAll.on('click', shopCartCtrl.clearAll);
+
 
 				//Broadcast listner
 				scope.$on('cart-updated', function(event, args){
@@ -115,4 +123,8 @@ function shopCartDirectiveCtrl($scope, $state, Cartlist, localStorageService){
 		$scope.$digest();
 		console.log('cleared All items');
 	};
+
+	shCtrl.goToCheckOut = function(){
+		$state.go('checkout');
+	}
 }
