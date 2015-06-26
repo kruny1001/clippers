@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	ProductBrand = mongoose.model('ProductBrand'),
+	EtcProduct = mongoose.model('EtcProduct'),
 	_ = require('lodash');
 
 /**
@@ -83,6 +84,22 @@ exports.list = function(req, res) {
 		}
 	});
 };
+
+exports.getProducts = function(req, res){
+	var populationQuery = [
+		//{path:'class', select:'name prefix'},
+		{path:'user', select:'displayName'},
+		{path:'brand', select:'name'},
+	];
+
+	var brandId = req.param("productBrandId");
+	EtcProduct.find({brand:brandId}).populate(populationQuery).exec(function(err, etcProduct) {
+		if (err) return next(err);
+		if (! etcProduct) return next(new Error('Failed to load Etc product ' + id));
+		//req.etcProduct = etcProduct ;
+		res.jsonp(etcProduct);
+	});
+}
 
 /**
  * Product brand middleware

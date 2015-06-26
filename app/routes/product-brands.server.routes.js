@@ -14,6 +14,11 @@ module.exports = function(app) {
 		.put(users.requiresLogin, productBrands.hasAuthorization, productBrands.update)
 		.delete(users.requiresLogin, productBrands.hasAuthorization, productBrands.delete);
 
+
+	app.route('/product-by-brandId/:productBrandId')
+		.get(productBrands.getProducts)
+
+
 	// Finish by binding the Product brand middleware
 	app.param('productBrandId', productBrands.productBrandByID);
 };

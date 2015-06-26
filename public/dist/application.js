@@ -62,6 +62,11 @@ ApplicationConfiguration.registerModule('articles');
 
 'use strict';
 
+// Use application configuration module to register a new module
+ApplicationConfiguration.registerModule('brand-query');
+
+'use strict';
+
 // Use Application configuration module to register a new module
 ApplicationConfiguration.registerModule('core');
 
@@ -229,6 +234,42 @@ angular.module('articles').factory('Articles', ['$resource',
 		});
 	}
 ]);
+'use strict';
+
+//Setting up route
+angular.module('brand-query').config(['$stateProvider',
+	function($stateProvider) {
+		// Brand query state routing
+		$stateProvider.
+		state('brand-by-name-test', {
+			url: '/brand-by-name-test',
+			templateUrl: 'modules/brand-query/views/brand-by-name-test.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+angular.module('brand-query').controller('BrandByNameTestController',BrandByNameTestController );
+
+function BrandByNameTestController($scope, BrandByName) {
+	$scope.products = BrandByName.get({brandId:'5556d123f226ecd1762f4a18'});
+}
+
+'use strict';
+
+angular.module('brand-query').factory('BrandByName', BrandByName);
+
+function BrandByName($resource) {
+	return $resource('product-by-brandId/:brandId',{ brandId:'@_id' },
+		{
+			get:{
+				method:'GET',
+				isArray: true
+			}
+		});
+}
+
+
 'use strict';
 
 // Setting up route
