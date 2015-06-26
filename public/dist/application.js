@@ -2834,23 +2834,25 @@ angular.module('slide-show').directive('slideShowCust', [
 					var p2 = $('.product2');
 					var p3 = $('.product3');
 
+					var logoImg = slide1.find('img');
+					console.log(logoImg);
+
 					var slideTL1 = new TimelineMax({
 						onComplete: prepNext,
 						onCompleteParams: ["{self}", slide1]
 					});
 
-
 					slideTL1
-						.add(TweenMax.set('.slide-title',{x:0}))
+						//.add(TweenMax.set('.slide_logo',{x:0}))
 						.add("slide1fade")
 						.set(slide1,{'opacity':1})
 						.add( TweenMax.to(slide1, fadeSpeed, {css:{autoAlpha:0}}))
-						.add( TweenMax.to('.slide-title', 2, {x:(windowWidth - titleWIdth)/2}))
+						//.add( TweenMax.to('.slide_logo', 2, {x:(windowWidth - titleWIdth)/2}))
+						.add( TweenMax.from('.slide_logo', 1.3, {y:'-200%', ease: Bounce.easeOut}))
 						.add("slide1afterfade")
 						.fromTo(header, 0.7, {y:'-200'},{y:0}, 0)
 						.add( TweenMax.to(slide1, duration) )
 						.from(progressBar, slideTL1.duration(), {scaleX:0, transformOrigin:"0px 0px", ease:Linear.easeNone}, 0)
-
 
 					return slideTL1;
 				}
