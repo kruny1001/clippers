@@ -8,7 +8,7 @@ angular.module('core')
   ['$scope','$rootScope','$window','$log','$mdSidenav','$location','$state', '$timeout', 'Authentication','stateService',
     function($scope, $rootScope,$window,$log,$mdSidenav, $location, $state, $timeout, Authentication, stateService) {
       $scope.authentication = Authentication;
-      $scope.title = "Clippers";
+      $scope.title = "Barbers Look";
       $scope.subTitle = "";
       $scope.link = "";
       $scope.classroom = false;
