@@ -1,7 +1,7 @@
 #slider-wrapper {
     width: 100%;
     height: 250px;
-    background-color: #333;
+    /*background-color: #333;*/
     padding: 0px;
     margin: 0 0 0 0;
     position:relative;
@@ -10,7 +10,7 @@
 #slider {
     width: 100%;
     height: 250px;
-    background-color: #333;
+    /*background-color: #333;*/
     padding: 0px;
     margin: 0;
     position:relative;
@@ -30,15 +30,15 @@
 }
 
 #slide1 {
-    background: #acfdff;
+    /*background: #acfdff;*/
 }
 
 #slide2 {
-    background: #52d3ff;
+    /*background: #52d3ff;*/
 }
 
 #slide3 {
-    background: #5181ff;
+    /*background: #5181ff;*/
 }
 
 #progressBar {

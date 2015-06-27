@@ -4,3 +4,9 @@
     margin-right: auto;
 
 }
+
+.slideBackgroundImg{
+    background-image: url("../img/homeLogo4.png") !important;
+    background-repeat:no-repeat;
+    background-position: center center;
+}
