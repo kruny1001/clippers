@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="269px" height="126px" viewBox="0 0 269 126" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard-3" sketch:type="MSArtboardGroup">
+            <g id="barbersLook-Logo" sketch:type="MSLayerGroup" transform="translate(39.000000, 7.000000)">
+                <g id="rightP" transform="translate(171.500000, 49.950893) scale(-1, -1) translate(-171.500000, -49.950893) translate(153.604348, 2.982143)" stroke="#FFFFFF" sketch:type="MSShapeGroup">
+                    <path d="M29.8260881,5.9642857 L5.96521739,25.3482141" id="rightP_line2" stroke-width="4" stroke-linecap="square"></path>
+                    <path d="M5.62561343,28.3444239 L30.2376722,87.5476963" id="rightP_line1" stroke-width="4" stroke-linecap="square"></path>
+                    <ellipse id="rightP_ball3" stroke-width="3" fill="#D8D8D8" cx="30.2376722" cy="5.25743346" rx="5.39121287" ry="5.25743346"></ellipse>
+                    <ellipse id="rightP_ball2" stroke-width="3" fill="#D8D8D8" cx="5.39121287" cy="25.8299992" rx="5.39121287" ry="5.25743346"></ellipse>
+                    <ellipse id="rightP_ball1" stroke-width="3" fill="#D8D8D8" cx="30.2376722" cy="87.5476963" rx="5.39121287" ry="5.25743346"></ellipse>
+                </g>
+                <g id="leftP" stroke="#FFFFFF" sketch:type="MSShapeGroup">
+                    <path d="M7.45652176,26.8392857 L34.9256834,87.5476963" id="lefitP_line2" stroke-width="4" stroke-linecap="square"></path>
+                    <path d="M34.3000013,5.9642857 L5.9113991,26.0497745" id="leftP_line1" stroke-width="4" stroke-linecap="square"></path>
+                    <ellipse id="leftP_ball3" stroke-width="3" fill="#D8D8D8" cx="34.9256834" cy="87.5476963" rx="5.39121287" ry="5.25743346"></ellipse>
+                    <ellipse id="leftP_ball2" stroke-width="3" fill="#D8D8D8" cx="5.39121287" cy="24.4584948" rx="5.39121287" ry="5.25743346"></ellipse>
+                    <ellipse id="leftP_ball1" stroke-width="3" fill="#D8D8D8" cx="34.9256834" cy="5.25743346" rx="5.39121287" ry="5.25743346"></ellipse>
+                </g>
+                <text id="look" sketch:type="MSTextLayer" font-family="Myanmar MN" font-size="34.2876095" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="74.0705768" y="77.3453083">Look</tspan>
+                </text>
+                <text id="barbers" sketch:type="MSTextLayer" font-family="Myanmar MN" font-size="34.2876095" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="23.440056" y="49.0008844">Barbers</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

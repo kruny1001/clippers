@@ -1,0 +1,12 @@
+.slideHome{
+    background-color: rgba(162, 162, 178, 0.54);
+    display: block;
+    height: 100%;
+}
+
+.slide-home-svgLogo{
+    display:none;
+    height: 100%;
+    width: 100%;
+
+}
