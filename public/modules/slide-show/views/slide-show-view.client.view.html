@@ -1,4 +1,151 @@
 <section data-ng-controller="SlideShowViewController">
-	<br>
+
 	<slide-show-home></slide-show-home>
+
+
+	<style>
+		.slideView{
+			font-family:sans-serif;
+			margin:0;
+			color:#888;
+			background:#2B2C2D;
+			overflow:hidden;
+            margin-bottom: 15px;
+            padding: 15px;;
+		}
+		.device {
+			width:70%;
+			height:200px;
+			background-color:#111;
+			position:relative;
+			text-align:center;
+			margin:20px auto;
+			font-size: 1.5em;
+			display: table;
+			border: 1px solid #555;
+		}
+
+		.device p {
+			display: table-cell;
+            vertical-align: middle;
+		}
+
+		.box {
+			cursor:pointer;
+			width:100%;
+			height:100%;
+			position:absolute;
+			color:#ccc;
+			display:table;
+		}
+		.box code {
+			font-size: 1.3em;
+		}
+		.red {
+			background-color:#833;
+		}
+        #sliderGsap{
+            width:80%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+	</style>
+
+
+    <md-content class="slideView">
+        <div class="device">
+            <div class="box red">
+                <p class="md-caption">I am a "full screen" sliding panel
+                    <code>{width:100%}</code><br>
+                    hello world
+                </p>
+
+            </div>
+            <p>I represent the width of your device</p>
+        </div>
+        <div id="sliderText">Use the slider to change the width of the device</div>
+        <div id="sliderGsap"></div>
+    </md-content>
+
+    <md-content style="margin:10px; background-color: white" layout="row" layout="center center" layout-padding>
+        <div layout="column" flex>
+            <h1 class="md-title">About Barbers Look</h1>
+            <p style="padding: 10px;">Ultimo is a premium Magento theme with advanced admin module. It’s extremely customizable, easy to use and fully responsive.</p>
+        </div>
+        <div layout="column" flex>
+            <h1 class="md-title">Theme Features</h1>
+            <div>Best Price</div>
+            <div>Brand New</div>
+            <div>Best Quality</div>
+        </div>
+        <div layout="column" flex>
+            <h1 class="md-title">Key Features</h1>
+            <div>Best Price</div>
+            <div>Brand New</div>
+            <div>Best Quality</div>
+        </div>
+        <div layout="column" flex>
+            <h1 class="md-title">Company Info</h1>
+            <md-list-item class="md-2-line" style="padding:0px;" ng-repeat="phone in phones">
+                <md-icon md-svg-icon="communication:phone" ng-if="$index === 0"></md-icon>
+                <div class="md-list-item-text" ng-class="{'md-offset': $index != 0 }">
+                    <h3> {{ phone.number }} </h3>
+                    <p> {{ phone.type }} </p>
+                </div>
+            </md-list-item>
+        </div>
+    </md-content>
+
+
+    <md-content style="padding:10px">
+        <h2 class="md-title">ICONS</h2>
+        <div style="padding:10px" layout="column" layout-margin>
+            <div class="md-caption">business</div>
+            <md-icon md-svg-icon="communication:business"></md-icon>
+            <div class="md-caption">call</div>
+            <md-icon md-svg-icon="communication:call"></md-icon>
+            <div class="md-caption">call-end</div>
+            <md-icon md-svg-icon="communication:call-end"></md-icon>
+            <div class="md-caption">call-made</div>
+            <md-icon md-svg-icon="communication:call-made"></md-icon>
+            <div class="md-caption">call-merge</div>
+            <md-icon md-svg-icon="communication:call-merge"></md-icon>
+            <div class="md-caption">call-missed</div>
+            <md-icon md-svg-icon="communication:call-missed"></md-icon>
+            <div class="md-caption">call-received</div>
+            <md-icon md-svg-icon="communication:call-received"></md-icon>
+            <div class="md-caption">call-split</div>
+            <md-icon md-svg-icon="communication:call-split"></md-icon>
+            <div class="md-caption">chat</div>
+            <md-icon md-svg-icon="communication:chat"></md-icon>
+            <div class="md-caption">clear-all</div>
+            <md-icon md-svg-icon="communication:clear-all"></md-icon>
+            <div class="md-caption">comment</div>
+            <md-icon md-svg-icon="communication:comment"></md-icon>
+            <div class="md-caption">contacts</div>
+            <md-icon md-svg-icon="communication:contacts"></md-icon>
+            <div class="md-caption">dialer-sip</div>
+            <md-icon md-svg-icon="communication:dialer-sip"></md-icon>
+            <div class="md-caption">dialpad</div>
+            <md-icon md-svg-icon="communication:dialpad"></md-icon>
+            <div class="md-caption">dnd-on</div>
+            <md-icon md-svg-icon="communication:dnd-on"></md-icon>
+            <div class="md-caption">email</div>
+            <md-icon md-svg-icon="communication:email"></md-icon>
+            <div class="md-caption">forum</div>
+            <md-icon md-svg-icon="communication:forum"></md-icon>
+            <div class="md-caption">import-export</div>
+            <md-icon md-svg-icon="communication:import-export"></md-icon>
+            <div class="md-caption">invert-colors-off</div>
+            <md-icon md-svg-icon="communication:invert-colors-off"></md-icon>
+            <div class="md-caption">invert-colors-on</div>
+            <md-icon md-svg-icon="communication:invert-colors-on"></md-icon>
+            <div class="md-caption">phone</div>
+            <md-icon md-svg-icon="communication:phone"></md-icon>
+            <div class="md-caption">test</div>
+            <md-icon md-svg-icon="communication:test"></md-icon>
+        </div>
+    </md-content>
+
+
 </section>

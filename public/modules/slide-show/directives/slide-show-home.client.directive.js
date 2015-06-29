@@ -39,10 +39,10 @@ function slideShowHomeCtrl($scope, $mdIcon){
 		var svgBody = temp.find('.slide-home-svgLogo');
 		var barbersLoogLogo;
 
-		var text1 = angular.element('<div>Lower Price</div>')
-		text1.css('display','none');
-		text1.css('textAlign','center');
-		element.append(text1);
+		//var text1 = angular.element('<div>Lower Price</div>')
+		//text1.css('display','none');
+		//text1.css('textAlign','center');
+		//element.append(text1);
 
 		var logoPromise= $mdIcon('barbersLookText').then(function(iconEl){
 			//iconEl.css("display", 'none');
@@ -58,10 +58,10 @@ function slideShowHomeCtrl($scope, $mdIcon){
 			tl.to(BarberText, 0.7, {fill: 'white'});
 			//tl.add( TweenLite.to(svgBody, 2, {rotation:"+=360"}));
 			tl.addLabel("text", 1);
-			tl.set(text1, {display:'block', perspective:600},"text");
-			tl.to(text1, 0.7, {fontSize:45}, "text");
-			tl.to(text1, 0.7, {fontSize:20}, '+=0.9',"text");
-			tl.set(barbersLoogLogo,{display:'block'});
+			//tl.set(text1, {display:'block', perspective:600},"text");
+			//tl.to(text1, 0.7, {fontSize:45}, "text");
+			//tl.to(text1, 0.7, {fontSize:20}, '+=0.9',"text");
+			tl.set(barbersLoogLogo,{display:'block', scale:.8});
 			tl.to(barbersLoogLogo,1,{scale:0.3})
 			//tl.to(text1, 2, {scale:6, immediateRender:true}, "text");
 

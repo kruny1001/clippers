@@ -11,5 +11,6 @@ angular.module('slide-show').config(['$stateProvider','$mdIconProvider',
 		});
 		$mdIconProvider.icon('barbersLook', 'modules/slide-show/img/logo/barberLogo.svg');
 		$mdIconProvider.icon('barbersLookText', 'modules/slide-show/img/logo/BarberLookLogo.svg');
+		$mdIconProvider.iconSet('communication', 'modules/slide-show/img/svg/communication-icons.svg', 24);
 	}
 ]);
