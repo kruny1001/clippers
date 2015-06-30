@@ -16,7 +16,6 @@
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
     "underscore": "latest",
-    "gsap": "latest",
     "bootstrap-sass-official": "latest",
     "lodash": "latest",
     "angular-smart-table": "~2.0.1",

@@ -53,14 +53,16 @@ module.exports = {
 				//'public/lib/tinymce/tinymce.min.js',
 				//'public/lib/angular-ui-tinymce/src/tinymce.js',
 
-				'public/lib/gsap/src/minified/TimelineMax.min.js',
-				'public/lib/gsap/src/minified/TweenMax.min.js',
-
-				'public/lib/gsap/src/minified/utils/Draggable.min.js',
-				//'public/lib/gsap/src/minified/plugins/TextPlugin.min.js',
-				'public/lib/gsap/src/minified/plugins/ScrollToPlugin.min.js',
-				'public/lib/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
-				'public/lib/gsap/src/minified/plugins/CSSPlugin.min.js',
+				//GSAP
+				'public/3rd/gsap/src/minified/TimelineMax.min.js',
+				'public/3rd/gsap/src/minified/TweenMax.min.js',
+				'public/3rd/gsap/src/minified/utils/Draggable.min.js',
+				'public/3rd/gsap/src/minified/plugins/ScrollToPlugin.min.js',
+				'public/3rd/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
+				'public/3rd/gsap/src/minified/plugins/CSSPlugin.min.js',
+				'public/3rd/gsap/src/minified/plugins/TextPlugin.min.js',
+				'public/3rd/gsap/src/minified/utils/SplitText.min.js',
+				'public/3rd/gsap/src/minified/plugins/DrawSVGPlugin.min.js',
 
 				//'public/lib/Snap.svg/dist/snap.svg-min.js',
 				'public/lib/lodash/lodash.min.js',

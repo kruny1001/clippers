@@ -80,15 +80,18 @@ module.exports = {
         'public/lib/angular-material/angular-material.js',
 
         //'public/lib/angular-ui-tinymce/src/tinymce.js',
-        'public/lib/gsap/src/uncompressed/TimelineMax.js',
-        'public/lib/gsap/src/uncompressed/TweenMax.js',
-        //'public/lib/ng-context-menu/dist/ng-context-menu.js',
 
-        'public/lib/gsap/src/uncompressed/utils/Draggable.js',
-        //'public/lib/gsap/src/uncompressed/plugins/TextPlugin.js',
-        'public/lib/gsap/src/uncompressed/plugins/ScrollToPlugin.js',
-        'public/lib/gsap/src/uncompressed/plugins/ColorPropsPlugin.js',
-        'public/lib/gsap/src/uncompressed/plugins/CSSPlugin.js',
+
+        'public/3rd/gsap/src/minified/TimelineMax.min.js',
+        'public/3rd/gsap/src/minified/TweenMax.min.js',
+        'public/3rd/gsap/src/minified/utils/Draggable.min.js',
+        'public/3rd/gsap/src/minified/plugins/ScrollToPlugin.min.js',
+        'public/3rd/gsap/src/minified/plugins/ColorPropsPlugin.min.js',
+        'public/3rd/gsap/src/minified/plugins/CSSPlugin.min.js',
+        'public/3rd/gsap/src/minified/plugins/TextPlugin.min.js',
+        'public/3rd/gsap/src/minified/utils/SplitText.min.js',
+        'public/3rd/gsap/src/minified/plugins/DrawSVGPlugin.min.js',
+
         //'public/lib/3rd/SplitText.min.js'
 
         //'public/lib/threejs/build/three.min.js',
