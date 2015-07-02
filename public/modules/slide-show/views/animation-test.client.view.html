@@ -1,19 +1,31 @@
 <section style="background-color: #000" data-ng-controller="AnimationTestController">
 	<div style="padding: 50px; position: absolute; top: 17%">
-        <div style="color: white;
-            text-align: center;
-            font-size: 45px;
-            font-weight: bold;">
-                Hello World</div>
-
-        <div style="font-size:44px;
-		  line-height:50px;
-		  color:#dedede;
-		  margin-top:25px;"
-             id="quote">SplitText makes it easy to break apart the text in an HTML element so that each character, word, and/or line is wrapped in its own div tag.</div>
+        <div class="animation-test-title"> 반딧불 효과</div>
+        <div class="animation-test-desc" id="quote">
+                <!--ng-bind="content[indexForDesc].desc">-->
+            텍스트 에니메이션 각각의 열은 반응형으로 한열씩 효과를 준다. 하나의 HTML 태그에 감싸져 있는 텍스트들을 열이 나뉘는 기점으로 하여
+            위에서 아래로 그리고 로테이션은 180도 주어서 한열씩 끝까지 보여 주도록 한다. 각각의 에니메이션에는 바운스 효과를 주어서 좀 더 자연스러운 에니메이션을
+            구사 한다.
+        </div>
         <br/>
         <md-button class="md-warn md-raised" ng-click="animate()">Next</md-button>
+
+
+
+        <style>
+            .s24 {
+                width: 65px;
+                height: 65px;
+                color: #f00; }
+        </style>
+
+        <md-icon md-svg-src="modules/slide-show/img/svg/gDocs.svg" class="s24"></md-icon>
+        <md-icon md-svg-src="modules/slide-show/img/svg/sheat.svg" class="s24"></md-icon>
+        <md-icon md-svg-icon="communication:forum" class="s24"></md-icon>
+        <md-icon md-svg-icon="communication:import-export" class="s24"></md-icon>
+
     </div>
+
 
 	<canvas id="canvas" style="background-color: #000"></canvas>
 </section>

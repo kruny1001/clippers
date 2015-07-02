@@ -2,6 +2,7 @@
 
 angular.module('slide-show').controller('AnimationTestController', ['$scope',
 	function($scope) {
+
 		'use strict';
 
 		var canvas = document.getElementById('canvas');
@@ -123,16 +124,12 @@ angular.module('slide-show').controller('AnimationTestController', ['$scope',
 
 
 
-
 		var tl = new TimelineLite,
 			mySplitText = new SplitText("#quote", {type:"words,chars"}),
 			chars = mySplitText.chars; //an array of all the divs that wrap each character
-
 		TweenLite.set("#quote", {perspective:400});
-
 		tl.staggerFrom(chars, 0.8, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
-
-
+		tl.staggerFrom(".s24", 1.5, {scale:0.5, opacity:0, delay:0.5, ease:Elastic.easeOut, force3D:true}, 0.2);
 
 		$scope.animate = function() {
 			tl.restart();

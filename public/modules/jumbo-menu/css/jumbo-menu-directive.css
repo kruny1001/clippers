@@ -30,3 +30,20 @@
 .second-column{
     background-color: #f3d380;
 }
+
+
+.subMenuBox{
+    padding:10px;
+    text-decoration: none;
+    background: #fff;
+    border-radius: 4px;
+    border: solid 2px #fff;
+}
+
+.subMenuBox-hover{
+    padding:10px;
+    text-decoration: none;
+    background: #dfdfdf;
+    border-radius: 4px;
+    border: solid 2px #fff;
+}

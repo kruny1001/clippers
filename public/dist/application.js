@@ -1243,17 +1243,17 @@ angular.module('etc').controller('WigsController',wigsCtrl);
 function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 
 	//test split Test
-	var tl = new TimelineLite,
-
-		mySplitText = new SplitText("#quote", {type:"words,chars"}),
-		chars = mySplitText.chars; //an array of all the divs that wrap each character
-
-	TweenLite.set("#quote", {perspective:400});
-
-	tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
-	$scope.splitText = function(){
-		tl.restart();
-	}
+	//var tl = new TimelineLite,
+	//
+	//	mySplitText = new SplitText("#quote", {type:"words,chars"}),
+	//	chars = mySplitText.chars; //an array of all the divs that wrap each character
+	//
+	//TweenLite.set("#quote", {perspective:400});
+	//
+	//tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
+	//$scope.splitText = function(){
+	//	tl.restart();
+	//}
 
 	$scope.toGo = function(content){
 		$state.go("viewEtcProduct", { etcProductId: content._id })
@@ -1749,25 +1749,32 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 			link: function postLink(scope, element, attrs) {
 
 				var ctrl = element.controller('jumboMenu')
-				var menuContainer = angular.element('<div layout="row" layout-align="center center" layout-margin></div>')
+				var menuContainer = angular.element('<div layout="row" layout-align="center center"></div>')
 
 				//Create Menus
 				angular.forEach(ctrl.menuItems, function(value, key) {
-					var menu = angular.element('<div>'+value.menuName+'</div>');
+					var menu = angular.element('<div class="subMenuBox">'+value.menuName+'</div>');
+					//menu.addClass('subMenuBox-hover');
 
 					var crntExpandMenu;
 
-					menu.css('margin','0 15px 0 15px');
+					//menu.css('margin','0 15px 0 15px');
 					menu.bind("mouseenter",function() {
-						//console.log('menu entered ' + this);
+						//this.addClass('subMenuBox-hover')
+						angular.element(this).addClass('subMenuBox-hover');
 						TweenMax.set(expandsMenu, {display: 'none'}); //reset
-						TweenMax.set(expandsMenu[key], {display: 'block'});
+						TweenMax.fromTo(expandsMenu[key], 0.6, {display: 'block', x:'-100%'}, {display: 'block', x:'0%'});
 						element.append(expandsMenu[key]);
 
 						element.bind("mouseleave",function() {
-							TweenMax.set(expandsMenu, {display: 'none'});
+
+							TweenMax.to(expandsMenu, 1,{x:'-100%'});
 							expandsMenu[key].detach();
 						});
+					});
+
+					menu.bind("mouseleave",function() {
+						angular.element(this).removeClass('subMenuBox-hover');
 					});
 
 					menuContainer.append(menu);
@@ -1825,10 +1832,11 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				$compile(menuContainer)(scope);
 				element.append(menuContainer);
 
-				element.css('background-color', '#e5e9e8');
+				element.css('background-color', '#FFF');
 				element.css('z-index', '99');
-				element.css('border-top', '2px rgb(136, 111, 111) solid');
-				element.css('border-bottom', '2px rgb(136, 111, 111) solid');
+				element.css('border-top', '1px dotted #dfdfdf');
+				element.css('border-bottom', 'solid 2px #f06373');
+
 			}
 		};
 	}
@@ -2803,6 +2811,7 @@ angular.module('slide-show').config(['$stateProvider','$mdIconProvider',
 
 angular.module('slide-show').controller('AnimationTestController', ['$scope',
 	function($scope) {
+
 		'use strict';
 
 		var canvas = document.getElementById('canvas');
@@ -2924,16 +2933,12 @@ angular.module('slide-show').controller('AnimationTestController', ['$scope',
 
 
 
-
 		var tl = new TimelineLite,
 			mySplitText = new SplitText("#quote", {type:"words,chars"}),
 			chars = mySplitText.chars; //an array of all the divs that wrap each character
-
 		TweenLite.set("#quote", {perspective:400});
-
 		tl.staggerFrom(chars, 0.8, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
-
-
+		tl.staggerFrom(".s24", 1.5, {scale:0.5, opacity:0, delay:0.5, ease:Elastic.easeOut, force3D:true}, 0.2);
 
 		$scope.animate = function() {
 			tl.restart();

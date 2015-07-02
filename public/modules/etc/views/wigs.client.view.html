@@ -4,13 +4,14 @@
 
         <md-content flex layout="column">
 
-            <slide-show-andis></slide-show-andis>
-            <!--<slide-show-home></slide-show-home>-->
-            <!--<slide-show-cust></slide-show-cust>-->
+            <!--<slide-show-andis hide-sm></slide-show-andis>-->
+            <slide-show-home hide-gt-sm></slide-show-home>
+            <slide-show-cust hide-sm></slide-show-cust>
 
             <jumbo-menu></jumbo-menu>
 
-            <div id="quote" style="font-size:44px; line-height:50px;">SplitText makes it easy to break apart the text in an HTML element so that each character, word, and/or line is wrapped in its own div tag.</div>
+            <!--<div id="quote" style="font-size:15px; line-height:50px; padding:15px;">SplitText makes it easy to break apart the text in an HTML element so that each character, word, and/or line is wrapped in its own div tag.</div>-->
+
             <md-button class="md-primary" ng-click="splitText()">Animation</md-button>
             <h3 class="md-title" style="text-align: center">Search</h3>
             <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>

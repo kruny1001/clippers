@@ -3,18 +3,18 @@
 	<shop-cart hide-sm></shop-cart>
 
 
-	<div layout="row" layout-sm="column" layout-align="start start">
-		<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>
-        <!-- Brand Link-->
-        <!--<h3 class="md-body-1">Andis > Clipper</h3>-->
-	</div>
+	<!--<div layout="row" layout-sm="column" layout-align="start start">-->
+		<!--<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>-->
+        <!--&lt;!&ndash; Brand Link&ndash;&gt;-->
+        <!--&lt;!&ndash;<h3 class="md-body-1">Andis > Clipper</h3>&ndash;&gt;-->
+	<!--</div>-->
 
 
 	<!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
 
-	<div layout="row" layout-sm="column" layout-align="center start">
+	<div layout-sm="column" layout="row" layout-align="center start">
 		<!-- main product image -->
-		<div layout="column" style="margin-left:8px; margin-right:4px;" flex-gt-sm="64" flex="100">
+		<div style="margin-left:8px; margin-right:4px;" flex-gt-sm="64">
 			<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
 				<div style="padding:10px;">
 					<img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
@@ -34,7 +34,8 @@
 				</div>
 			</md-whiteframe>
 
-			<md-whiteframe hide-gt-sm class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
+			<md-whiteframe hide-gt-sm class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
+                           layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
                     <h2 class="md-title"> {{etcProduct.name}} </h2>
@@ -50,7 +51,8 @@
 		</div>
 
 		<!-- product sub info-->
-		<div layout="column" hide-sm  style="margin-left:4px; margin-right:8px;" flex-gt-sm="34" flex="100">
+		<!--<div  hide-sm  style="margin-left:4px; margin-right:8px;" flex-gt-sm="34" flex="100">-->
+        <div  hide-sm  style="margin-left:4px; margin-right:8px;" flex>
 			<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
 				<div style="padding:10px;">
 					<h1 class="md-title">{{etcProduct.price | currency}}</h1>
@@ -85,107 +87,106 @@
 		</div>
 	</div>
 
-	<md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column" style="margin-left: 8px; margin-right: 8px; padding:10px;">
+
+        <md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
+                       layout="column" style="margin-left: 8px; margin-right: 8px; padding:10px;">
+            <h3 class="md-title" style="margin-left:10px;">Product Details</h3>
+
+            <h3 class="md-title">Best for: Heavy duty for high-volume haircutting</h3>
+            <p class="md-body-1">
+                RECHARGEABLE:
+                Powerful, cordless convenience
+                Rotary Motor
+                120V | 60Hz | MAX 3000SPM
+                Rotary motor for heavy-duty use; perfect for removing weight and bulk.
+                Professional power in cordless design.
+                Ceramic blade runs cooler and stays sharper.
+                20% lighter, 10% smaller and 15% faster than traditional clippers.
+                Includes Sensa-Charge® for rapid charging.
+                Works with all UltraEdge® and CeramicEdge® blades.
+            </p>
+
+            <div>
+                <svg viewbox='0 0 800 400'>
+
+                    <defs>
+                        <g id='arrow' transform='scale(.65)'>
+                            <path d='M 15,-50 C 15,-50 -49,-13 8,30'/>
+                            <path d='M -21,18 C -20,19 2,37 7,34 C 11,31 6,5 6,5'/>
+                        </g>
+                    </defs>
+
+                    <line class='distance distance--helper' x1='100' y1='100' x2='200' y2='100'/>
+                    <line class='distance distance--helper' x1='100' y1='300' x2='200' y2='300'/>
+
+                    <rect class='reference-box' x='200' y='100' width='400' height='200'/>
+
+                    <line class='distance' x1='100' y1='250' x2='600' y2='250'/>
+                    <line class='distance' x1='100' y1='250' x2='200' y2='250'/>
+                    <line class='distance' x1='100' y1='250' x2='100' y2='100'/>
+                    <line class='distance distance--min' x1='100' y1='250' x2='100' y2='300'/>
+
+                    <circle id='target' class='path path--circular' cx='100' cy='250' r='50'/>
+
+                    <circle class='point point--central' cx='100' cy='250' r='5'/>
+                    <circle class='point point--edge' cx='600' cy='250' r='5'/>
+                    <circle class='point point--edge' cx='100' cy='100' r='5'/>
+                    <circle class='point point--edge' cx='200' cy='250' r='5'/>
+                    <circle class='point point--edge--min' cx='100' cy='300' r='5'/>
+
+                    <use class='arrow arrow--box' xlink:href='#arrow' transform='translate(450 78) rotate(105)'/>
+                    <use class='arrow arrow--min' xlink:href='#arrow' transform='translate(87 305)'/>
+                    <use class='arrow arrow--path' xlink:href='#arrow' transform='translate(170 240) rotate(-165)'/>
+
+                    <text x='310' y='87'>Box Open</text>
+                    <text x='100' y='335'>closest-side</text>
+                    <text x='135' y='205'>clipping path</text>
+
+                </svg>
+            </div>
+
+            <p class="md-body-1">
+                FEATURES
+                Rotary motor for heavy-duty use; perfect for removing weight and bulk.
+                Professional power in cordless design.
+                Ceramic blade runs cooler and stays sharper.
+                20% lighter, 10% smaller and 15% faster than traditional clippers.
+                Includes Sensa-Charge® for rapid charging.
+                Works with all UltraEdge® and CeramicEdge® blades.
+
+                PRODUCT SPECIFICATIONS
+                ModelBGR+
+                Item Number64850
+                UPC Code0 40102 64850 2
+                Weight1.10 lbs.
+                Length7.63 in.
+                Body MaterialPolymer
+                FinishMatte Black
+
+                MOTOR
+                TypeRotary
+                Strokes per Minute3000 spm
+                Volts120 V
+                Frequency60 Hz
+
+                BLADE
+                Item Number64480
+                NameCeramicEdge® Detachable Blade, Size 000
+                TypeCeramicEdge™
+                MaterialCarbon Steel
+
+                PACKAGING SPECIFICATIONS
+                Packaging TypeGift Box
+                Height9.375 in.
+                Width13.5 in.
+                Depth4.5 in.
+                Weight6.3 lbs.
+
+                APPROVALS
+            </p>
+        </md-whiteframe>
 
 
-
-
-
-		<h3 class="md-title" style="margin-left:10px;">Product Details</h3>
-
-		<h3 class="md-title">Best for: Heavy duty for high-volume haircutting</h3>
-        <p class="md-body-1">
-            RECHARGEABLE:
-            Powerful, cordless convenience
-            Rotary Motor
-            120V | 60Hz | MAX 3000SPM
-            Rotary motor for heavy-duty use; perfect for removing weight and bulk.
-            Professional power in cordless design.
-            Ceramic blade runs cooler and stays sharper.
-            20% lighter, 10% smaller and 15% faster than traditional clippers.
-            Includes Sensa-Charge® for rapid charging.
-            Works with all UltraEdge® and CeramicEdge® blades.
-        </p>
-
-        <div>
-            <svg viewbox='0 0 800 400'>
-
-                <defs>
-                    <g id='arrow' transform='scale(.65)'>
-                        <path d='M 15,-50 C 15,-50 -49,-13 8,30'/>
-                        <path d='M -21,18 C -20,19 2,37 7,34 C 11,31 6,5 6,5'/>
-                    </g>
-                </defs>
-
-                <line class='distance distance--helper' x1='100' y1='100' x2='200' y2='100'/>
-                <line class='distance distance--helper' x1='100' y1='300' x2='200' y2='300'/>
-
-                <rect class='reference-box' x='200' y='100' width='400' height='200'/>
-
-                <line class='distance' x1='100' y1='250' x2='600' y2='250'/>
-                <line class='distance' x1='100' y1='250' x2='200' y2='250'/>
-                <line class='distance' x1='100' y1='250' x2='100' y2='100'/>
-                <line class='distance distance--min' x1='100' y1='250' x2='100' y2='300'/>
-
-                <circle id='target' class='path path--circular' cx='100' cy='250' r='50'/>
-
-                <circle class='point point--central' cx='100' cy='250' r='5'/>
-                <circle class='point point--edge' cx='600' cy='250' r='5'/>
-                <circle class='point point--edge' cx='100' cy='100' r='5'/>
-                <circle class='point point--edge' cx='200' cy='250' r='5'/>
-                <circle class='point point--edge--min' cx='100' cy='300' r='5'/>
-
-                <use class='arrow arrow--box' xlink:href='#arrow' transform='translate(450 78) rotate(105)'/>
-                <use class='arrow arrow--min' xlink:href='#arrow' transform='translate(87 305)'/>
-                <use class='arrow arrow--path' xlink:href='#arrow' transform='translate(170 240) rotate(-165)'/>
-
-                <text x='310' y='87'>Box Open</text>
-                <text x='100' y='335'>closest-side</text>
-                <text x='135' y='205'>clipping path</text>
-
-            </svg>
-        </div>
-
-        <p class="md-body-1">
-        FEATURES
-        Rotary motor for heavy-duty use; perfect for removing weight and bulk.
-        Professional power in cordless design.
-        Ceramic blade runs cooler and stays sharper.
-        20% lighter, 10% smaller and 15% faster than traditional clippers.
-        Includes Sensa-Charge® for rapid charging.
-        Works with all UltraEdge® and CeramicEdge® blades.
-
-        PRODUCT SPECIFICATIONS
-        ModelBGR+
-        Item Number64850
-        UPC Code0 40102 64850 2
-        Weight1.10 lbs.
-        Length7.63 in.
-        Body MaterialPolymer
-        FinishMatte Black
-
-        MOTOR
-        TypeRotary
-        Strokes per Minute3000 spm
-        Volts120 V
-        Frequency60 Hz
-
-        BLADE
-        Item Number64480
-        NameCeramicEdge® Detachable Blade, Size 000
-        TypeCeramicEdge™
-        MaterialCarbon Steel
-
-        PACKAGING SPECIFICATIONS
-        Packaging TypeGift Box
-        Height9.375 in.
-        Width13.5 in.
-        Depth4.5 in.
-        Weight6.3 lbs.
-
-        APPROVALS
-        </p>
-   	</md-whiteframe>
 
 	<h3 class="md-title" style="margin-left:10px;">Review</h3>
     <div class="score-total"

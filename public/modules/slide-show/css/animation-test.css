@@ -1,0 +1,13 @@
+.animation-test-title {
+    color: white;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.animation-test-desc {
+    font-size:44px;
+    line-height:50px;
+    color:#dedede;
+    margin-top:25px;
+}

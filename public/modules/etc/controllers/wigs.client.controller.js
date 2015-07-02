@@ -6,17 +6,17 @@ angular.module('etc').controller('WigsController',wigsCtrl);
 function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 
 	//test split Test
-	var tl = new TimelineLite,
-
-		mySplitText = new SplitText("#quote", {type:"words,chars"}),
-		chars = mySplitText.chars; //an array of all the divs that wrap each character
-
-	TweenLite.set("#quote", {perspective:400});
-
-	tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
-	$scope.splitText = function(){
-		tl.restart();
-	}
+	//var tl = new TimelineLite,
+	//
+	//	mySplitText = new SplitText("#quote", {type:"words,chars"}),
+	//	chars = mySplitText.chars; //an array of all the divs that wrap each character
+	//
+	//TweenLite.set("#quote", {perspective:400});
+	//
+	//tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
+	//$scope.splitText = function(){
+	//	tl.restart();
+	//}
 
 	$scope.toGo = function(content){
 		$state.go("viewEtcProduct", { etcProductId: content._id })
