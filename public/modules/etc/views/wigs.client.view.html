@@ -2,51 +2,54 @@
     <shop-cart hide-sm></shop-cart>
     <md-content layout="row">
 
-        <md-content flex layout="column">
+        <md-content flex layout="column" style="background-color: rgb(236, 236, 236) !important;">
 
             <!--<slide-show-andis hide-sm></slide-show-andis>-->
+            <!--<slide-show-cust hide-sm></slide-show-cust>-->
             <slide-show-home hide-gt-sm></slide-show-home>
-            <slide-show-cust hide-sm></slide-show-cust>
+            <slide-imgs hide-sm></slide-imgs>
 
             <jumbo-menu></jumbo-menu>
 
-            <!--<div id="quote" style="font-size:15px; line-height:50px; padding:15px;">SplitText makes it easy to break apart the text in an HTML element so that each character, word, and/or line is wrapped in its own div tag.</div>-->
-
+            <!--
+            <div id="quote" style="font-size:15px; line-height:50px; padding:15px;">SplitText makes it easy to break apart the text in an HTML element so that each character, word, and/or line is wrapped in its own div tag.</div>
             <md-button class="md-primary" ng-click="splitText()">Animation</md-button>
-            <h3 class="md-title" style="text-align: center">Search</h3>
-            <div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>
-                <md-content style="color:black;" layout-padding layout="column">
-                    <form ng-submit="$event.preventDefault()">
-                        <md-autocomplete
-                                ng-disabled="ctrl.isDisabled"
-                                md-no-cache="ctrl.noCache"
-                                md-selected-item="ctrl.selectedItem"
-                                md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                                md-search-text="ctrl.searchText"
-                                md-selected-item-change="ctrl.selectedItemChange(item)"
-                                md-items="item in ctrl.querySearch(ctrl.searchText)"
-                                md-item-text="item.name"
-                                md-min-length="0"
-                                placeholder="Pick an Angular repository"
-                                md-menu-class="autocomplete-custom-template">
-                            <md-item-template>
-                              <span class="item-title">
-                                <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-                                <span> {{item.name}} </span>
-                              </span>
-                              <span class="item-metadata">
-                                <span class="item-metastat">
-                                  <strong>{{item.watchers}}</strong> watchers
-                                </span>
-                                <span class="item-metastat">
-                                  <strong>{{item.forks}}</strong> forks
-                                </span>
-                              </span>
-                            </md-item-template>
-                        </md-autocomplete>
-                    </form>
-                </md-content>
-            </div>
+            -->
+
+            <!--<h3 class="md-title" style="text-align: center">Search</h3>-->
+            <!--<div ng-controller="DemoCtrl as ctrl" layout="column" ng-cloak>-->
+                <!--<md-content style="color:black;" layout-padding layout="column">-->
+                    <!--<form ng-submit="$event.preventDefault()">-->
+                        <!--<md-autocomplete-->
+                                <!--ng-disabled="ctrl.isDisabled"-->
+                                <!--md-no-cache="ctrl.noCache"-->
+                                <!--md-selected-item="ctrl.selectedItem"-->
+                                <!--md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"-->
+                                <!--md-search-text="ctrl.searchText"-->
+                                <!--md-selected-item-change="ctrl.selectedItemChange(item)"-->
+                                <!--md-items="item in ctrl.querySearch(ctrl.searchText)"-->
+                                <!--md-item-text="item.name"-->
+                                <!--md-min-length="0"-->
+                                <!--placeholder="Pick an Angular repository"-->
+                                <!--md-menu-class="autocomplete-custom-template">-->
+                            <!--<md-item-template>-->
+                              <!--<span class="item-title">-->
+                                <!--<md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>-->
+                                <!--<span> {{item.name}} </span>-->
+                              <!--</span>-->
+                              <!--<span class="item-metadata">-->
+                                <!--<span class="item-metastat">-->
+                                  <!--<strong>{{item.watchers}}</strong> watchers-->
+                                <!--</span>-->
+                                <!--<span class="item-metastat">-->
+                                  <!--<strong>{{item.forks}}</strong> forks-->
+                                <!--</span>-->
+                              <!--</span>-->
+                            <!--</md-item-template>-->
+                        <!--</md-autocomplete>-->
+                    <!--</form>-->
+                <!--</md-content>-->
+            <!--</div>-->
 
 
             <h3 class="md-title" style="text-align: center">BEST SELLING</h3>
@@ -101,7 +104,7 @@
                         </div>
                     </span>
                     <!--<img ng-show="isSuccessful" class="tileImg" ng-src="{{content.image}}">-->
-                    <md-grid-tile-footer>
+                    <md-grid-tile-footer style="  background: rgba(0, 0, 0, 0.67);">
                         <h3 >{{content.name}}  {{content.price| currency:"$"}}</h3>
                     </md-grid-tile-footer>
                 </md-grid-tile>

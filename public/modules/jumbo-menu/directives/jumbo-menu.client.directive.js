@@ -17,9 +17,7 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				angular.forEach(ctrl.menuItems, function(value, key) {
 					var menu = angular.element('<div class="subMenuBox">'+value.menuName+'</div>');
 					//menu.addClass('subMenuBox-hover');
-
 					var crntExpandMenu;
-
 					//menu.css('margin','0 15px 0 15px');
 					menu.bind("mouseenter",function() {
 						//this.addClass('subMenuBox-hover')
@@ -28,10 +26,10 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 						TweenMax.fromTo(expandsMenu[key], 0.6, {display: 'block', x:'-100%'}, {display: 'block', x:'0%'});
 						element.append(expandsMenu[key]);
 
+						//Hide subMenu  margin-top: 7px;
 						element.bind("mouseleave",function() {
-
-							TweenMax.to(expandsMenu, 1,{x:'-100%'});
-							expandsMenu[key].detach();
+							TweenMax.to(expandsMenu, 1,{x:'-120%'});
+							//expandsMenu[key].detach();
 						});
 					});
 
@@ -49,12 +47,12 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					var contentList1 = angular.element('<ul class="firstList"></ul>');
 					var contentList2 = angular.element('<ul class="secondList" style="display: -webkit-inline-box;"></ul>');
 
+					//Extended sub Menu
 					var expandMenu = angular.element('<div></div>');
 					expandMenu.addClass('expand-menu');
 					var contentContainer = angular.element('<div class="subMenuExpanded" layout="column"></div>');
 					var contentRow = angular.element('<div class="subMenuExpanded" layout="row" layout-sm="column"></div>');
 					var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
-
 					var contentSecondCol = angular.element('<div layout="row" hide-sm class="second-column" flex-gt-sm="70"></div>');
 					var imageList = angular.element('<div layout="row"></div>');
 

@@ -35,10 +35,6 @@ angular.module('slide-show').directive('slideShowCust', [
 					tl = new TimelineMax({
 						paused:true,
 						repeat:1,
-						//onComplete: restartTimeline,
-						//onCompleteParams: ["{self}"],
-						//onReverseComplete: reverseTimeline,
-						//onReverseCompleteParams: ["{self}"]
 					});
 
 				updateZindex();

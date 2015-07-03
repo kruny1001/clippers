@@ -1715,14 +1715,40 @@ angular.module('footer').directive('footerInfo', footerInfo);
 	function footerInfo($compile){
 		return {
 			template: '<div></div>',
+			controller: footerCtrl,
+			controllerAs: 'footerCtrl',
 			restrict: 'E',
-			link: function postLink(scope, element, attrs) {
+			link: function postLink(scope, element, attrs, ctrl) {
 				// Footer info directive logic
 				// ...
 				element.addClass('FI-body');
-				var container= angular.element('<div layout="row" layout-sm="column"></div>');
-				var firstCol = angular.element('<div layout="column"><h2 class="md-title">Barbers Look</h2><div class="md-body-1" style="margin-left:3px;">Best Price</div><div style="margin-left:3px;" class="md-body-1">Best Quality</div><div style="margin-left:3px;" class="md-body-1">Best Choice</div></div>')
-				var secondCol = angular.element('<div layout="column" layout-align="end end" flex><img style="height: 55px;" src="modules/footer/img/logo2.png"></div>');
+				var container= angular.element('<div layout="row" layout-sm="column" layout-align="start start"></div>');
+				var firstCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>')
+				var secondCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
+				var thirdCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
+				var fourthCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
+
+				console.log(ctrl.firstCol);
+
+				angular.forEach(ctrl.firstCol, function(value, key) {
+					var row = angular.element('<div class="md-body-1" style="margin-left:3px;">'+value.name+'</div>');
+					firstCol.append(row);
+				});
+
+				angular.forEach(ctrl.secondCol, function(value, key) {
+					var row = angular.element('<div class="md-body-1" style="margin-left:3px;" >'+value.name+'</div>');
+					secondCol.append(row);
+				});
+
+				angular.forEach(ctrl.thirdCol, function(value, key) {
+					var row = angular.element('<div class="md-body-1" style="margin-left:3px;" >'+value.name+'</div>');
+					thirdCol.append(row);
+				});
+
+				angular.forEach(ctrl.fourthCol, function(value, key) {
+					var row = angular.element('<div class="md-body-1" style="margin-left:3px;" >'+value.name+'</div>');
+					fourthCol.append(row);
+				});
 
 				$compile(container)(scope);
 				$compile(firstCol)(scope);
@@ -1730,10 +1756,38 @@ angular.module('footer').directive('footerInfo', footerInfo);
 
 				container.append(firstCol);
 				container.append(secondCol);
+				container.append(thirdCol);
+				container.append(fourthCol);
 
 				element.append(container);
 			}
 		};
+
+		function footerCtrl() {
+			var vm = this;
+			vm.firstCol = [
+				{name: 'My Information'},
+				{name: 'Order History'},
+				{name: 'Wish List'},
+				{name: 'My point & Coupon & Credit'}];
+
+			vm.secondCol = [
+				{name: 'About Us'},
+				{name: 'Barbers Reward'},
+				{name: 'Site Map'}];
+
+			vm.thirdCol = [
+				{name: 'Contact Us'},
+				{name: 'Track Order'},
+				{name: 'Company Poilicy'},
+				{name: 'Blog'}];
+
+			vm.fourthCol = [
+				{name: 'New Arrivals'},
+				{name: 'Best Selling'},
+				{name: 'Buy 1 Get 1 Free'},
+				{name: 'Clearance'}];
+		}
 	}
 
 // Jumbo Menus
@@ -1755,9 +1809,7 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 				angular.forEach(ctrl.menuItems, function(value, key) {
 					var menu = angular.element('<div class="subMenuBox">'+value.menuName+'</div>');
 					//menu.addClass('subMenuBox-hover');
-
 					var crntExpandMenu;
-
 					//menu.css('margin','0 15px 0 15px');
 					menu.bind("mouseenter",function() {
 						//this.addClass('subMenuBox-hover')
@@ -1766,10 +1818,10 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 						TweenMax.fromTo(expandsMenu[key], 0.6, {display: 'block', x:'-100%'}, {display: 'block', x:'0%'});
 						element.append(expandsMenu[key]);
 
+						//Hide subMenu  margin-top: 7px;
 						element.bind("mouseleave",function() {
-
-							TweenMax.to(expandsMenu, 1,{x:'-100%'});
-							expandsMenu[key].detach();
+							TweenMax.to(expandsMenu, 1,{x:'-120%'});
+							//expandsMenu[key].detach();
 						});
 					});
 
@@ -1787,12 +1839,12 @@ angular.module('jumbo-menu').directive('jumboMenu', ['$compile',
 					var contentList1 = angular.element('<ul class="firstList"></ul>');
 					var contentList2 = angular.element('<ul class="secondList" style="display: -webkit-inline-box;"></ul>');
 
+					//Extended sub Menu
 					var expandMenu = angular.element('<div></div>');
 					expandMenu.addClass('expand-menu');
 					var contentContainer = angular.element('<div class="subMenuExpanded" layout="column"></div>');
 					var contentRow = angular.element('<div class="subMenuExpanded" layout="row" layout-sm="column"></div>');
 					var contentFirstCol = angular.element('<div class="first-column" flex-gt-sm="30"></div>');
-
 					var contentSecondCol = angular.element('<div layout="row" hide-sm class="second-column" flex-gt-sm="70"></div>');
 					var imageList = angular.element('<div layout="row"></div>');
 
@@ -3028,6 +3080,30 @@ angular.module('slide-show').directive('slideShowAndis', [
 		};
 	}
 ]);
+
+
+angular.module('slide-show').directive('slideImgs', [
+	function() {
+		return {
+			restrict: 'E',
+			link: function postLink(scope, element, attrs) {
+				var mainContainer = angular.element('<div id="slider-wrapper"></div>');
+				var sliderContainer = angular.element('<div id="slider"></div>');
+				var slide = angular.element('<div class="slide"></div>');
+				var url = '../../modules/slide-show/img/homeLogo4.png';
+				slide.css( {
+					'background-image'    : 'url(' + url +')',
+					'background-repeat'   : 'no-repeat',
+					'background-position' : 'center center'
+				});
+				//<img src="modules/slide-show/img/homeLogo4.png">
+				sliderContainer.append(slide);
+				mainContainer.append(sliderContainer);
+				element.append(mainContainer);
+			}
+		};
+	}
+]);
 'use strict';
 
 angular.module('slide-show').directive('slideShowHome', slideShowHome);
@@ -3140,10 +3216,6 @@ angular.module('slide-show').directive('slideShowCust', [
 					tl = new TimelineMax({
 						paused:true,
 						repeat:1,
-						//onComplete: restartTimeline,
-						//onCompleteParams: ["{self}"],
-						//onReverseComplete: reverseTimeline,
-						//onReverseCompleteParams: ["{self}"]
 					});
 
 				updateZindex();

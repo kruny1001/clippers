@@ -13,3 +13,27 @@ angular.module('slide-show').directive('slideShowAndis', [
 		};
 	}
 ]);
+
+
+angular.module('slide-show').directive('slideImgs', [
+	function() {
+		return {
+			restrict: 'E',
+			link: function postLink(scope, element, attrs) {
+				var mainContainer = angular.element('<div id="slider-wrapper"></div>');
+				var sliderContainer = angular.element('<div id="slider"></div>');
+				var slide = angular.element('<div class="slide"></div>');
+				var url = '../../modules/slide-show/img/homeLogo4.png';
+				slide.css( {
+					'background-image'    : 'url(' + url +')',
+					'background-repeat'   : 'no-repeat',
+					'background-position' : 'center center'
+				});
+				//<img src="modules/slide-show/img/homeLogo4.png">
+				sliderContainer.append(slide);
+				mainContainer.append(sliderContainer);
+				element.append(mainContainer);
+			}
+		};
+	}
+]);
