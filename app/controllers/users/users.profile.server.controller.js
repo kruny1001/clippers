@@ -54,3 +54,19 @@ exports.update = function(req, res) {
 exports.me = function(req, res) {
 	res.json(req.user || null);
 };
+
+/*
+Extract All Users
+ */
+exports.getAllUsers = function(req, res){
+	console.log('getAllUsers');
+	User.find().sort('-created').exec(function(err, users) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.json(users);
+		}
+	});
+}

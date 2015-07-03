@@ -2,5 +2,8 @@
     background-color: #3F51B5;
     color:white;
     padding:10px;
+}
 
+.footerCol{
+    min-width: 180px;
 }

@@ -13,11 +13,11 @@ angular.module('footer').directive('footerInfo', footerInfo);
 				// Footer info directive logic
 				// ...
 				element.addClass('FI-body');
-				var container= angular.element('<div layout="row" layout-sm="column" layout-align="start start"></div>');
-				var firstCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>')
-				var secondCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
-				var thirdCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
-				var fourthCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
+				var container= angular.element('<div layout="row" layout-sm="column" layout-align="center start"></div>');
+				var firstCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">MY ACCOUNT</h2></div>')
+				var secondCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">ABOUT BARBERS LOOK</h2></div>');
+				var thirdCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">CUSTOMER SERVICE</h2></div>');
+				var fourthCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">SALE & DEALS</h2></div>');
 
 				console.log(ctrl.firstCol);
 
@@ -44,6 +44,11 @@ angular.module('footer').directive('footerInfo', footerInfo);
 				$compile(container)(scope);
 				$compile(firstCol)(scope);
 				$compile(secondCol)(scope);
+
+				firstCol.addClass('footerCol');
+				secondCol.addClass('footerCol');
+				thirdCol.addClass('footerCol');
+				fourthCol.addClass('footerCol');
 
 				container.append(firstCol);
 				container.append(secondCol);

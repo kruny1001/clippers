@@ -1722,11 +1722,11 @@ angular.module('footer').directive('footerInfo', footerInfo);
 				// Footer info directive logic
 				// ...
 				element.addClass('FI-body');
-				var container= angular.element('<div layout="row" layout-sm="column" layout-align="start start"></div>');
-				var firstCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>')
-				var secondCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
-				var thirdCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
-				var fourthCol = angular.element('<div layout="column" layout-margin><h2 class="md-title">Barbers Look</h2></div>');
+				var container= angular.element('<div layout="row" layout-sm="column" layout-align="center start"></div>');
+				var firstCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">MY ACCOUNT</h2></div>')
+				var secondCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">ABOUT BARBERS LOOK</h2></div>');
+				var thirdCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">CUSTOMER SERVICE</h2></div>');
+				var fourthCol = angular.element('<div layout="column" layout-margin><h2 class="md-body-2" style="font-weight: bolder;">SALE & DEALS</h2></div>');
 
 				console.log(ctrl.firstCol);
 
@@ -1753,6 +1753,11 @@ angular.module('footer').directive('footerInfo', footerInfo);
 				$compile(container)(scope);
 				$compile(firstCol)(scope);
 				$compile(secondCol)(scope);
+
+				firstCol.addClass('footerCol');
+				secondCol.addClass('footerCol');
+				thirdCol.addClass('footerCol');
+				fourthCol.addClass('footerCol');
 
 				container.append(firstCol);
 				container.append(secondCol);
@@ -3511,6 +3516,10 @@ angular.module('users').config(['$stateProvider',
 	function($stateProvider) {
 		// Users state routing
 		$stateProvider.
+		state('user-list', {
+			url: '/user-list',
+			templateUrl: 'modules/users/views/user-list.client.view.html'
+		}).
 		state('profile', {
 			url: '/settings/profile',
 			templateUrl: 'modules/users/views/settings/edit-profile.client.view.html'
@@ -3720,6 +3729,17 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 ]);
 'use strict';
 
+angular.module('users').controller('UserListController',
+	function($scope, UsersCustom) {
+		$scope.userNumber = 0;
+		$scope.users = UsersCustom.query();
+		$scope.users.$promise.then(function(data){
+			$scope.userNumber	= data.length;
+		})
+	}
+);
+'use strict';
+
 // Authentication service for user variables
 angular.module('users').factory('Authentication', ['$window', function($window) {
 	var auth = {
@@ -3735,6 +3755,17 @@ angular.module('users').factory('Authentication', ['$window', function($window) 
 angular.module('users').factory('Users', ['$resource',
 	function($resource) {
 		return $resource('users', {}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+angular.module('users').factory('UsersCustom', ['$resource',
+	function($resource) {
+		return $resource('users/getAllUsers', {}, {
 			update: {
 				method: 'PUT'
 			}
