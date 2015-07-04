@@ -1,0 +1,112 @@
+<md-content style="height:100%">
+    <style>
+        .sliderGsap {
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            background: #e6e6e6;
+            border: 20px solid #FFF;
+            margin-top: 20px;
+        }
+
+        .slideGsap {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        h1 > span, h3 > span {
+            background-color: rgba(244, 249, 251, 0.80);
+            line-height: 2;
+            padding: 10px;
+        }
+
+        .slideGsap > h1 {
+            width: 400px;
+            top: 100px;
+        }
+
+        .slideGsap > h3 {
+            width: 400px;
+            top: 180px;
+        }
+
+        .slideGsap > h1, .slideGsap > img, .slideGsap > h3 {
+            position: absolute;
+        }
+
+        .nonDraggableImage {
+            -webkit-user-drag: none;
+        }
+
+        .avatarGsap {
+            top: 80px;
+            left: 300px;
+        }
+
+        /*---------------------------------------------------------
+        NAV
+        ---------------------------------------------------------*/
+        .navGsap {
+            width: 800px;
+            display: table;
+            table-layout: fixed;
+            padding: 0px;
+        }
+
+        .navGsap div {
+            display:table-cell;
+            background-color: #FFFFFF;
+            height: 48px;
+            width: 33%;
+            background-color: #D3D3D3;
+            cursor: pointer;
+            box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            -webkit-box-sizing:border-box;
+            border-top:1px solid #000000;
+            border-right:1px solid #000000;
+        }
+
+        .navGsap div:first-child {
+            width: 34%;
+        }
+
+        .navGsap div:last-child {
+            border-right:1px solid #D3D3D3;
+        }
+
+        .navGsap .active div:last-child {
+            border-right:1px solid #FFFFFF;
+        }
+
+        .navGsap h3 {
+            width: 100%;
+            text-align: center;
+        }
+
+        .navGsap .active {
+            border-top:1px solid #FFFFFF;
+            background-color: #FFFFFF;
+        }
+    </style>
+    <div class="sliderGsap">
+        <div ng-repeat="slide in ctrl.slides"
+             ng-hide="!ctrl.isCurrentSlideIndex($index)"
+             class="slideGsap slide-animation">
+            <img class="nonDraggableImage" ng-src="{{slide.bg}}">
+            <img class="nonDraggableImage avatarGsap" ng-src="{{slide.avatar}}">
+            <h1 class="title"><span>{{slide.title}}</span></h1>
+            <h3 class="subtitle"><span>{{slide.subtitle}}</span></h3>
+        </div>
+    </div>
+
+    <div class="navGsap">
+        <div ng-repeat="slide in ctrl.slides"
+             ng-class="{'active':ctrl.isCurrentSlideIndex($index)}"
+             ng-click="ctrl.setCurrentSlideIndex($index)">
+            <h3>{{slide.title}}</h3>
+        </div>
+    </div>
+</md-content>

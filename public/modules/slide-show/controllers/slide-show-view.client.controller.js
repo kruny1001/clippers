@@ -63,4 +63,4 @@ angular.module('slide-show').controller('SlideShowViewController', ['$scope',
 		}
 
 	}
-]);
+])

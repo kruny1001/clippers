@@ -9,7 +9,6 @@ var toAddress = {
 	city: "Brookings",
 	state: "SD",
 	zip: "57006",
-	country: "SD",
 	phone: "780-123-4567"
 };
 
@@ -40,16 +39,16 @@ easypost.Address.create(fromAddress, function(err, fromAddress) {
 // set parcel
 easypost.Parcel.create({
 	predefined_package: "InvalidPackageName",
-	weight: 21.2
+	weight: 32
 }, function(err, response) {
 	console.log(err);
 });
 
 var parcel = {
-	length: 10.2,  // inches
-	width: 7.8,    // inches
-	height: 4.3,   // inches
-	weight: 21.2   // ounces
+	length: 10,  // inches
+	width: 8,    // inches
+	height: 5,   // inches
+	weight: 32   // ounces
 };
 
 // create customs_info form for intl shipping
@@ -57,9 +56,9 @@ var customsItem = {
 	description: "EasyPost t-shirts",
 	hs_tariff_number: 123456,
 	origin_country: "US",
-	quantity: 2,
+	quantity: 1,
 	value: 96.27,
-	weight: 21.1
+	weight: 32
 };
 
 var customsInfo = {
