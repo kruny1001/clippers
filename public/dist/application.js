@@ -118,6 +118,11 @@ ApplicationConfiguration.registerModule('slide-show');
 ApplicationConfiguration.registerModule('users');
 'use strict';
 
+// Use application configuration module to register a new module
+ApplicationConfiguration.registerModule('yd');
+
+'use strict';
+
 // Configuring the Articles module
 angular.module('articles').run(['Menus',
 	function(Menus) {
@@ -3918,5 +3923,30 @@ angular.module('users').factory('UsersCustom', ['$resource',
 				method: 'PUT'
 			}
 		});
+	}
+]);
+'use strict';
+
+//Setting up route
+angular.module('yd').config(['$stateProvider',
+	function($stateProvider) {
+		// Yd state routing
+		$stateProvider.
+		state('yd', {
+			url: '/yd',
+			templateUrl: 'modules/yd/views/yd.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+angular.module('yd').controller('YdController', ['$scope',
+	function() {
+		var vm = this;
+		vm.yds = [
+			{name: 'today1', link:''},{name: 'today1', link:''},{name: 'today1', link:''},
+			{name: 'today1', link:''},{name: 'today1', link:''},{name: 'today1', link:''},
+		]
+
 	}
 ]);
