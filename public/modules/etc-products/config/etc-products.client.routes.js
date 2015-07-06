@@ -15,7 +15,8 @@ angular.module('etc-products').config(['$stateProvider',
 		}).
 		state('viewEtcProduct', {
 			url: '/etc-products/:etcProductId',
-			templateUrl: 'modules/etc-products/views/view-etc-product.client.view.html'
+			//templateUrl: 'modules/etc-products/views/view-etc-product.client.view.html'
+				templateUrl: 'modules/etc-products/views/temp.html'
 		}).
 		state('editEtcProduct', {
 			url: '/etc-products/:etcProductId/edit',

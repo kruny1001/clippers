@@ -5,19 +5,6 @@
 angular.module('etc').controller('WigsController',wigsCtrl);
 function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 
-	//test split Test
-	//var tl = new TimelineLite,
-	//
-	//	mySplitText = new SplitText("#quote", {type:"words,chars"}),
-	//	chars = mySplitText.chars; //an array of all the divs that wrap each character
-	//
-	//TweenLite.set("#quote", {perspective:400});
-	//
-	//tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
-	//$scope.splitText = function(){
-	//	tl.restart();
-	//}
-
 	$scope.toGo = function(content){
 		$state.go("viewEtcProduct", { etcProductId: content._id })
 	};
@@ -30,29 +17,17 @@ function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 	$scope.isSuccessful = false;
 	$scope.percentLoaded = 0;
 
-	//var testData =[1,2,3,4];
-	//
-	//$scope.append = function(){
-	//	testData.forEach(function(value){
-	//		$scope.etcProducts.push({name:'232', image:'modules/etc/img/products/1.png'});
-	//	});
-	//	$scope.$digest();
-	//}
+
 
 	// Load Product
 	$scope.loadProduct = EtcProducts.list();
 	$scope.loadProduct.$promise.then(function(data){
 
 		$scope.etcProducts = data;
-		//console.log(data);
-		//testData = data;
 		var images = data.map(function(d){ return d.image});
 
 		Preloadimage.preloadImages(images).then(
 			function handleResolve(imageLoactions){
-				// Loading was successful.
-				//console.info( "Preload Successful" );
-
 				$timeout(function(){
 					$scope.isLoading = false;
 					$scope.isSuccessful = true;
@@ -74,5 +49,27 @@ function wigsCtrl($scope, $state, $timeout, EtcProducts, Preloadimage) {
 			}
 		)
 	});
+
+	//test split Test
+	//var tl = new TimelineLite,
+	//
+	//	mySplitText = new SplitText("#quote", {type:"words,chars"}),
+	//	chars = mySplitText.chars; //an array of all the divs that wrap each character
+	//
+	//TweenLite.set("#quote", {perspective:400});
+	//
+	//tl.staggerFrom(chars, 1.2, {opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:Back.easeOut}, 0.01, "+=0");
+	//$scope.splitText = function(){
+	//	tl.restart();
+	//}
+
+	//var testData =[1,2,3,4];
+	//
+	//$scope.append = function(){
+	//	testData.forEach(function(value){
+	//		$scope.etcProducts.push({name:'232', image:'modules/etc/img/products/1.png'});
+	//	});
+	//	$scope.$digest();
+	//}
 };
 

@@ -20,7 +20,7 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				//'public/lib/bootstrap/dist/css/bootstrap.min.css',
+				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				//'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 				'public/lib/angular-material/angular-material.min.css',
 				//'public/lib/nvd3/nv.d3.min.css',

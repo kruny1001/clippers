@@ -1,0 +1,144 @@
+<section data-ng-controller="EtcProductsController" data-ng-init="findOne()">
+    <shop-cart hide-sm></shop-cart>
+    <!--<div layout="row" layout-sm="column" layout-align="start start">-->
+    <!--<md-button class="md-primary md-raised md-mini" ng-click="goToParent()">Back</md-button>-->
+    <!--&lt;!&ndash; Brand Link&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3 class="md-body-1">Andis > Clipper</h3>&ndash;&gt;-->
+    <!--</div>-->
+
+    <!--<div ng-controller="SizeUtil.sizeOfWidthController" class="size-util-sizeOfWidth">{{width}}px<br/> {{screen}}</div>-->
+
+    <div layout-sm="column" layout="row" layout-align="center start">
+        <!-- main product image -->
+        <div style="margin-left:8px; margin-right:4px;" flex-gt-sm="70">
+            <md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
+                <div style="padding:10px;">
+                    <img ng-src="{{etcProduct.image}}" class="card-image" alt="Washed Out">
+
+                    <!-- Thumbnail Picture-->
+                    <div layout="row">
+                        <div class="thumbnail-container" ng-repeat="thumb in etcProduct.extraImg track by $index" ng-click="clickThumbImage($index)">
+                            <img class="card-image-thumbnail" ng-src="{{thumb.imageUrl}}">
+                        </div>
+                    </div>
+                </div>
+            </md-whiteframe>
+
+            <md-whiteframe hide-gt-sm class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
+                           layout="column">
+                <div style="padding:10px;">
+                    <h1 class="md-title">{{etcProduct.price | currency}}</h1>
+                    <h2 class="md-title"> {{etcProduct.name}} </h2>
+                    <p class="md-body-2"> {{etcProduct.brand.name}} </p>
+                    <div class="md-body-2">Overview</div>
+                    <div class="md-body-1">The zeiss VR ONE Virtual Reality Headset allows you to experience virtual or augemented reality -- </div>
+                </div>
+                <div layout="column" layout-align="center center" style="margin-bottom: 5px;">
+                    <md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
+                    <md-button ng-click="addCart()" class="md-warn md-raised wide-btn">Check Out</md-button>
+                </div>
+            </md-whiteframe>
+        </div>
+
+        <!-- product sub info-->
+        <!--<div  hide-sm  style="margin-left:4px; margin-right:8px;" flex-gt-sm="34" flex="100">-->
+        <div  hide-sm  style="margin-left:4px; margin-right:8px;" flex>
+            <md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content" layout="column">
+                <div style="padding:10px;">
+                    <h1 class="md-title">{{etcProduct.price | currency}}</h1>
+                    <h2 class="md-body-2"> {{etcProduct.name}} </h2>
+                </div>
+            </md-whiteframe>
+
+            <md-whiteframe class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base" layout="column">
+                <div style="padding:10px;">
+                    <h1 class="md-title">Add to Cart</h1>
+                    <p class="md-body-1"></p>
+                </div>
+                <div layout="column" layout-align="center center" style="margin-bottom: 5px;">
+                    <md-button ng-click="addCart()" class="md-primary md-raised wide-btn">Add to Cart</md-button>
+                    <md-button ng-click="addCart()" class="md-warn md-raised wide-btn">Check Out</md-button>
+                </div>
+            </md-whiteframe>
+
+            <md-whiteframe class="md-whiteframe-z2 meanT-home-card overview-content ob-underbar-base" layout="column">
+                <div style="padding:10px;">
+                    <p class="md-body-2">Social</p>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-facebook.svg" class="logo-icons-s24" aria-label="FacebookIcon"></md-icon>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-google-plus.svg" class="logo-icons-s24" aria-label="GooglePlusIcon"></md-icon>
+                    <md-icon md-svg-src="modules/reviews/img/social/social-1_logo-slack.svg" class="logo-icons-s24" aria-label="Cake"></md-icon>
+                </div>
+
+            </md-whiteframe>
+        </div>
+    </div>
+
+
+    <md-whiteframe class="md-whiteframe-z2 meanT-home-card ob-underbar-base overview-content"
+                   layout="column" style="margin-left: 8px; margin-right: 8px; padding:10px;">
+        <div class="md-body-2">Product Information</div>
+        <p class="md-body-1">
+            {{etcProduct.desc}}
+        </p>
+    </md-whiteframe>
+
+    <div class="score-total"
+         style="text-align: center;
+            color:white;
+            background: #0b5675;
+            padding: 10px 0px;"
+         layout="row" layout-align="space-around center" layout-padding layout-margin>
+        <div>
+            <span class="md-body-2">Review Score</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #02a2ff;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                {{etcProduct.review.score}}
+            </span>
+        </div>
+        <div>
+            <span class="md-body-2">Reviews</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ffb24a;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+                {{etcProduct.review.num}}
+            </span>
+        </div>
+        <div>
+            <span class="md-body-2">Delivery</span><br/>
+            <span class="total-score grade" style="font-size: 26px;line-height: 80px;margin: 0px;padding: 0px;
+                  background: #ff52c7;
+                  color: white;
+                  width: 80px;
+                  height: 80px;
+                  display: inline-block;
+                  font-weight: bold;
+                  -webkit-border-radius: 40px;
+                  -moz-border-radius: 40px;
+                  border-radius: 40px;">
+               {{etcProduct.delivery.price}}
+            </span>
+        </div>
+    </div>
+    <review-list></review-list>
+
+    <!--<h3 class="md-title" style="margin-left:10px;">Review Write</h3>-->
+    <!--<div layout="row" layout-sm="column" layout-align="center" style="margin-left:10px; margin-right:10px;">-->
+        <!--<review-write></review-write>-->
+    <!--</div>-->
+
+</section>

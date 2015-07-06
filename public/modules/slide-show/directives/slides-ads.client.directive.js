@@ -48,7 +48,7 @@ angular.module('slide-show').directive('slidesAds',
 	.animation('.transition-animation', function() {
 		return {
 			enter:function(element, className, done){
-				TweenLite.fromTo(element, 0.6, {scale:0.6},{scale:1, display:'block', opacity:'1'});
+				//TweenLite.fromTo(element, 0.6, {scale:0.6},{scale:1, display:'block', opacity:'1'});
 			},
 			leave: function(element, className, done){
 				TweenLite.set(element, {opacity:'0', display:'none'});

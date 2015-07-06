@@ -35,3 +35,7 @@ input, button, textarea, select {
 md-content.md-default-theme .main-content {
 	background-color: rgb(236, 236, 236);
 }
+
+.notFocus{
+	outline: none;
+}

@@ -35,7 +35,7 @@
     </style>
 
 
-    <h1 class="md-title">New Wig Product</h1>
+    <h1 class="md-title">New Clipper Product</h1>
 
 
     <md-whiteframe
@@ -74,48 +74,52 @@
                         <p class="md-caption">You have assigned the task to: {{ brand ? brand.name : 'No one yet' }}</p>
                     </div>
 
-                    <!--<p class="md-body-1">-->
-                        <!--Set Color Picker-->
-                    <!--</p>-->
-                    <!--<md-whiteframe-->
-
-                            <!--class="md-whiteframe-z2 meanT-home-card ob-underbar-red"-->
-                            <!--layout="column" layout-align="space-around start">-->
-
-                        <!--<div class="chipsdemoBasicUsage">-->
-                            <!--<p class="md-body-1">-->
-                                <!--Use Placeholders and override color chips.-->
-                            <!--</p>-->
-                            <!--<md-chips-->
-                                    <!--ng-model="newFruitNames"-->
-                                    <!--readonly="readonly"-->
-                                    <!--placeholder="Enter a Color"-->
-                                    <!--delete-button-label="Remove Color"-->
-                                    <!--delete-hint="Press delete to remove Color"-->
-                                    <!--secondary-placeholder="+Add New Color"></md-chips>-->
-                            <!--<br/>-->
-                            <!--<p class="md-body-1">-->
-                                <!--Display an ordered set of colors as chips (with custom template).-->
-                            <!--</p>-->
-                            <!--<md-chips-->
-                                    <!--class="custom-chips"-->
-                                    <!--ng-model="vegObjs"-->
-                                    <!--readonly="readonly"-->
-                                    <!--md-on-append="newVeg($chip)">-->
-                                <!--<md-chip-template>-->
-                                  <!--<span>-->
-                                    <!--<strong>{{$chip.name}}</strong>-->
-                                    <!--<em>({{$chip.type}})</em>-->
-                                  <!--</span>-->
-                                <!--</md-chip-template>-->
-                                <!--<button md-chip-remove class="md-primary vegetablechip">-->
-                                    <!--<md-icon md-svg-icon="close"></md-icon>-->
-                                <!--</button>-->
-                            <!--</md-chips>-->
-                        <!--</div>-->
+                    <div class="form-group">
+                        <label class="control-label" for="sku">SKU</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="sku" id="sku" class="form-control" placeholder="Sku" required>
+                        </div>
+                    </div>
 
 
-                    <!--</md-whiteframe>-->
+                    <div class="form-group">
+                        <label class="control-label">Width</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="width" id="width" class="form-control" placeholder="width" required>
+                        </div>
+                        <label class="control-label">Height</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="height" id="height" class="form-control" placeholder="height" required>
+                        </div>
+                        <label class="control-label">Depth</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="depth" id="depth" class="form-control" placeholder="depth" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">Image 1</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="img1" id="img1" class="form-control" placeholder="img1" required>
+                        </div>
+                        <label class="control-label">Height</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="img2" id="img2" class="form-control" placeholder="img2" required>
+                        </div>
+                        <label class="control-label">Depth</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="img3" id="img3" class="form-control" placeholder="img3" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="sku">Desc</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="desc" id="desc" class="form-control" placeholder="Description" required>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <input type="submit" class="btn btn-default">

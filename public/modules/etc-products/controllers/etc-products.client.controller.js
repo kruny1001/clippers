@@ -112,11 +112,37 @@ function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdD
 		$scope.etcProducts = EtcProducts.query();
 	};
 
+	/*
+	 Resource
+	 _id: "556e3f42d996545b4dc5a7ea"
+	  brand: Object_id: "5556d123f226ecd1762f4a18"
+	    name: "andis"__proto__: Objectcreated: "2015-06-02T23:41:54.999Z"
+	  image: "modules/etc/img/products/1.png"
+	  name: "UltraEdge BGRC™ Detachable Blade Clipper"
+	  price: "185.15"
+	  type: ""
+	  user: Object_id: "553deb8276d1fd5e25659936"display
+	    Name: "Kevin S"
+	*/
 	// Find existing Etc product
 	$scope.findOne = function() {
 		$scope.etcProduct = EtcProducts.get({
 			etcProductId: $stateParams.etcProductId
 		});
+
+		$scope.etcProduct.$promise.then(function(data){
+			$scope.etcProduct.desc = 'Brand New In The Box  Andis Master 01922 ML Clipper 90th Anniversary Limited Edition Unbreakable, lightweight aluminum housing for years of dependable service Powerful magnetic motor generates 14,000 cutting strokes per minute Precision built to run quiet and cool Single lever adjusts clipper blades from fine to coarse {size #000 (1/100th") to size Single lever adjusts clipper blades from fine to coarse {size #000 (1/100th") to size #1(1/8")} length cutting depths, special upper blade features fast feed action Convenient thumb controlled side switch for one-hand on/off operation Designed for heavy-duty hair cutting Perfect for all around cutting and tapering';
+			$scope.etcProduct.sku = '40102019227';
+			$scope.etcProduct.size = {width: 10, height: 8, depth: 5},
+			$scope.etcProduct.review = {score: 10, num: 8};
+			$scope.etcProduct.delivery = {price: 'Free'};
+			$scope.etcProduct.extraImg =[{imageUrl:'modules/etc-products/img/blackMaster_01795_1.png'},
+				{imageUrl:'modules/etc-products/img/blackMaster_01795_2.png'},
+				{imageUrl:'modules/etc-products/img/blackMaster_01795_3.png'}
+			]
+		})
+
+
 	}
 
 
@@ -155,57 +181,6 @@ function EtcProductsController($rootScope, $scope, $stateParams, $location, $mdD
 			type: 'unknown'
 		};
 	};
-	/////
-
-
-	var imagePath = 'modules/etc/img/bunny.png';
-
-	$scope.phones = [
-		{ type: 'Home', number: '(555) 251-1234' },
-		{ type: 'Cell', number: '(555) 786-9841' },
-	];
-	$scope.todos = [
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'Min Li Chan',
-			when: '3:08PM',
-			notes: " I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errandsI'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errandsI'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands  I'll be in your neighborhood doing errands"
-		},
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'Min Li Chan',
-			when: '3:08PM',
-			notes: " I'll be in your neighborhood doing errands"
-		},
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'Min Li Chan',
-			when: '3:08PM',
-			notes: " I'll be in your neighborhood doing errands"
-		},
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'Min Li Chan',
-			when: '3:08PM',
-			notes: " I'll be in your neighborhood doing errands"
-		},
-		{
-			face : imagePath,
-			what: 'Brunch this weekend?',
-			who: 'Min Li Chan',
-			when: '3:08PM',
-			notes: " I'll be in your neighborhood doing errands"
-		},
-	];
-
-
-
-
-
 	$scope.rate = 3;
 	$scope.max = 5;
 	$scope.isReadonly = true;
