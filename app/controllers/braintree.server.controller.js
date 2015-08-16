@@ -7,6 +7,8 @@ var braintree = require('braintree');
 var mongoose = require('mongoose'),
     _ = require('lodash');
 
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 
 var gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
@@ -24,11 +26,15 @@ exports.token = function(req, res) {
 
 exports.purchase = function(req, res) {
     var nonce = req.body.nonce;
+    var price = req.body.price;
+    var username = req.body.price;
+    var productName = req.body.name;
+
     console.log(req.body);
-    console.log(nonce);
+    //console.log(nonce);
     //nonce = 'fake-google-wallet-nonce'
     gateway.transaction.sale({
-        amount: "10.00",
+        amount: price,
         customFields:{topcliper:'123'},
         paymentMethodNonce: nonce,
         billing: {
@@ -165,5 +171,26 @@ exports.findOneTran =function(req, res){
     stream.on("end", function(){
         //console.log(completeData.length);
         res.send(completeData);
+    });
+}
+
+exports.apiToken = function(request, response){
+    gateway.clientToken.generate({}, function (err, res) {
+        if (err) throw err;
+        response.json({
+            "client_token": res.clientToken
+        });
+    });
+}
+
+exports.apiProcess = function(request, response){
+    var transaction = request.body;
+    gateway.transaction.sale({
+        amount: transaction.amount,
+        paymentMethodNonce: transaction.payment_method_nonce
+    }, function (err, result) {
+        if (err) throw err;
+        console.log(util.inspect(result));
+        response.json(result);
     });
 }
