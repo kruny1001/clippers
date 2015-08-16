@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
 
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
+var util = require('util');
 
 var gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
@@ -185,6 +186,7 @@ exports.apiToken = function(request, response){
 
 exports.apiProcess = function(request, response){
     var transaction = request.body;
+    console.log(transaction);
     gateway.transaction.sale({
         amount: transaction.amount,
         paymentMethodNonce: transaction.payment_method_nonce
