@@ -12,10 +12,10 @@ var jsonParser = bodyParser.json();
 var util = require('util');
 
 var gateway = braintree.connect({
-    environment: braintree.Environment.Sandbox,
-    merchantId: "m6zmtt6gjm242fnq",
-    publicKey: "qnpq64wdsww4hwth",
-    privateKey: "938bf672f651f09ffde2ead95be88bec"
+    environment:  braintree.Environment.Sandbox,
+    merchantId:   'm6zmtt6gjm242fnq',
+    publicKey:    'qnpq64wdsww4hwth',
+    privateKey:   '938bf672f651f09ffde2ead95be88bec'
 });
 
 exports.token = function(req, res) {
@@ -105,7 +105,7 @@ exports.generateClientToken = function(req, res){
 }
 
 exports.findTransaction = function(req, res){
-    gateway.transaction.find("h6w984", function (err, transaction) {
+    gateway.transaction.find("jpyycp", function (err, transaction) {
         //transaction.escrowStatus
         res.send(transaction);
     });
